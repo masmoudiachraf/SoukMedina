@@ -8,6 +8,7 @@ package com.esprit.service;
 
 
 import com.esprit.entite.Panier;
+import com.esprit.entite.articles;
 import com.esprit.utils.datasource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,7 +78,9 @@ public class PanierService implements IservicePanier{
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
-            Panier p=new Panier(rs.getInt(1), rs.getString("etat_panier"),new articles("id_art") );
+                 articles article= new articles();
+                 article.setId(rs.getInt("id_art"));
+            Panier p=new Panier(rs.getInt(1), rs.getString("etat_panier"), article);
               list.add(p);
         }
           } catch (SQLException ex) {
