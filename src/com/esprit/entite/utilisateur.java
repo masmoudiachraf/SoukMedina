@@ -84,6 +84,43 @@ public class utilisateur {
         return naissance_uti;
     }
 
+    public void setId_uti(int id_uti) {
+        this.id_uti = id_uti;
+    }
+
+    public void setNom_uti(String nom_uti) {
+        this.nom_uti = nom_uti;
+    }
+
+    public void setPrenom_uti(String prenom_uti) {
+        this.prenom_uti = prenom_uti;
+    }
+
+    public void setMail_uti(String mail_uti) {
+        this.mail_uti = mail_uti;
+    }
+
+    public void setPassword_uti(String password_uti) {
+        this.password_uti = password_uti;
+    }
+
+    public void setRole_uti(String role_uti) {
+        this.role_uti = role_uti;
+    }
+
+    public void setAdresse_uti(String adresse_uti) {
+        this.adresse_uti = adresse_uti;
+    }
+
+    public void setTelephone_uti(int telephone_uti) {
+        this.telephone_uti = telephone_uti;
+    }
+
+    public void setNaissance_uti(String naissance_uti) {
+        this.naissance_uti = naissance_uti;
+    }
+
+    
     @Override
     public String toString() {
         return "utilisateur " + id_uti + "\n \t nom: " + nom_uti + "\n \t prenom: " + prenom_uti + "\n \t mail: " + mail_uti + "\n \t password : " + password_uti + "\n \t role: " + role_uti + "\n \t adresse: " + adresse_uti + "\n \t telephone: " + telephone_uti + "\n \t naissance: " + naissance_uti ;
