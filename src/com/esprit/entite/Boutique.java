@@ -10,28 +10,30 @@ package com.esprit.entite;
  * @author masmo
  */
 public class Boutique {
-    int id;
-    String nom;
-    String adresse;
-    int telephone;
-    utilisateur user;
+   private int id;
+   private String nom_bout;
+   private String adresse_bout;
+   private int telephone_bout;
+
+    public Boutique(int id) {
+        this.id = id;
+    }
+    
 
     public Boutique() {
     }
 
-    public Boutique(String nom, String adresse, int telephone, utilisateur user) {
-        this.nom = nom;
-        this.adresse = adresse;
-        this.telephone = telephone;
-        this.user = user;
+    public Boutique(int id, String nom_bout, String adresse_bout, int telephone_bout) {
+        this.id = id;
+        this.nom_bout = nom_bout;
+        this.adresse_bout = adresse_bout;
+        this.telephone_bout = telephone_bout;
     }
 
-    public Boutique(int id, String nom, String adresse, int telephone, utilisateur user) {
-        this.id = id;
-        this.nom = nom;
-        this.adresse = adresse;
-        this.telephone = telephone;
-        this.user = user;
+    public Boutique(String nom_bout, String adresse_bout, int telephone_bout) {
+        this.nom_bout = nom_bout;
+        this.adresse_bout = adresse_bout;
+        this.telephone_bout = telephone_bout;
     }
 
     public int getId() {
@@ -42,37 +44,37 @@ public class Boutique {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNom_bout() {
+        return nom_bout;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom_bout(String nom_bout) {
+        this.nom_bout = nom_bout;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAdresse_bout() {
+        return adresse_bout;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAdresse_bout(String adresse_bout) {
+        this.adresse_bout = adresse_bout;
     }
 
-    public int getTelephone() {
-        return telephone;
+    public int getTelephone_bout() {
+        return telephone_bout;
     }
 
-    public void setTelephone(int telephone) {
-        this.telephone = telephone;
+    public void setTelephone_bout(int telephone_bout) {
+        this.telephone_bout = telephone_bout;
+    }
+   
+    @Override
+    public String toString() {
+        return "Boutique{" + "id=" +id + ", nom_bout=" + nom_bout + ", adresse_bout=" + adresse_bout + ", telephone_bout=" + telephone_bout + '}';
     }
 
-    public utilisateur getUser() {
-        return user;
-    }
 
-    public void setUser(utilisateur user) {
-        this.user = user;
-    }
+  
 
    
     
