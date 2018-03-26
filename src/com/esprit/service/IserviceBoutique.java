@@ -10,13 +10,13 @@ import java.util.List;
 
 /**
  *
- * @author iskander
+ * @author masmo
  */
 public interface IserviceBoutique {
     void insert_boutique(Boutique bou);
     void delete_boutique(Boutique bou);
      void update_boutique(Boutique bou);
-    List<Boutique> displayall();
-    int displayboutique(int tel);
+    List<Boutique> displayall_boutique();
+    Boutique displayboutique(int tel);
     //public void ajouterBoutique(Boutique b);
 }
