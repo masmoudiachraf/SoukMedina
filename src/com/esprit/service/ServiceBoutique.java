@@ -88,8 +88,8 @@ public class ServiceBoutique implements IserviceBoutique{
     }
 
     @Override
-    public Boutique displayboutique(int i) {
-        String req = "Select * from boutiques";
+    public Boutique displayboutique(int telephone_bout ) {
+        String req = "Select * from boutiques where telephone_bout="+telephone_bout;
         Boutique boutique = null;
         try {
             statement = connection.prepareStatement(req);
