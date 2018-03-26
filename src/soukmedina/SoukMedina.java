@@ -5,6 +5,10 @@
  */
 package soukmedina;
 
+import com.esprit.entite.Boutique;
+import com.esprit.entite.utilisateur;
+import com.esprit.service.ServiceBoutique;
+import com.esprit.service.serviceUtilisateur;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -46,6 +50,11 @@ public class SoukMedina extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        
+        serviceUtilisateur su=new serviceUtilisateur();
+        ServiceBoutique sb=new ServiceBoutique();
+        sb.displayall_boutique().forEach(System.out::println);
+
     }
     
 }

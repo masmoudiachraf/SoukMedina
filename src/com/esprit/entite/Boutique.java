@@ -14,6 +14,7 @@ public class Boutique {
    private String nom_bout;
    private String adresse_bout;
    private int telephone_bout;
+   private utilisateur user;
 
     public Boutique(int id) {
         this.id = id;
@@ -23,17 +24,21 @@ public class Boutique {
     public Boutique() {
     }
 
-    public Boutique(int id, String nom_bout, String adresse_bout, int telephone_bout) {
+    public Boutique(int id, String nom_bout, String adresse_bout, int telephone_bout, utilisateur user) {
         this.id = id;
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
         this.telephone_bout = telephone_bout;
+        this.user = user;
+
     }
 
-    public Boutique(String nom_bout, String adresse_bout, int telephone_bout) {
+    public Boutique(String nom_bout, String adresse_bout, int telephone_bout, utilisateur user) {
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
         this.telephone_bout = telephone_bout;
+        this.user = user;
+
     }
 
     public int getId() {
@@ -50,6 +55,14 @@ public class Boutique {
 
     public void setNom_bout(String nom_bout) {
         this.nom_bout = nom_bout;
+    }
+
+    public utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(utilisateur user) {
+        this.user = user;
     }
 
     public String getAdresse_bout() {
@@ -70,12 +83,7 @@ public class Boutique {
    
     @Override
     public String toString() {
-        return "Boutique{" + "id=" +id + ", nom_bout=" + nom_bout + ", adresse_bout=" + adresse_bout + ", telephone_bout=" + telephone_bout + '}';
+        return "Boutique{" + "id=" +id + ", nom_bout=" + nom_bout + ", adresse_bout=" + adresse_bout + ", telephone_bout=" + telephone_bout + ", userId= "+user.getId_uti()+"}";
     }
-
-
-  
-
    
-    
 }

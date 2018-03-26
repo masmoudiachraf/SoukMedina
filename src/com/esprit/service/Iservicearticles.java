@@ -14,7 +14,7 @@ import java.util.List;
  * @author Djoo
  */
 public interface Iservicearticles {
-    void insert(articles p);
+    void insert_article(articles p);
     void delete(int id);
      void update(articles p,int id);
     List<articles> displayall();

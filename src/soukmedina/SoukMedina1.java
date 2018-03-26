@@ -8,7 +8,7 @@ package soukmedina;
 
 import com.esprit.entite.Boutique;
 import com.esprit.entite.utilisateur;
-import com.esprit.service.serviceBoutique;
+import com.esprit.service.ServiceBoutique;
 import com.esprit.service.serviceUtilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,11 +30,13 @@ public class SoukMedina1 {
     public static void main(String[] args) {
         int x;
         serviceUtilisateur su=new serviceUtilisateur();
-        serviceBoutique sb=new serviceBoutique();
-        Boutique b=new Boutique("test","sfax", 12345678);
+        
+        ServiceBoutique sb=new ServiceBoutique();
+        utilisateur user = new utilisateur();
+        user.setId_uti(1);
+        Boutique b=new Boutique("test","sfax", 12345678,user);
         sb.insert_boutique(b);
-        x=sb.displayboutique(12345678);
-        utilisateur u=new utilisateur("hajer","mejri","hajer@gmail.com","123456789","vendeur", "sfax", 77777777,"01/01/2010",x);
+        utilisateur u=new utilisateur("hajer","mejri","hajer@gmail.com","123456789","vendeur", "sfax", 77777777,"01/01/2010",1);
         su.insert_user(u);
         
         //su.displayall().forEach(System.out::println);

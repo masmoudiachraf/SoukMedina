@@ -36,7 +36,7 @@ public class articlesService implements Iservicearticles{
 
 
     @Override
-    public void insert(articles p) {
+    public void insert_article(articles p) {
         String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie_fk()+"')";
    
           try {
