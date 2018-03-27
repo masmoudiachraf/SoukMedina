@@ -54,7 +54,7 @@ public class ServiceBoutique implements IserviceBoutique{
 
     @Override
     public void update_boutique(Boutique t) {
-        String req = "update boutiques SET nom_bout=?,adresse_bout=?,telephone_bout=?,utilisateurs_fk=?) where id=?";
+        String req = "update boutiques SET nom_bout=?,adresse_bout=?,telephone_bout=?,utilisateurs_fk=? where id=?";
         try {
             statement = connection.prepareStatement(req);
             statement.setString(1, t.getNom_bout());

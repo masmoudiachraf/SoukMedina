@@ -20,25 +20,28 @@ public class articles {
     private String couleur;
     private float prix;
     private categorie categorie_fk;
+    private Boutique boutique_fk;
     
     public articles() {};
 
-    public articles(int id, String nom, String taille, String couleur, float prix, categorie categorie_fk) {
+    public articles(int id, String nom, String taille, String couleur, float prix, categorie categorie_fk,Boutique boutique_fk) {
         this.id = id;
         this.nom = nom;
         this.taille = taille;
         this.couleur = couleur;
         this.prix = prix;
         this.categorie_fk = categorie_fk;
+        this.boutique_fk=boutique_fk;
     }
    
 
-    public articles(String nom, String taille, String couleur, float prix, categorie categorie_fk) {
+    public articles(String nom, String taille, String couleur, float prix, categorie categorie_fk,Boutique boutique_fk) {
         this.nom = nom;
         this.taille = taille;
         this.couleur = couleur;
         this.prix = prix;
         this.categorie_fk = categorie_fk;
+        this.boutique_fk=boutique_fk;
     }
     
 
@@ -62,6 +65,10 @@ public class articles {
         return taille;
     }
 
+    public Boutique getBoutique_fk() {
+        return boutique_fk;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -76,6 +83,10 @@ public class articles {
 
     public void setPrix(float prix) {
         this.prix = prix;
+    }
+
+    public void setBoutique_fk(Boutique boutique_fk) {
+        this.boutique_fk = boutique_fk;
     }
 
     public void setTaille(String taille) {
@@ -97,8 +108,13 @@ public class articles {
     }
 
     @Override
-    public String toString() {
+ /*   public String toString() {
          return  "id=" + id + ", nom=" + nom + ", taille=" + taille +", couleur=" + couleur + ", prix=" + prix ;
+    }*/
+
+    
+    public String toString() {
+        return "articles{" + "id=" + id + ", nom=" + nom + ", taille=" + taille + ", couleur=" + couleur + ", prix=" + prix + ", categorie_fk=" + categorie_fk + ", boutique_fk=" + boutique_fk + '}';
     }
     
     
