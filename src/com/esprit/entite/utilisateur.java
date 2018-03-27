@@ -22,12 +22,11 @@ public class utilisateur {
     private String adresse_uti;
     private int telephone_uti;
     private String naissance_uti;
-    private int boutiques_fk;
 
     public utilisateur() {
     }
 
-    public utilisateur(int id_uti, String nom_uti, String prenom_uti, String mail_uti, String password_uti, String role_uti, String adresse_uti, int telephone_uti, String naissance_uti,int boutiques_fk) {
+    public utilisateur(int id_uti, String nom_uti, String prenom_uti, String mail_uti, String password_uti, String role_uti, String adresse_uti, int telephone_uti, String naissance_uti) {
         this.id_uti = id_uti;
         this.nom_uti = nom_uti;
         this.prenom_uti = prenom_uti;
@@ -37,10 +36,9 @@ public class utilisateur {
         this.adresse_uti = adresse_uti;
         this.telephone_uti = telephone_uti;
         this.naissance_uti = naissance_uti;
-        this.boutiques_fk= boutiques_fk;
     }
 
-    public utilisateur(String nom_uti, String prenom_uti, String mail_uti, String password_uti, String role_uti, String adresse_uti, int telephone_uti, String naissance_uti, int boutiques_fk ) {
+    public utilisateur(String nom_uti, String prenom_uti, String mail_uti, String password_uti, String role_uti, String adresse_uti, int telephone_uti, String naissance_uti ) {
         this.nom_uti = nom_uti;
         this.prenom_uti = prenom_uti;
         this.mail_uti = mail_uti;
@@ -49,7 +47,6 @@ public class utilisateur {
         this.adresse_uti = adresse_uti;
         this.telephone_uti = telephone_uti;
         this.naissance_uti = naissance_uti;
-        this.boutiques_fk= boutiques_fk;
     }
 
     public int getId_uti() {
@@ -104,14 +101,6 @@ public class utilisateur {
         this.mail_uti = mail_uti;
     }
 
-    public int getBoutiques_fk() {
-        return boutiques_fk;
-    }
-
-    public void setBoutiques_fk(int boutiques_fk) {
-        this.boutiques_fk = boutiques_fk;
-    }
-
     public void setPassword_uti(String password_uti) {
         this.password_uti = password_uti;
     }
@@ -135,7 +124,7 @@ public class utilisateur {
     
     @Override
     public String toString() {
-        return "utilisateur " + id_uti + "\n \t nom: " + nom_uti + "\n \t prenom: " + prenom_uti + "\n \t mail: " + mail_uti + "\n \t password : " + password_uti + "\n \t role: " + role_uti + "\n \t adresse: " + adresse_uti + "\n \t telephone: " + telephone_uti + "\n \t naissance: " + naissance_uti+"\n boutique: "+boutiques_fk ;
+        return "utilisateur " + id_uti + "\n \t nom: " + nom_uti + "\n \t prenom: " + prenom_uti + "\n \t mail: " + mail_uti + "\n \t password : " + password_uti + "\n \t role: " + role_uti + "\n \t adresse: " + adresse_uti + "\n \t telephone: " + telephone_uti + "\n \t naissance: " + naissance_uti ;
     }
     
     

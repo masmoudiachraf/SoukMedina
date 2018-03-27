@@ -35,7 +35,7 @@ public class serviceUtilisateur implements IserviceUtilisateur{
 
     @Override
     public void insert_user(utilisateur usr) {
-        String requete="insert into utilisateurs (nom_uti,prenom_uti,mail_uti,password_uti,role_uti,adresse_uti,telephone_uti,naissance_uti,boutiques_fk) values ('"+usr.getNom_uti()+"','"+usr.getPrenom_uti()+"','"+usr.getMail_uti()+"','"+usr.getPassword_uti()+"','"+usr.getRole_uti()+"','"+usr.getAdresse_uti()+"','"+usr.getTelephone_uti()+"','"+usr.getNaissance_uti()+"','"+usr.getBoutiques_fk()+"')";
+        String requete="insert into utilisateurs (nom_uti,prenom_uti,mail_uti,password_uti,role_uti,adresse_uti,telephone_uti,naissance_uti) values ('"+usr.getNom_uti()+"','"+usr.getPrenom_uti()+"','"+usr.getMail_uti()+"','"+usr.getPassword_uti()+"','"+usr.getRole_uti()+"','"+usr.getAdresse_uti()+"','"+usr.getTelephone_uti()+"','"+usr.getNaissance_uti()+"')";
    
           try {
               st=cnx.createStatement();
@@ -79,7 +79,7 @@ public class serviceUtilisateur implements IserviceUtilisateur{
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
-            utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"), rs.getString("role_uti"), rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"),rs.getInt("boutiques_fk"));
+            utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"), rs.getString("role_uti"), rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"));
               list.add(usr);
         }
           } catch (SQLException ex) {
@@ -98,7 +98,7 @@ public class serviceUtilisateur implements IserviceUtilisateur{
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
-            utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"), rs.getString("role_uti"), rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"),rs.getInt("boutiques_fk"));
+            utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"), rs.getString("role_uti"), rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"));
                  System.out.println(usr);
              }
           } catch (SQLException ex) {
