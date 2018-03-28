@@ -56,17 +56,23 @@ public class SoukMedina extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        //serviceUtilisateur su=new serviceUtilisateur();
+        serviceUtilisateur su=new serviceUtilisateur();
         //ServiceBoutique sb=new ServiceBoutique();
        // sb.displayall_boutique().forEach(System.out::println);
        PanierService p = new PanierService();
-        categorie cat = new categorie();
-        Boutique bout = new Boutique();
-        cat.setId_cat(1);
-        bout.setId(1);
-        articles art = new articles(1, "t_shirt","small", "black",40, cat,bout);
-        articlesService a= new articlesService();
-        a.insert_article(art);
+       // categorie cat = new categorie();
+      //  Boutique bout = new Boutique();
+        utilisateur u= new utilisateur();
+        articles ar= new articles();
+        u.setId_uti(1);
+        ar.setId(1);
+       // cat.setId_cat(1);
+       // bout.setId(1);
+        //articles art = new articles();
+        //articlesService a= new articlesService();
+       Panier p1= new Panier(u, ar,2 , "In hold");
+       // p.insert(p1);
+        p.displayall(u).forEach(System.out::println);
     }
     
 }

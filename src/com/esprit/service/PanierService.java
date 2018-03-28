@@ -9,6 +9,7 @@ package com.esprit.service;
 
 import com.esprit.entite.Panier;
 import com.esprit.entite.articles;
+import com.esprit.entite.utilisateur;
 import com.esprit.utils.datasource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,7 +36,19 @@ public class PanierService implements IservicePanier{
 
     @Override
     public void insert(Panier p) {
-        String requete="insert into panier (id_panier,etat_panier) values ('"+p.getId_panier()+"','"+p.getEtat_panier()+"')";
+        String requete="insert into panier (utilisateurs_fk,articles_fk,quantite,etat) values ('"+p.getUtilisateurs_fk().getId_uti()+"','"+p.getArticles_fk().getId()+"','"+p.getQuantite()+"','"+p.getEtat_panier()+"')";
+   
+          try {
+              st=cnx.createStatement();
+              st.executeUpdate(requete);
+          } catch (SQLException ex) {
+              Logger.getLogger(PanierService.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    }
+
+    
+    public void delete(articles articles_fk) {
+         String requete="delete from panier where articles_fk = '"+articles_fk+"'   ";
    
           try {
               st=cnx.createStatement();
@@ -46,41 +59,20 @@ public class PanierService implements IservicePanier{
     }
 
     @Override
-    public void delete(int id_panier) {
-         String requete="delete from panier where id_panier = '"+id_panier+"'   ";
-   
-          try {
-              st=cnx.createStatement();
-              st.executeUpdate(requete);
-          } catch (SQLException ex) {
-              Logger.getLogger(PanierService.class.getName()).log(Level.SEVERE, null, ex);
-          }
-    }
-
-    public void update(Panier p, int id_panier) {
-         String requete="update panier set etat_panier='"+p.getEtat_panier()+"' where id_panier='"+ id_panier +"'  ";
-   
-          try {
-              st=cnx.createStatement();
-              st.executeUpdate(requete);
-          } catch (SQLException ex) {
-              Logger.getLogger(PanierService.class.getName()).log(Level.SEVERE, null, ex);
-          }
-    }
-
-    @Override
-    public List<Panier> displayall() {
+    public List<Panier> displayall(utilisateur utilisateur_fk) {
                 List<Panier> list=new ArrayList<>();
 
-           String requete="select * from panier";
+           String requete="select * from panier where utilisateurs_fk="+utilisateur_fk.getId_uti();
         ResultSet rs;
           try {
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
                  articles article= new articles();
-                 article.setId(rs.getInt("id_art"));
-            Panier p=new Panier(rs.getInt(1), rs.getString("etat_panier"), article);
+                 utilisateur user= new utilisateur();
+                 article.setId(rs.getInt("articles_fk"));
+                user.setId_uti(rs.getInt("utilisateurs_fk"));
+            Panier p=new Panier(user,article,rs.getInt("quantite"), rs.getString("etat"));
               list.add(p);
         }
           } catch (SQLException ex) {
