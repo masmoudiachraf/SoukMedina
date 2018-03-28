@@ -83,7 +83,7 @@ public class Boutique {
    
     @Override
     public String toString() {
-        return "Boutique{" + "id=" +id + ", nom_bout=" + nom_bout + ", adresse_bout=" + adresse_bout + ", telephone_bout=" + telephone_bout + ", userId= "+user.getId_uti()+"}";
+        return "Boutique{" + "id=" +id + ", nom_bout=" + nom_bout + ", adresse_bout=" + adresse_bout + ", telephone_bout=" + telephone_bout + ", userId= }";
     }
    
 }

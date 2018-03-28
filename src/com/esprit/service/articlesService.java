@@ -38,7 +38,7 @@ public class articlesService implements Iservicearticles{
 
     @Override
     public void insert_article(articles p) {
-        String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_fk,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie_fk()+ "','"+p.getBoutique_fk()+"')";
+        String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_fk,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie_fk().getId_cat()+ "','"+p.getBoutique_fk().getId()+"')";
    
           try {
               st=cnx.createStatement();

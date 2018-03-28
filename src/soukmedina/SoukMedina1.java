@@ -29,7 +29,7 @@ public class SoukMedina1 {
     
     public static void main(String[] args) {
         int x;
-        serviceUtilisateur su=new serviceUtilisateur();
+        /*serviceUtilisateur su=new serviceUtilisateur();
         
         ServiceBoutique sb=new ServiceBoutique();
         utilisateur user = new utilisateur();
@@ -44,7 +44,7 @@ public class SoukMedina1 {
         //su.delete_user("mohamed@gmail.com", "aaaaaaaaa");
         su.displayutilisateur("hajer    @gmail.com");
         //su.update_user(u,"eya@gmail.com");
-        System.out.println("Ok!!");
+        System.out.println("Ok!!");*/
     }
     
 }
