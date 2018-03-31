@@ -7,7 +7,7 @@ package soukmedina;
 
 
 import com.esprit.entite.Boutique;
-import com.esprit.entite.utilisateur;
+import com.esprit.entite.Utilisateur;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.serviceUtilisateur;
 import java.sql.Connection;
@@ -32,11 +32,11 @@ public class SoukMedina1 {
         serviceUtilisateur su=new serviceUtilisateur();
         
         //ServiceBoutique sb=new ServiceBoutique();
-        utilisateur user = new utilisateur();
+        Utilisateur user = new Utilisateur();
         //user.setId_uti(1);
         //Boutique b=new Boutique("test","sfax", 12345678,user);
         //sb.insert_boutique(b);
-        utilisateur u=new utilisateur("iskander","chikhaoui","iskander@gmail.com","123456789","vendeur", "tunis", 123456789,"01/01/2010");
+        Utilisateur u=new Utilisateur("iskander","chikhaoui","iskander@gmail.com","123456789","vendeur", "tunis", 123456789,"01/01/2010");
         //su.insert_user(u);
         
         //su.displayall().forEach(System.out::println);

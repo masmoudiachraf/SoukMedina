@@ -7,9 +7,9 @@ package soukmedina;
 
 import com.esprit.entite.Boutique;
 import com.esprit.entite.Panier;
-import com.esprit.entite.articles;
-import com.esprit.entite.categorie;
-import com.esprit.entite.utilisateur;
+import com.esprit.entite.Articles;
+import com.esprit.entite.Categorie;
+import com.esprit.entite.Utilisateur;
 import com.esprit.service.PanierService;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.articlesService;
@@ -62,8 +62,8 @@ public class SoukMedina extends Application {
        PanierService p = new PanierService();
        // categorie cat = new categorie();
       //  Boutique bout = new Boutique();
-        utilisateur u= new utilisateur();
-        articles ar= new articles();
+        Utilisateur u= new Utilisateur();
+        Articles ar= new Articles();
         u.setId_uti(1);
         ar.setId(1);
        // cat.setId_cat(1);

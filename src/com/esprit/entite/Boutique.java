@@ -14,7 +14,7 @@ public class Boutique {
    private String nom_bout;
    private String adresse_bout;
    private int telephone_bout;
-   private utilisateur user;
+   private Utilisateur user;
 
     public Boutique(int id) {
         this.id = id;
@@ -24,7 +24,7 @@ public class Boutique {
     public Boutique() {
     }
 
-    public Boutique(int id, String nom_bout, String adresse_bout, int telephone_bout, utilisateur user) {
+    public Boutique(int id, String nom_bout, String adresse_bout, int telephone_bout, Utilisateur user) {
         this.id = id;
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
@@ -33,7 +33,7 @@ public class Boutique {
 
     }
 
-    public Boutique(String nom_bout, String adresse_bout, int telephone_bout, utilisateur user) {
+    public Boutique(String nom_bout, String adresse_bout, int telephone_bout, Utilisateur user) {
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
         this.telephone_bout = telephone_bout;
@@ -57,11 +57,11 @@ public class Boutique {
         this.nom_bout = nom_bout;
     }
 
-    public utilisateur getUser() {
+    public Utilisateur getUser() {
         return user;
     }
 
-    public void setUser(utilisateur user) {
+    public void setUser(Utilisateur user) {
         this.user = user;
     }
 

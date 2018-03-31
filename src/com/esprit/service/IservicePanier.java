@@ -7,8 +7,8 @@
 package com.esprit.service;
 
 import com.esprit.entite.Panier;
-import com.esprit.entite.articles;
-import com.esprit.entite.utilisateur;
+import com.esprit.entite.Articles;
+import com.esprit.entite.Utilisateur;
 import java.util.List;
 
 /**
@@ -17,6 +17,6 @@ import java.util.List;
  */
 public interface IservicePanier {
     void insert(Panier p);
-    void delete(articles articles_fk);
-    List<Panier> displayall(utilisateur utilisateur_fk);
+    void delete(Articles articles_fk);
+    List<Panier> displayall(Utilisateur utilisateur_fk);
 }

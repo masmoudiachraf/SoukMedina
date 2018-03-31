@@ -5,7 +5,7 @@
  */
 package com.esprit.service;
 
-import com.esprit.entite.categorie;
+import com.esprit.entite.Categorie;
 import java.util.List;
 
 /**
@@ -13,9 +13,9 @@ import java.util.List;
  * @author Hajer
  */
 public interface Icategorieservice {
-    void insert(categorie c);
+    void insert(Categorie c);
     void delete(int id);
-    void update (categorie c,int id);
-   List<categorie> displayall();
+    void update (Categorie c,int id);
+   List<Categorie> displayall();
  
 }

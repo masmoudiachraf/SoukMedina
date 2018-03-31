@@ -8,9 +8,9 @@ package com.esprit.service;
 
 
 import com.esprit.entite.Panier;
-import com.esprit.entite.articles;
-import com.esprit.entite.utilisateur;
-import com.esprit.utils.datasource;
+import com.esprit.entite.Articles;
+import com.esprit.entite.Utilisateur;
+import com.esprit.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +31,7 @@ public class PanierService implements IservicePanier{
     private PreparedStatement pst;
 
     public PanierService() {
-        cnx = datasource.getinstance().getCnx();
+        cnx = DataSource.getinstance().getCnx();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class PanierService implements IservicePanier{
     }
 
     
-    public void delete(articles articles_fk) {
+    public void delete(Articles articles_fk) {
          String requete="delete from panier where articles_fk = '"+articles_fk+"'   ";
    
           try {
@@ -59,7 +59,7 @@ public class PanierService implements IservicePanier{
     }
 
     @Override
-    public List<Panier> displayall(utilisateur utilisateur_fk) {
+    public List<Panier> displayall(Utilisateur utilisateur_fk) {
                 List<Panier> list=new ArrayList<>();
 
            String requete="select * from panier where utilisateurs_fk="+utilisateur_fk.getId_uti();
@@ -68,8 +68,8 @@ public class PanierService implements IservicePanier{
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
-                 articles article= new articles();
-                 utilisateur user= new utilisateur();
+                 Articles article= new Articles();
+                 Utilisateur user= new Utilisateur();
                  article.setId(rs.getInt("articles_fk"));
                 user.setId_uti(rs.getInt("utilisateurs_fk"));
             Panier p=new Panier(user,article,rs.getInt("quantite"), rs.getString("etat"));
