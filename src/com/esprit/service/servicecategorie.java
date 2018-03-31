@@ -5,8 +5,8 @@
  */
 package com.esprit.service;
 
-import com.esprit.entite.Categorie;
-import com.esprit.utils.DataSource;
+import com.esprit.entite.categorie;
+import com.esprit.utils.datasource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,11 +28,11 @@ private  Connection cnx;
 public servicecategorie()
 {
       {
-          cnx=DataSource.getinstance().getCnx();
+          cnx=datasource.getinstance().getCnx();
       }
 }
     @Override
-    public void insert(Categorie c) {
+    public void insert(categorie c) {
           try {
             String requete="insert into categories (id_cat,nom_cat) values ('"+c.getId_cat()+"','"+c.getNom_cat()+"')";
             st=cnx.createStatement();
@@ -58,7 +58,7 @@ public servicecategorie()
     }
 
     @Override
-    public void update(Categorie c, int id) {
+    public void update(categorie c, int id) {
      String requete ="update categories set nom_cat='"+c.getNom_cat()+"' where id_cat='"+id+"'";
         try {
             st=cnx.createStatement();
@@ -69,8 +69,8 @@ public servicecategorie()
     }
 
     @Override
-    public List<Categorie> displayall() {
-           List<Categorie> liste=new ArrayList<>();
+    public List<categorie> displayall() {
+           List<categorie> liste=new ArrayList<>();
         String requete="select * from categories ";      
           ResultSet rs  ;
         try {       
@@ -78,7 +78,7 @@ public servicecategorie()
             rs= st.executeQuery(requete);
             while(rs.next())
     {
-        Categorie c =new Categorie(rs.getInt(1), rs.getString("nom_cat"));
+        categorie c =new categorie(rs.getInt(1), rs.getString("nom_cat"));
     liste.add(c);
     }
         } catch (SQLException ex) {

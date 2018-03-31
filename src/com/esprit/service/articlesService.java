@@ -8,9 +8,9 @@ package com.esprit.service;
 
 
 import com.esprit.entite.Boutique;
-import com.esprit.entite.Articles;
-import com.esprit.entite.Categorie;
-import com.esprit.utils.DataSource;
+import com.esprit.entite.articles;
+import com.esprit.entite.categorie;
+import com.esprit.utils.datasource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,13 +31,13 @@ public class articlesService implements Iservicearticles{
     private PreparedStatement pst;
 
     public articlesService() {
-        cnx = DataSource.getinstance().getCnx();
+        cnx = datasource.getinstance().getCnx();
     }
 
 
 
     @Override
-    public void insert_article(Articles p) {
+    public void insert_article(articles p) {
         String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_fk,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie_fk().getId_cat()+ "','"+p.getBoutique_fk().getId()+"')";
    
           try {
@@ -60,7 +60,7 @@ public class articlesService implements Iservicearticles{
           }
     }
 
-    public void update(Articles p, int id) {
+    public void update(articles p, int id) {
          String requete="update articles set nom_art='"+p.getNom()+"' , taille_art='"+p.getTaille()+"' , couleur_art='" +p.getCouleur()+"' , prix_art='" + p.getPrix()+"' where id_art="+id;
 
           try {
@@ -73,12 +73,12 @@ public class articlesService implements Iservicearticles{
     }
 
     @Override
-    public List<Articles> displayall() {
-                List<Articles> list=new ArrayList<>();
+    public List<articles> displayall() {
+                List<articles> list=new ArrayList<>();
 
            String requete="select * from articles";
         ResultSet rs;
-         Categorie c = new Categorie();
+         categorie c = new categorie();
  Boutique b= new Boutique();
           try {
               
@@ -88,7 +88,7 @@ public class articlesService implements Iservicearticles{
              while(rs.next()){
                        c.setId_cat(rs.getInt("categorie_fk"));
                  b.setId(rs.getInt("boutique_fk"));
-            Articles p=new Articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),c,b);
+            articles p=new articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),c,b);
               list.add(p);
         }
           } catch (SQLException ex) {

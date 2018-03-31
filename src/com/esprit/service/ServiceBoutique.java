@@ -6,8 +6,8 @@
 package com.esprit.service;
 
 import com.esprit.entite.Boutique;
-import com.esprit.entite.Utilisateur;
-import com.esprit.utils.DataSource;
+import com.esprit.entite.utilisateur;
+import com.esprit.utils.datasource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class ServiceBoutique implements IserviceBoutique{
     PreparedStatement statement;
-    Connection connection = DataSource.getinstance().getCnx();
+    Connection connection = datasource.getinstance().getCnx();
 
     @Override
     public void insert_boutique(Boutique t) {
@@ -76,7 +76,7 @@ public class ServiceBoutique implements IserviceBoutique{
             statement = connection.prepareStatement(req);
             ResultSet rs = statement.executeQuery(req);
             while (rs.next()) {
-                Utilisateur user = new Utilisateur();
+                utilisateur user = new utilisateur();
                 user.setId_uti(rs.getInt(5));
                 listBoutiques.add(new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),user));
             }
@@ -95,7 +95,7 @@ public class ServiceBoutique implements IserviceBoutique{
             statement = connection.prepareStatement(req);
             ResultSet rs = statement.executeQuery(req);
             while (rs.next()) {
-                Utilisateur user = new Utilisateur();
+                utilisateur user = new utilisateur();
                 user.setId_uti(rs.getInt(5));
                 boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),user);
             }

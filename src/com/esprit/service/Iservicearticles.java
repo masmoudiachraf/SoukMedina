@@ -6,7 +6,7 @@
 
 package com.esprit.service;
 
-import com.esprit.entite.Articles;
+import com.esprit.entite.articles;
 import java.util.List;
 
 /**
@@ -14,8 +14,8 @@ import java.util.List;
  * @author Djoo
  */
 public interface Iservicearticles {
-    void insert_article(Articles p);
+    void insert_article(articles p);
     void delete(int id);
-     void update(Articles p,int id);
-    List<Articles> displayall();
+     void update(articles p,int id);
+    List<articles> displayall();
 }

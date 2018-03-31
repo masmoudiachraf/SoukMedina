@@ -7,7 +7,7 @@ package com.esprit.service;
 
 
 import com.esprit.entite.Boutique;
-import com.esprit.entite.Utilisateur;
+import com.esprit.entite.utilisateur;
 import java.util.List;
 
 /**
@@ -15,10 +15,10 @@ import java.util.List;
  * @author iskander
  */
 public interface IserviceUtilisateur {
- void insert_user(Utilisateur usr);
+ void insert_user(utilisateur usr);
     void delete_user(String mail,String password);
-     void update_user(Utilisateur usr, String mail);
-    List<Utilisateur> displayall();
+     void update_user(utilisateur usr, String mail);
+    List<utilisateur> displayall();
     void displayutilisateur(String mail);
 
 }
