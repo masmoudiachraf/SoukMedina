@@ -1,0 +1,46 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+#loginParent{
+    -fx-background-color: "#F5F5F5";
+}
+
+#loginContainer{
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+}
+
+ #login_mailTf {
+    -fx-background-color: -fx-text-box-border, #FFFFFF ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+    -fx-text-inner-color: #F1687D;
+ }
+#login_mailTf:focused {
+    -fx-background-color: #F1687D, #FFFFFF ;
+}
+
+#login_passTf {
+    -fx-background-color: -fx-text-box-border, #FFFFFF ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+    -fx-text-inner-color: #F1687D;
+
+}
+#login_passTf:focused {
+    -fx-background-color: #F1687D, #FFFFFF ;
+}
+
+#login_btnconnect{
+    -fx-background-color: #F1687D;
+    -fx-text-fill: white;
+}
+
+#login_btnconnect:hover{
+    -fx-background-color: #D65266;
+    -fx-text-fill: white;
+}

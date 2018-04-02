@@ -14,9 +14,13 @@ import com.esprit.service.PanierService;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.articlesService;
 import com.esprit.service.serviceUtilisateur;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -30,24 +34,15 @@ public class SoukMedina extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+         try {
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/GUI/LoginGui.fxml")));
             
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            primaryStage.setTitle("Hello World!");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SoukMedina.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -56,23 +51,6 @@ public class SoukMedina extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        serviceUtilisateur su=new serviceUtilisateur();
-        //ServiceBoutique sb=new ServiceBoutique();
-       // sb.displayall_boutique().forEach(System.out::println);
-       PanierService p = new PanierService();
-       // categorie cat = new categorie();
-      //  Boutique bout = new Boutique();
-        utilisateur u= new utilisateur();
-        articles ar= new articles();
-        u.setId_uti(1);
-        ar.setId(1);
-       // cat.setId_cat(1);
-       // bout.setId(1);
-        //articles art = new articles();
-        //articlesService a= new articlesService();
-       Panier p1= new Panier(u, ar,2 , "In hold");
-       // p.insert(p1);
-        p.displayall(u).forEach(System.out::println);
     }
     
 }
