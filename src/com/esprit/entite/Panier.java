@@ -47,7 +47,7 @@ public class Panier {
     public String getEtat_panier() {
         return etat_panier;
     }
-
+    
     @Override
     public String toString() {
         return "Panier{" + "utilisateurs_fk=" + utilisateurs_fk.getId_uti() + ", articles_fk=" + articles_fk.getId() + ", quantite=" + quantite + ", etat_panier=" + etat_panier + '}';

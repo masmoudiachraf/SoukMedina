@@ -5,6 +5,9 @@
  */
 package com.esprit.entite;
 
+import java.util.Objects;
+import java.util.logging.Logger;
+
 /**
  *
  * @author masmo
@@ -13,8 +16,10 @@ public class Boutique {
    private int id;
    private String nom_bout;
    private String adresse_bout;
+   private String mail_bout ;
+   private int password_bout ;
    private int telephone_bout;
-   private utilisateur user;
+   private String activite_bout ;
 
     public Boutique(int id) {
         this.id = id;
@@ -24,66 +29,137 @@ public class Boutique {
     public Boutique() {
     }
 
-    public Boutique(int id, String nom_bout, String adresse_bout, int telephone_bout, utilisateur user) {
+    public Boutique(int id, String nom_bout, String adresse_bout, String mail_bout, int password_bout, int telephone_bout, String activite_bout) {
         this.id = id;
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
+        this.mail_bout = mail_bout;
+        this.password_bout = password_bout;
         this.telephone_bout = telephone_bout;
-        this.user = user;
-
+        this.activite_bout = activite_bout;
     }
 
-    public Boutique(String nom_bout, String adresse_bout, int telephone_bout, utilisateur user) {
+    public Boutique(String nom_bout, String adresse_bout, String mail_bout, int password_bout, int telephone_bout, String activite_bout) {
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
+        this.mail_bout = mail_bout;
+        this.password_bout = password_bout;
         this.telephone_bout = telephone_bout;
-        this.user = user;
-
+        this.activite_bout = activite_bout;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNom_bout() {
         return nom_bout;
-    }
-
-    public void setNom_bout(String nom_bout) {
-        this.nom_bout = nom_bout;
-    }
-
-    public utilisateur getUser() {
-        return user;
-    }
-
-    public void setUser(utilisateur user) {
-        this.user = user;
     }
 
     public String getAdresse_bout() {
         return adresse_bout;
     }
 
-    public void setAdresse_bout(String adresse_bout) {
-        this.adresse_bout = adresse_bout;
+    public String getMail_bout() {
+        return mail_bout;
+    }
+
+    public int getPassword_bout() {
+        return password_bout;
     }
 
     public int getTelephone_bout() {
         return telephone_bout;
     }
 
+    public String getActivite_bout() {
+        return activite_bout;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNom_bout(String nom_bout) {
+        this.nom_bout = nom_bout;
+    }
+
+    public void setAdresse_bout(String adresse_bout) {
+        this.adresse_bout = adresse_bout;
+    }
+
+    public void setMail_bout(String mail_bout) {
+        this.mail_bout = mail_bout;
+    }
+
+    public void setPassword_bout(int password_bout) {
+        this.password_bout = password_bout;
+    }
+
     public void setTelephone_bout(int telephone_bout) {
         this.telephone_bout = telephone_bout;
     }
-   
+
+    public void setActivite_bout(String activite_bout) {
+        this.activite_bout = activite_bout;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 19 * hash + this.id;
+        hash = 19 * hash + Objects.hashCode(this.nom_bout);
+        hash = 19 * hash + Objects.hashCode(this.adresse_bout);
+        hash = 19 * hash + Objects.hashCode(this.mail_bout);
+        hash = 19 * hash + this.password_bout;
+        hash = 19 * hash + this.telephone_bout;
+        hash = 19 * hash + Objects.hashCode(this.activite_bout);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Boutique other = (Boutique) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.password_bout != other.password_bout) {
+            return false;
+        }
+        if (this.telephone_bout != other.telephone_bout) {
+            return false;
+        }
+        if (!Objects.equals(this.nom_bout, other.nom_bout)) {
+            return false;
+        }
+        if (!Objects.equals(this.adresse_bout, other.adresse_bout)) {
+            return false;
+        }
+        if (!Objects.equals(this.mail_bout, other.mail_bout)) {
+            return false;
+        }
+        if (!Objects.equals(this.activite_bout, other.activite_bout)) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
-        return "Boutique{" + "id=" +id + ", nom_bout=" + nom_bout + ", adresse_bout=" + adresse_bout + ", telephone_bout=" + telephone_bout + ", userId= }";
+        return "Boutique{" + "id=" + id + ", nom_bout=" + nom_bout + ", adresse_bout=" + adresse_bout + ", mail_bout=" + mail_bout + ", password_bout=" + password_bout + ", telephone_bout=" + telephone_bout + ", activite_bout=" + activite_bout + '}';
     }
-   
+    
+    
+ 
+
+
 }

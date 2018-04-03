@@ -38,7 +38,7 @@ public class articlesService implements Iservicearticles{
 
     @Override
     public void insert_article(articles p) {
-        String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_fk,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie_fk().getId_cat()+ "','"+p.getBoutique_fk().getId()+"')";
+        String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_fk,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie()+ "','"+p.getBoutique_fk().getId()+"')";
    
           try {
               st=cnx.createStatement();
@@ -78,7 +78,7 @@ public class articlesService implements Iservicearticles{
 
            String requete="select * from articles";
         ResultSet rs;
-         categorie c = new categorie();
+         
  Boutique b= new Boutique();
           try {
               
@@ -86,9 +86,8 @@ public class articlesService implements Iservicearticles{
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
-                       c.setId_cat(rs.getInt("categorie_fk"));
                  b.setId(rs.getInt("boutique_fk"));
-            articles p=new articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),c,b);
+            articles p=new articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),rs.getString("categorie_art"),b);
               list.add(p);
         }
           } catch (SQLException ex) {

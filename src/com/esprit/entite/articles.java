@@ -19,18 +19,18 @@ public class articles {
     private String taille;
     private String couleur;
     private float prix;
-    private categorie categorie_fk;
+    private String categorie;
     private Boutique boutique_fk;
     
     public articles() {};
 
-    public articles(int id, String nom, String taille, String couleur, float prix, categorie categorie_fk,Boutique boutique_fk) {
+    public articles(int id, String nom, String taille, String couleur, float prix, String categorie,Boutique boutique_fk) {
         this.id = id;
         this.nom = nom;
         this.taille = taille;
         this.couleur = couleur;
         this.prix = prix;
-        this.categorie_fk = categorie_fk;
+        this.categorie= categorie ;
         this.boutique_fk=boutique_fk;
     }
    
@@ -40,7 +40,7 @@ public class articles {
         this.taille = taille;
         this.couleur = couleur;
         this.prix = prix;
-        this.categorie_fk = categorie_fk;
+        this.categorie = categorie;
         this.boutique_fk=boutique_fk;
     }
     
@@ -93,12 +93,12 @@ public class articles {
         this.taille = taille;
     }
 
-    public categorie getCategorie_fk() {
-        return categorie_fk;
+    public String getCategorie() {
+        return categorie ;
     }
 
-    public void setCategorie_fk(categorie categorie_fk) {
-        this.categorie_fk = categorie_fk;
+    public void setCategorie(String categorie) {
+        this.categorie = categorie ;
     }
     
 
@@ -114,7 +114,7 @@ public class articles {
 
     
     public String toString() {
-        return "articles{" + "id=" + id + ", nom=" + nom + ", taille=" + taille + ", couleur=" + couleur + ", prix=" + prix + ", categorie_fk=" + categorie_fk + ", boutique_fk=" + boutique_fk + '}';
+        return "articles{" + "id=" + id + ", nom=" + nom + ", taille=" + taille + ", couleur=" + couleur + ", prix=" + prix + ", categorie=" + categorie + ", boutique_fk=" + boutique_fk + '}';
     }
     
     

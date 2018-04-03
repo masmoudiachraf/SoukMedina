@@ -28,12 +28,14 @@ public class ServiceBoutique implements IserviceBoutique{
     @Override
     public void insert_boutique(Boutique t) {
         try {
-            String req = "insert into boutiques (nom_bout,adresse_bout,telephone_bout,utilisateurs_fk) values (?,?,?,?)";
+            String req = "insert into boutiques (nom_bout,mail_bout,password_bout,adresse_bout,telephone_bout,activite_bout) values (?,?,?,?,?,?)";
             statement = connection.prepareStatement(req);
             statement.setString(1, t.getNom_bout());
-            statement.setString(2, t.getAdresse_bout());
-            statement.setInt(3, t.getTelephone_bout());
-            statement.setInt(4, t.getUser().getId_uti());
+            statement.setString(2, t.getMail_bout());
+            statement.setInt(3, t.getPassword_bout());
+            statement.setString(4, t.getAdresse_bout());
+            statement.setInt(5, t.getTelephone_bout());
+             statement.setString(6, t.getActivite_bout());
             statement.executeUpdate();
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -54,14 +56,16 @@ public class ServiceBoutique implements IserviceBoutique{
 
     @Override
     public void update_boutique(Boutique t) {
-        String req = "update boutiques SET nom_bout=?,adresse_bout=?,telephone_bout=?,utilisateurs_fk=? where id=?";
-        try {
+        String req = "update boutiques SET nom_bout=?,mail_bout=?,password_bout=?,adresse_bout=?,telephone_bout=?,activite_bout=? where id=?";
+       try {
+            statement = connection.prepareStatement(req);
             statement = connection.prepareStatement(req);
             statement.setString(1, t.getNom_bout());
-            statement.setString(2, t.getAdresse_bout());
-            statement.setInt(3, t.getTelephone_bout());
-            statement.setInt(4, t.getUser().getId_uti());
-            statement.setInt(3, t.getId());
+            statement.setString(2, t.getMail_bout());
+            statement.setInt(3, t.getPassword_bout());
+            statement.setString(4, t.getAdresse_bout());
+            statement.setInt(5, t.getTelephone_bout());
+            statement.setString(6, t.getActivite_bout());
             statement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -76,9 +80,8 @@ public class ServiceBoutique implements IserviceBoutique{
             statement = connection.prepareStatement(req);
             ResultSet rs = statement.executeQuery(req);
             while (rs.next()) {
-                utilisateur user = new utilisateur();
-                user.setId_uti(rs.getInt(5));
-                listBoutiques.add(new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),user));
+               
+                listBoutiques.add(new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getString(7)));
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -95,9 +98,8 @@ public class ServiceBoutique implements IserviceBoutique{
             statement = connection.prepareStatement(req);
             ResultSet rs = statement.executeQuery(req);
             while (rs.next()) {
-                utilisateur user = new utilisateur();
-                user.setId_uti(rs.getInt(5));
-                boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),user);
+                
+                boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getString(7));
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());

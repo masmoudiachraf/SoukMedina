@@ -7,6 +7,7 @@ package com.esprit.entite;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -18,7 +19,6 @@ public class utilisateur {
     private String prenom_uti;
     private String mail_uti;
     private String password_uti;
-    private String role_uti;
     private String adresse_uti;
     private int telephone_uti;
     private String naissance_uti;
@@ -26,29 +26,29 @@ public class utilisateur {
     public utilisateur() {
     }
 
-    public utilisateur(int id_uti, String nom_uti, String prenom_uti, String mail_uti, String password_uti, String role_uti, String adresse_uti, int telephone_uti, String naissance_uti) {
+    public utilisateur(int id_uti, String nom_uti, String prenom_uti, String mail_uti, String password_uti, String adresse_uti, int telephone_uti, String naissance_uti) {
         this.id_uti = id_uti;
         this.nom_uti = nom_uti;
         this.prenom_uti = prenom_uti;
         this.mail_uti = mail_uti;
         this.password_uti = password_uti;
-        this.role_uti = role_uti;
         this.adresse_uti = adresse_uti;
         this.telephone_uti = telephone_uti;
         this.naissance_uti = naissance_uti;
     }
 
-    public utilisateur(String nom_uti, String prenom_uti, String mail_uti, String password_uti, String role_uti, String adresse_uti, int telephone_uti, String naissance_uti ) {
+    public utilisateur(String nom_uti, String prenom_uti, String mail_uti, String password_uti, String adresse_uti, int telephone_uti, String naissance_uti) {
         this.nom_uti = nom_uti;
         this.prenom_uti = prenom_uti;
         this.mail_uti = mail_uti;
         this.password_uti = password_uti;
-        this.role_uti = role_uti;
         this.adresse_uti = adresse_uti;
         this.telephone_uti = telephone_uti;
         this.naissance_uti = naissance_uti;
     }
-
+    
+    
+    
     public int getId_uti() {
         return id_uti;
     }
@@ -69,9 +69,7 @@ public class utilisateur {
         return password_uti;
     }
 
-    public String getRole_uti() {
-        return role_uti;
-    }
+
 
     public String getAdresse_uti() {
         return adresse_uti;
@@ -105,9 +103,6 @@ public class utilisateur {
         this.password_uti = password_uti;
     }
 
-    public void setRole_uti(String role_uti) {
-        this.role_uti = role_uti;
-    }
 
     public void setAdresse_uti(String adresse_uti) {
         this.adresse_uti = adresse_uti;
@@ -121,11 +116,66 @@ public class utilisateur {
         this.naissance_uti = naissance_uti;
     }
 
-    
     @Override
     public String toString() {
-        return "utilisateur " + id_uti + "\n \t nom: " + nom_uti + "\n \t prenom: " + prenom_uti + "\n \t mail: " + mail_uti + "\n \t password : " + password_uti + "\n \t role: " + role_uti + "\n \t adresse: " + adresse_uti + "\n \t telephone: " + telephone_uti + "\n \t naissance: " + naissance_uti ;
+        return "utilisateur{" + "id_uti=" + id_uti + ", nom_uti=" + nom_uti + ", prenom_uti=" + prenom_uti + ", mail_uti=" + mail_uti + ", password_uti=" + password_uti + ", adresse_uti=" + adresse_uti + ", telephone_uti=" + telephone_uti + ", naissance_uti=" + naissance_uti + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.id_uti;
+        hash = 97 * hash + Objects.hashCode(this.nom_uti);
+        hash = 97 * hash + Objects.hashCode(this.prenom_uti);
+        hash = 97 * hash + Objects.hashCode(this.mail_uti);
+        hash = 97 * hash + Objects.hashCode(this.password_uti);
+        hash = 97 * hash + Objects.hashCode(this.adresse_uti);
+        hash = 97 * hash + this.telephone_uti;
+        hash = 97 * hash + Objects.hashCode(this.naissance_uti);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final utilisateur other = (utilisateur) obj;
+        if (this.id_uti != other.id_uti) {
+            return false;
+        }
+        if (this.telephone_uti != other.telephone_uti) {
+            return false;
+        }
+        if (!Objects.equals(this.nom_uti, other.nom_uti)) {
+            return false;
+        }
+        if (!Objects.equals(this.prenom_uti, other.prenom_uti)) {
+            return false;
+        }
+        if (!Objects.equals(this.mail_uti, other.mail_uti)) {
+            return false;
+        }
+        if (!Objects.equals(this.password_uti, other.password_uti)) {
+            return false;
+        }
+        if (!Objects.equals(this.adresse_uti, other.adresse_uti)) {
+            return false;
+        }
+        if (!Objects.equals(this.naissance_uti, other.naissance_uti)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+
     
     
 
