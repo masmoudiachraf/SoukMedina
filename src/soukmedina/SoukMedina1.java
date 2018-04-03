@@ -28,23 +28,7 @@ public class SoukMedina1 {
     private static PreparedStatement pst;
     
     public static void main(String[] args) {
-        int x;
-        serviceUtilisateur su=new serviceUtilisateur();
-        
-        //ServiceBoutique sb=new ServiceBoutique();
-        utilisateur user = new utilisateur();
-        //user.setId_uti(1);
-        //Boutique b=new Boutique("test","sfax", 12345678,user);
-        //sb.insert_boutique(b);
-        utilisateur u=new utilisateur("iskander","chikhaoui","iskander@gmail.com","123456789","vendeur", "tunis", 123456789,"01/01/2010");
-        //su.insert_user(u);
-        
-        //su.displayall().forEach(System.out::println);
-        
-        su.delete_user("mejrihajer18@gmail.com", "hajer");
-        su.displayutilisateur("iskander@gmail.com");
-        //su.update_user(u,"eya@gmail.com");
-        System.out.println("Ok!!");
+      
     }
     
 }

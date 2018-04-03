@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="loginParent" prefHeight="458.0" prefWidth="789.0" style="-fx-background-color: #F5F5F5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginGuiController">
+   <children>
+      <ImageView fx:id="LoginImage" fitHeight="458.0" fitWidth="412.0" layoutX="14.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../Assets/back.png" />
+         </image>
+      </ImageView>
+      <StackPane fx:id="interface_container" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane fx:id="loginContainer" layoutX="442.0" layoutY="18.0" prefHeight="422.0" prefWidth="332.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <Text fill="#f1687d" layoutX="95.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire" textAlignment="CENTER" wrappingWidth="142.42578125" AnchorPane.rightAnchor="94.57421875" AnchorPane.topAnchor="53.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="inscription_nomTf" focusColor="#ee1237" labelFloat="true" layoutX="30.0" layoutY="110.0" prefHeight="25.0" prefWidth="272.0" promptText="Nom" unFocusColor="#f1687d" />
+                        <JFXPasswordField fx:id="inscription_passTf" focusColor="#ee1237" labelFloat="true" layoutX="30.0" layoutY="239.0" prefHeight="25.0" prefWidth="272.0" promptText="Mot de passe" unFocusColor="#f1687d" AnchorPane.bottomAnchor="174.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+                        <JFXTextField fx:id="inscription_prenomTf1" focusColor="#ee1237" labelFloat="true" layoutX="30.0" layoutY="152.0" prefHeight="25.0" prefWidth="272.0" promptText="Prenom" unFocusColor="#f1687d" />
+                        <JFXTextField fx:id="login_mailTf" focusColor="#ee1237" labelFloat="true" layoutX="30.0" layoutY="194.0" prefHeight="25.0" prefWidth="272.0" promptText="E-Mail" unFocusColor="#f1687d" />
+                        <JFXTextField fx:id="login_AdressTf21" focusColor="#ee1237" labelFloat="true" layoutX="30.0" layoutY="288.0" prefHeight="25.0" prefWidth="272.0" promptText="Adresse" unFocusColor="#f1687d" />
+                        <JFXTextField fx:id="login_tfTf211" focusColor="#ee1237" labelFloat="true" layoutX="30.0" layoutY="337.0" prefHeight="25.0" prefWidth="272.0" promptText="Numéro de telephone" unFocusColor="#f1687d" />
+                        <JFXButton fx:id="inscription_btnconnect" layoutX="44.0" layoutY="399.0" prefHeight="35.0" prefWidth="332.0" text="S'inscrire" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+   <stylesheets>
+      <URL value="@/StyleSheets/logingui.css" />
+   </stylesheets>
+</AnchorPane>
