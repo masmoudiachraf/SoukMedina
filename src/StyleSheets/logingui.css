@@ -34,12 +34,22 @@
     -fx-text-fill: white;
 }
 
-#inscription_btnconnect{
+#inscription_user{
     -fx-background-color: #F1687D;
     -fx-text-fill: white;
 }
 
-#inscription_btnconnect:hover{
+#inscription_user:hover{
+    -fx-background-color: #D65266;
+    -fx-text-fill: white;
+}
+
+#boutique_inscription{
+     -fx-background-color: #F1687D;
+    -fx-text-fill: white;
+}
+
+#boutique_inscription:hover{
     -fx-background-color: #D65266;
     -fx-text-fill: white;
 }

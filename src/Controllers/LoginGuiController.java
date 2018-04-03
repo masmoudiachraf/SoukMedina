@@ -80,7 +80,18 @@ public class LoginGuiController implements Initializable {
                 }
             }
         });
-
+        
+        btnBoutique.setOnAction(new EventHandler<ActionEvent>() {
+                  @Override
+                  public void handle(ActionEvent event) {
+                      try {
+                          start((Stage) btnUser.getScene().getWindow(), "/GUI/InscriptionBoutique.fxml");
+                          dialog.close();
+                      } catch (Exception ex) {
+                          Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                  }
+              });
         content.setActions(btnBoutique,btnUser);
         dialog.show();
     }
