@@ -6,6 +6,7 @@
 package Controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -13,7 +14,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -23,7 +23,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author masmo
  */
-public class InscriptionUserController implements Initializable {
+public class InscriptionBoutiqueController implements Initializable {
 
     @FXML
     private AnchorPane loginParent;
@@ -34,21 +34,19 @@ public class InscriptionUserController implements Initializable {
     @FXML
     private AnchorPane loginContainer;
     @FXML
-    private JFXTextField tfnom;
+    private JFXTextField boutique_tfnom;
     @FXML
-    private JFXPasswordField tfpassword;
+    private JFXPasswordField boutique_tfpassword;
     @FXML
-    private JFXTextField tfprenom;
+    private JFXTextField boutique_tfmail;
     @FXML
-    private JFXTextField tfmail;
+    private JFXTextField boutique_tfadresse;
     @FXML
-    private JFXTextField tfadresse;
+    private JFXTextField boutique_tftelephone;
     @FXML
-    private JFXTextField tftelephone;
+    private JFXButton boutique_inscription;
     @FXML
-    private JFXButton inscription_user;
-    @FXML
-    private DatePicker tfdaten;
+    private JFXComboBox<?> boutique_activite_combo;
 
     /**
      * Initializes the controller class.
@@ -59,7 +57,7 @@ public class InscriptionUserController implements Initializable {
     }    
 
     @FXML
-    private void inscription_user_click(ActionEvent event) {
+    private void inscription_boutique_click(ActionEvent event) {
     }
     
 }

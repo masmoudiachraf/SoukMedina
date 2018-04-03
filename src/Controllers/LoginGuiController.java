@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,11 +45,11 @@ public class LoginGuiController implements Initializable {
     @FXML
     private AnchorPane loginParent;
     @FXML
-    private TextField login_mailTf;
-    @FXML
     private StackPane interface_container;
     @FXML
     private JFXButton login_btnconnect;
+    @FXML
+    private JFXTextField login_mailTf;
     @FXML
     private JFXPasswordField login_passTf;
 
@@ -79,7 +80,18 @@ public class LoginGuiController implements Initializable {
                 }
             }
         });
-
+        
+        btnBoutique.setOnAction(new EventHandler<ActionEvent>() {
+                  @Override
+                  public void handle(ActionEvent event) {
+                      try {
+                          start((Stage) btnUser.getScene().getWindow(), "/GUI/InscriptionBoutique.fxml");
+                          dialog.close();
+                      } catch (Exception ex) {
+                          Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                  }
+              });
         content.setActions(btnBoutique,btnUser);
         dialog.show();
     }
@@ -90,5 +102,6 @@ public class LoginGuiController implements Initializable {
         window.setScene(scene);
         window.show();
     }
+
     
 }
