@@ -17,7 +17,7 @@ public class Boutique {
    private String nom_bout;
    private String adresse_bout;
    private String mail_bout ;
-   private int password_bout ;
+   private String password_bout ;
    private int telephone_bout;
    private String activite_bout ;
 
@@ -29,7 +29,7 @@ public class Boutique {
     public Boutique() {
     }
 
-    public Boutique(int id, String nom_bout, String adresse_bout, String mail_bout, int password_bout, int telephone_bout, String activite_bout) {
+    public Boutique(int id, String nom_bout, String adresse_bout, String mail_bout, String password_bout, int telephone_bout, String activite_bout) {
         this.id = id;
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
@@ -39,7 +39,7 @@ public class Boutique {
         this.activite_bout = activite_bout;
     }
 
-    public Boutique(String nom_bout, String adresse_bout, String mail_bout, int password_bout, int telephone_bout, String activite_bout) {
+    public Boutique(String nom_bout, String adresse_bout, String mail_bout, String password_bout, int telephone_bout, String activite_bout) {
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
         this.mail_bout = mail_bout;
@@ -64,7 +64,7 @@ public class Boutique {
         return mail_bout;
     }
 
-    public int getPassword_bout() {
+    public String getPassword_bout() {
         return password_bout;
     }
 
@@ -92,7 +92,7 @@ public class Boutique {
         this.mail_bout = mail_bout;
     }
 
-    public void setPassword_bout(int password_bout) {
+    public void setPassword_bout(String password_bout) {
         this.password_bout = password_bout;
     }
 
@@ -104,18 +104,6 @@ public class Boutique {
         this.activite_bout = activite_bout;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 19 * hash + this.id;
-        hash = 19 * hash + Objects.hashCode(this.nom_bout);
-        hash = 19 * hash + Objects.hashCode(this.adresse_bout);
-        hash = 19 * hash + Objects.hashCode(this.mail_bout);
-        hash = 19 * hash + this.password_bout;
-        hash = 19 * hash + this.telephone_bout;
-        hash = 19 * hash + Objects.hashCode(this.activite_bout);
-        return hash;
-    }
 
     @Override
     public boolean equals(Object obj) {

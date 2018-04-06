@@ -18,5 +18,6 @@ public interface IserviceBoutique {
      void update_boutique(Boutique bou);
     List<Boutique> displayall_boutique();
     Boutique displayboutique(int tel);
+      Boutique display_b(String mail,String password);
     //public void ajouterBoutique(Boutique b);
 }
