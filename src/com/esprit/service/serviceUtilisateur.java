@@ -29,10 +29,17 @@ public class serviceUtilisateur implements IserviceUtilisateur{
     private Statement st;
     private PreparedStatement pst;
 
+    /**
+     *
+     */
     public serviceUtilisateur() {
         cnx = datasource.getinstance().getCnx();
     }
 
+    /**
+     *
+     * @param usr
+     */
     @Override
     public void insert_user(utilisateur usr) {
         String requete="insert into utilisateurs (nom_uti,prenom_uti,mail_uti,password_uti,adresse_uti,telephone_uti,naissance_uti) values ('"+usr.getNom_uti()+"','"+usr.getPrenom_uti()+"','"+usr.getMail_uti()+"','"+usr.getPassword_uti()+"','"+usr.getAdresse_uti()+"','"+usr.getTelephone_uti()+"','"+usr.getNaissance_uti()+"')";
@@ -45,6 +52,11 @@ public class serviceUtilisateur implements IserviceUtilisateur{
           }
     }
 
+    /**
+     *
+     * @param mail
+     * @param password
+     */
     @Override
     public void delete_user(String mail, String password) {
         String requete="delete from utilisateurs where mail_uti = '"+mail+"' and password_uti = '"+password+"'   ";
@@ -57,6 +69,11 @@ public class serviceUtilisateur implements IserviceUtilisateur{
           }
     }
 
+    /**
+     *
+     * @param usr
+     * @param mail
+     */
     @Override
     public void update_user(utilisateur usr, String mail) {
         String requete="update utilisateurs set nom_uti='"+usr.getNom_uti()+"', prenom_uti='"+usr.getPrenom_uti()+"', mail_uti='"+usr.getMail_uti()+"', password_uti='"+usr.getPassword_uti()+"', adresse_uti='"+usr.getAdresse_uti()+"', telephone_uti='"+usr.getTelephone_uti()+"', naissance_uti='"+usr.getNaissance_uti()+"' where mail_uti='"+mail+"' ";
@@ -69,6 +86,10 @@ public class serviceUtilisateur implements IserviceUtilisateur{
           }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<utilisateur> displayall() {
         List<utilisateur> list=new ArrayList<>();
@@ -79,7 +100,9 @@ public class serviceUtilisateur implements IserviceUtilisateur{
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
+
             utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"),rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"));
+
               list.add(usr);
         }
           } catch (SQLException ex) {
@@ -89,9 +112,14 @@ public class serviceUtilisateur implements IserviceUtilisateur{
         return list;
     }
 
+    /**
+     *
+     * @param mail
+     * @return
+     */
     @Override
-    public void displayutilisateur(String mail) {
-        utilisateur u=new utilisateur();
+    public String displayutilisateur(String mail) {
+        String ch = "";
         String requete="select * from utilisateurs where mail_uti= '"+mail+"'";
         ResultSet rs;
           try {
@@ -99,11 +127,14 @@ public class serviceUtilisateur implements IserviceUtilisateur{
                rs=st.executeQuery(requete);
              while(rs.next()){
             utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"), rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"));
-                 System.out.println(usr);
+
+                ch = usr.getMail_uti();
+
              }
           } catch (SQLException ex) {
               Logger.getLogger(utilisateur.class.getName()).log(Level.SEVERE, null, ex);
           }
+          return ch;
     }
 
    
