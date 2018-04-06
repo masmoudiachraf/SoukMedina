@@ -116,12 +116,12 @@ public class InscriptionUserController implements Initializable {
         content.setActions(btnalert);
         dialog.show();
             } 
-            else{
+      else{
         utilisateur u=new utilisateur(tfnom.getText(), tfprenom.getText(), tfmail.getText(),tfpassword.getText(), tfadresse.getText(), Integer.parseInt(tftelephone.getText()), tfdaten.getValue().toString());
         su.insert_user(u);
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Mode"));
-        content.setBody(new Text("Merci pour votre inscription"+tfnom.getText()+" "+tfprenom.getText()+"\nRedirection au page d'authentification "));
+        content.setBody(new Text("Merci pour votre inscription\t"+tfnom.getText()+" "+tfprenom.getText()+"\nRedirection au page d'authentification "));
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         JFXButton btnalert = new JFXButton("OK");
         btnalert.setOnAction(new EventHandler<ActionEvent>() {

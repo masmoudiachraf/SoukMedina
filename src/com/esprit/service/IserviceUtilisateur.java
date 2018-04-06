@@ -19,6 +19,6 @@ public interface IserviceUtilisateur {
     void delete_user(String mail,String password);
      void update_user(utilisateur usr, String mail);
     List<utilisateur> displayall();
-    void displayutilisateur(String mail);
+    String displayutilisateur(String mail);
 
 }
