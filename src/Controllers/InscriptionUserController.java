@@ -73,6 +73,7 @@ public class InscriptionUserController implements Initializable {
 
     @FXML
     private void inscription_user_click(ActionEvent event) {
+      
         
         serviceUtilisateur su=new serviceUtilisateur();
         String ch;

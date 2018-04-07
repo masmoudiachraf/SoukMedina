@@ -137,6 +137,26 @@ public class serviceUtilisateur implements IserviceUtilisateur{
           return ch;
     }
 
+    @Override
+    public String display_u(String mail, String password) {
+        String req= "select * from utilisateurs where mail_uti='"+mail+"' and password_uti='"+password+"'";
+    String ch="";
+                 try {
+            st = cnx.prepareStatement(req);
+            ResultSet rs = st.executeQuery(req);
+          while (rs.next()) {
+                
+             utilisateur  util= new utilisateur(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getString(8));
+            ch=util.getMail_uti()+util.getPassword_uti();
+          }
+   
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+          return ch;
+            
+           }
+
    
 
     

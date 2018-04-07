@@ -32,7 +32,7 @@ public class ServiceBoutique implements IserviceBoutique{
             statement = connection.prepareStatement(req);
             statement.setString(1, t.getNom_bout());
             statement.setString(2, t.getMail_bout());
-            statement.setInt(3, t.getPassword_bout());
+            statement.setString(3, t.getPassword_bout());
             statement.setString(4, t.getAdresse_bout());
             statement.setInt(5, t.getTelephone_bout());
              statement.setString(6, t.getActivite_bout());
@@ -62,7 +62,7 @@ public class ServiceBoutique implements IserviceBoutique{
             statement = connection.prepareStatement(req);
             statement.setString(1, t.getNom_bout());
             statement.setString(2, t.getMail_bout());
-            statement.setInt(3, t.getPassword_bout());
+            statement.setString(3, t.getPassword_bout());
             statement.setString(4, t.getAdresse_bout());
             statement.setInt(5, t.getTelephone_bout());
             statement.setString(6, t.getActivite_bout());
@@ -73,6 +73,7 @@ public class ServiceBoutique implements IserviceBoutique{
     }
 
     @Override
+    
     public List<Boutique> displayall_boutique() {
          ArrayList<Boutique> listBoutiques = new ArrayList<>();
         String req = "Select * from boutiques";
@@ -81,7 +82,7 @@ public class ServiceBoutique implements IserviceBoutique{
             ResultSet rs = statement.executeQuery(req);
             while (rs.next()) {
                
-                listBoutiques.add(new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getString(7)));
+                listBoutiques.add(new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7)));
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -99,12 +100,33 @@ public class ServiceBoutique implements IserviceBoutique{
             ResultSet rs = statement.executeQuery(req);
             while (rs.next()) {
                 
-                boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getString(7));
+                boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
         return boutique;
     }
-    
+
+    public Boutique display_b(String mail,String password) {
+        String req= "select * from boutiques where mail_bout='"+mail+"' and password_bout='"+password+"'";
+        Boutique boutique= null;
+        try {
+            statement = connection.prepareStatement(req);
+            ResultSet rs = statement.executeQuery(req);
+          while (rs.next()) {
+                
+                boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
+            }
+   
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+            
+        
+            return boutique;
+
+}
+
+   
 }

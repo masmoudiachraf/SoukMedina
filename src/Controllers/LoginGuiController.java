@@ -5,6 +5,8 @@
  */
 package Controllers;
 
+import com.esprit.service.ServiceBoutique;
+import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -52,6 +54,8 @@ public class LoginGuiController implements Initializable {
     private JFXTextField login_mailTf;
     @FXML
     private JFXPasswordField login_passTf;
+    @FXML
+    private JFXButton btnauthentifier;
 
     /**
      * Initializes the controller class.
@@ -63,6 +67,7 @@ public class LoginGuiController implements Initializable {
 
     @FXML
     private void inscrir_tap(ActionEvent event) {
+        
              JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Mode"));
         content.setBody(new Text("Vous réprésentez un boutique ou vous êtes un simple utilisateur ?"));
@@ -103,5 +108,55 @@ public class LoginGuiController implements Initializable {
         window.show();
     }
 
+    @FXML
+    private void authentifier_click(ActionEvent event) {
+                  ServiceBoutique sb= new ServiceBoutique();
+           serviceUtilisateur su= new serviceUtilisateur();
+           String mail= login_mailTf.getText();
+            String password= login_passTf.getText();
+        String ch=su.display_u(mail, password);
+        
+        if (ch.equals(mail+password))
+        {
+            JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Mode"));
+        content.setBody(new Text("merci "));
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton btnalert = new JFXButton("OK");
+        btnalert.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        content.setActions(btnalert);
+        dialog.show();
+        }
+        else
+        {
+              JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Mode"));
+        content.setBody(new Text("verifier votre mail et password "));
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton btnalert = new JFXButton("OK");
+        btnalert.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        content.setActions(btnalert);
+        dialog.show();
+       
+
+    }}
     
 }

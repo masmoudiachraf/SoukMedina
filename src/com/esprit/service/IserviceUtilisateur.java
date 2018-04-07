@@ -20,5 +20,9 @@ public interface IserviceUtilisateur {
      void update_user(utilisateur usr, String mail);
     List<utilisateur> displayall();
     String displayutilisateur(String mail);
+<<<<<<< HEAD
+=======
+    String display_u(String mail,String password);
+>>>>>>> 8d4ba8d58b48de5dcd99d177497c118754d0ad84
 
 }
