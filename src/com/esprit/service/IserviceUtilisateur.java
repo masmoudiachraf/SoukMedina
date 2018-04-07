@@ -19,7 +19,7 @@ public interface IserviceUtilisateur {
     void delete_user(String mail,String password);
      void update_user(utilisateur usr, String mail);
     List<utilisateur> displayall();
-    void displayutilisateur(String mail);
-    utilisateur display_u(String mail,String password);
+    String displayutilisateur(String mail);
+    String display_u(String mail,String password);
 
 }
