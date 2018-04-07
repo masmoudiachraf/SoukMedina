@@ -106,6 +106,25 @@ public class serviceUtilisateur implements IserviceUtilisateur{
           }
     }
 
+    @Override
+    public utilisateur display_u(String mail, String password) {
+        String req= "select * from boutiques where mail_uti='"+mail+"' and password_uti='"+password+"'";
+    utilisateur util=null;
+                 try {
+            st = cnx.prepareStatement(req);
+            ResultSet rs = st.executeQuery(req);
+          while (rs.next()) {
+                
+               util= new utilisateur(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getString(8));
+            }
+   
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+          return util;
+            
+           }
+
    
 
     

@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import com.esprit.service.ServiceBoutique;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -63,44 +64,11 @@ public class LoginGuiController implements Initializable {
 
     @FXML
     private void inscrir_tap(ActionEvent event) {
-             JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Mode"));
-        content.setBody(new Text("Vous réprésentez un boutique ou vous êtes un simple utilisateur ?"));
-        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton btnUser = new JFXButton("Utilisateur");
-        JFXButton btnBoutique = new JFXButton("Boutique");
-        btnUser.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    start((Stage) btnUser.getScene().getWindow(), "/GUI/InscriptionUser.fxml");
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        
-        btnBoutique.setOnAction(new EventHandler<ActionEvent>() {
-                  @Override
-                  public void handle(ActionEvent event) {
-                      try {
-                          start((Stage) btnUser.getScene().getWindow(), "/GUI/InscriptionBoutique.fxml");
-                          dialog.close();
-                      } catch (Exception ex) {
-                          Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                  }
-              });
-        content.setActions(btnBoutique,btnUser);
-        dialog.show();
-    }
-    
-    
-     public void start(Stage window, String destination) throws Exception {
-        Scene scene =  new Scene(FXMLLoader.load(getClass().getResource(destination)));
-        window.setScene(scene);
-        window.show();
+            ServiceBoutique sb= new ServiceBoutique();
+            String mail= login_mailTf.getText();
+            String password= login_passTf.getText();
+            
+            
     }
 
     
