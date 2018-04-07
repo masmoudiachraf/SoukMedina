@@ -114,8 +114,31 @@ public class LoginGuiController implements Initializable {
            serviceUtilisateur su= new serviceUtilisateur();
            String mail= login_mailTf.getText();
             String password= login_passTf.getText();
+         
         String ch=su.display_u(mail, password);
         
+            if(login_mailTf.getText().equals("") && login_passTf.getText().equals(""))
+            {
+             JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Mode"));
+        content.setBody(new Text("Saisir vos informations! "));
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton btnalert = new JFXButton("OK");
+        btnalert.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        content.setActions(btnalert);
+        dialog.show();
+        }
+            
+        else
         if (ch.equals(mail+password))
         {
             JFXDialogLayout content = new JFXDialogLayout();
