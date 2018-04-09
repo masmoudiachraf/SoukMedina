@@ -72,11 +72,12 @@ public class serviceUtilisateur implements IserviceUtilisateur{
     /**
      *
      * @param usr
+     * @param id
      * @param mail
      */
     @Override
-    public void update_user(utilisateur usr, String mail) {
-        String requete="update utilisateurs set nom_uti='"+usr.getNom_uti()+"', prenom_uti='"+usr.getPrenom_uti()+"', mail_uti='"+usr.getMail_uti()+"', password_uti='"+usr.getPassword_uti()+"', adresse_uti='"+usr.getAdresse_uti()+"', telephone_uti='"+usr.getTelephone_uti()+"', naissance_uti='"+usr.getNaissance_uti()+"' where mail_uti='"+mail+"' ";
+    public void update_user(utilisateur usr, int id) {
+        String requete="update utilisateurs set nom_uti='"+usr.getNom_uti()+"', prenom_uti='"+usr.getPrenom_uti()+"', mail_uti='"+usr.getMail_uti()+"', password_uti='"+usr.getPassword_uti()+"', adresse_uti='"+usr.getAdresse_uti()+"', telephone_uti='"+usr.getTelephone_uti()+"', naissance_uti='"+usr.getNaissance_uti()+"' where id_uti like '"+id+"' ";
    
           try {
               st=cnx.createStatement();

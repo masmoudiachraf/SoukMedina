@@ -118,7 +118,7 @@ public class utilisateur {
 
     @Override
     public String toString() {
-        return id_uti + nom_uti +  prenom_uti + prenom_uti+ mail_uti +password_uti + adresse_uti + telephone_uti +  naissance_uti ;
+        return id_uti +" "+ nom_uti +" "+  prenom_uti +" "+ mail_uti +" "+password_uti +" "+ adresse_uti +" "+ telephone_uti +" "+  naissance_uti ;
     }
 
     @Override

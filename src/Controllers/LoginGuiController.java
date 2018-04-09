@@ -64,6 +64,8 @@ public class LoginGuiController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -106,8 +108,13 @@ public class LoginGuiController implements Initializable {
         dialog.show();
     }
     
-    
-     public void start(Stage window, String destination) throws Exception {
+    /**
+     *
+     * @param window
+     * @param destination
+     * @throws Exception
+     */
+    public void start(Stage window, String destination) throws Exception {
         Scene scene =  new Scene(FXMLLoader.load(getClass().getResource(destination)));
         window.setScene(scene);
         window.show();
@@ -115,13 +122,12 @@ public class LoginGuiController implements Initializable {
 
     @FXML
     private void authentifier_click(ActionEvent event) {
-                  ServiceBoutique sb= new ServiceBoutique();
+           ServiceBoutique sb= new ServiceBoutique();
            serviceUtilisateur su= new serviceUtilisateur();
            String mail= login_mailTf.getText();
-            String password= login_passTf.getText();
-            
+            String password= login_passTf.getText();    
         String ch=su.display_u(mail, password);
-        
+        String ch1=sb.display_b(mail,password);        
             if(login_mailTf.getText().equals("") && login_passTf.getText().equals(""))
             {
              JFXDialogLayout content = new JFXDialogLayout();
@@ -143,11 +149,9 @@ public class LoginGuiController implements Initializable {
         dialog.show();
         }
             
-        else
-        if (ch.equals(mail+password))
-        { 
-           FXMLLoader Loader= new FXMLLoader();
-           Loader.setLocation(getClass().getResource("/GUI/userinterface.fxml"));
+            if(ch1.equals(mail+password)){
+                FXMLLoader Loader= new FXMLLoader();
+           Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
             try {
                 Loader.load();
                 
@@ -158,11 +162,31 @@ public class LoginGuiController implements Initializable {
             Stage stage =new Stage();
             stage.setScene(new Scene(p));
             stage.show();
-            UserinterfaceController userzone= Loader.getController();
-            userzone.userinformation(su.displayall(mail, password).getNom_uti(),su.displayall(mail, password).getPrenom_uti(),su.displayall(mail, password).getMail_uti(),su.displayall(mail, password).getAdresse_uti(),String.valueOf(su.displayall(mail, password).getTelephone_uti()),su.displayall(mail, password).getNaissance_uti());
+            VendeurinterfaceController userzone= Loader.getController();
+            userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
+          
+            }
+        else
+        if (ch.equals(mail+password))
+        { 
+           FXMLLoader Loader= new FXMLLoader();
+           Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
+            try {
+                Loader.load();
+                
+            } catch (IOException e) {
+                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, e);
+            }
+            Parent p=Loader.getRoot();
+            Stage stage =new Stage();
+            stage.setScene(new Scene(p));
+            stage.show();
+            //VendeurinterfaceController userzone= Loader.getController();
+            //userzone.userinformation(String.valueOf(su.displayall(mail, password).getId_uti()),su.displayall(mail, password).getNom_uti(),su.displayall(mail, password).getPrenom_uti(),su.displayall(mail, password).getMail_uti(),su.displayall(mail, password).getPassword_uti(),su.displayall(mail, password).getAdresse_uti(),String.valueOf(su.displayall(mail, password).getTelephone_uti()),su.displayall(mail, password).getNaissance_uti());
           
             
         }
+        
         else
         {
               JFXDialogLayout content = new JFXDialogLayout();
@@ -183,7 +207,7 @@ public class LoginGuiController implements Initializable {
         content.setActions(btnalert);
         dialog.show();
        
-
+        
     }}
     
 }
