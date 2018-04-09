@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
@@ -12,7 +13,11 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.java.swing.plaf.windows.resources.windows;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -114,7 +119,7 @@ public class LoginGuiController implements Initializable {
            serviceUtilisateur su= new serviceUtilisateur();
            String mail= login_mailTf.getText();
             String password= login_passTf.getText();
-         
+            
         String ch=su.display_u(mail, password);
         
             if(login_mailTf.getText().equals("") && login_passTf.getText().equals(""))
@@ -140,24 +145,23 @@ public class LoginGuiController implements Initializable {
             
         else
         if (ch.equals(mail+password))
-        {
-            JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Mode"));
-        content.setBody(new Text("merci "));
-        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton btnalert = new JFXButton("OK");
-        btnalert.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        { 
+           FXMLLoader Loader= new FXMLLoader();
+           Loader.setLocation(getClass().getResource("/GUI/userinterface.fxml"));
+            try {
+                Loader.load();
+                
+            } catch (IOException e) {
+                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, e);
             }
-        });
-        content.setActions(btnalert);
-        dialog.show();
+            Parent p=Loader.getRoot();
+            Stage stage =new Stage();
+            stage.setScene(new Scene(p));
+            stage.show();
+            UserinterfaceController userzone= Loader.getController();
+            userzone.userinformation(su.displayall(mail, password).getNom_uti(),su.displayall(mail, password).getPrenom_uti(),su.displayall(mail, password).getMail_uti(),su.displayall(mail, password).getAdresse_uti(),String.valueOf(su.displayall(mail, password).getTelephone_uti()),su.displayall(mail, password).getNaissance_uti());
+          
+            
         }
         else
         {

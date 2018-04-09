@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserzonetestController">
+   <children>
+      <Label fx:id="labnom" layoutX="445.0" layoutY="24.0" text="Label" />
+      <Label fx:id="labprenom" layoutX="500.0" layoutY="24.0" text="Label" />
+      <Label layoutX="376.0" layoutY="24.0" text="Bienvenue" />
+      <TextField fx:id="tfid" layoutX="51.0" layoutY="41.0" />
+      <TextField fx:id="tfnom" layoutX="51.0" layoutY="86.0" />
+      <TextField fx:id="tfprenom" layoutX="51.0" layoutY="128.0" />
+      <TextField fx:id="tfmail" layoutX="51.0" layoutY="175.0" />
+      <TextField fx:id="tfpassword" layoutX="51.0" layoutY="221.0" />
+      <TextField fx:id="tfadresse" layoutX="51.0" layoutY="264.0" />
+      <TextField fx:id="tftelephone" layoutX="51.0" layoutY="307.0" />
+      <TextField fx:id="tfnaissance" layoutX="51.0" layoutY="346.0" />
+   </children>
+</AnchorPane>
