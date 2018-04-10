@@ -84,7 +84,7 @@ public class AdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         serviceUtilisateur su = new serviceUtilisateur();
-         ArrayList arraylist = (ArrayList) su.displayall();
+         ArrayList arraylist = (ArrayList) su.displayall1();
         ObservableList obs = FXCollections.observableArrayList(arraylist);
         tableview.setItems(obs);
           id_uti.setCellValueFactory(new PropertyValueFactory<>("id_uti"));
@@ -93,12 +93,14 @@ public class AdminController implements Initializable {
         mail_uti.setCellValueFactory(new PropertyValueFactory<>("mail_uti"));
         password_uti.setCellValueFactory(new PropertyValueFactory<>("password_uti"));
         adresse_uti.setCellValueFactory(new PropertyValueFactory<>("adresse_uti"));
-       telephone_uti.setCellValueFactory(new PropertyValueFactory<>("telephone_uti"));
+        telephone_uti.setCellValueFactory(new PropertyValueFactory<>("telephone_uti"));
+        naissance_uti.setCellValueFactory(new PropertyValueFactory<>("naissance_uti"));
+       
         ServiceBoutique sb = new ServiceBoutique();
           ArrayList arraylist1 = (ArrayList) sb.displayall_boutique();
            ObservableList obs1 = FXCollections.observableArrayList(arraylist1);
            tableview1.setItems(obs1);
-           id_bout.setCellValueFactory(new PropertyValueFactory<>("id_bout"));
+           id_bout.setCellValueFactory(new PropertyValueFactory<>("id"));
            nom_bout.setCellValueFactory(new PropertyValueFactory<>("nom_bout"));
            mail_bout.setCellValueFactory(new PropertyValueFactory<>("mail_bout"));
            password_bout.setCellValueFactory(new PropertyValueFactory<>("password_bout"));

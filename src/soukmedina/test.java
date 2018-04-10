@@ -19,10 +19,10 @@ public class test {
         /*serviceUtilisateur su=new serviceUtilisateur();
          utilisateur u=new utilisateur("ahmed", "ben ahmed", "achref@gmail.com", "123456789", "djerba", 20202020, "12/12/12");
          su.update_user(u,4833275);*/
-        ServiceBoutique sb=new ServiceBoutique();
+        /*ServiceBoutique sb=new ServiceBoutique();
         Boutique b=new Boutique("showtime", "gafsa", "showtime@gmail.com", "123456789", 20202020, "artisanat");
         sb.update_boutique(b, 3);
-         System.out.println("ok dki");
+         System.out.println("ok dki");*/
     }
     
 }
