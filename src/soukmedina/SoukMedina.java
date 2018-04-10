@@ -35,7 +35,7 @@ public class SoukMedina extends Application {
     @Override
     public void start(Stage primaryStage) {
          try {
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/GUI/admin.fxml")));
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/GUI/LoginGui.fxml")));
             
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);
