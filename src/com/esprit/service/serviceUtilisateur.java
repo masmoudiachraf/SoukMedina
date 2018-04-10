@@ -72,11 +72,12 @@ public class serviceUtilisateur implements IserviceUtilisateur{
     /**
      *
      * @param usr
+     * @param id
      * @param mail
      */
     @Override
-    public void update_user(utilisateur usr, String mail) {
-        String requete="update utilisateurs set nom_uti='"+usr.getNom_uti()+"', prenom_uti='"+usr.getPrenom_uti()+"', mail_uti='"+usr.getMail_uti()+"', password_uti='"+usr.getPassword_uti()+"', adresse_uti='"+usr.getAdresse_uti()+"', telephone_uti='"+usr.getTelephone_uti()+"', naissance_uti='"+usr.getNaissance_uti()+"' where mail_uti='"+mail+"' ";
+    public void update_user(utilisateur usr, int id) {
+        String requete="update utilisateurs set nom_uti='"+usr.getNom_uti()+"', prenom_uti='"+usr.getPrenom_uti()+"', mail_uti='"+usr.getMail_uti()+"', password_uti='"+usr.getPassword_uti()+"', adresse_uti='"+usr.getAdresse_uti()+"', telephone_uti='"+usr.getTelephone_uti()+"', naissance_uti='"+usr.getNaissance_uti()+"' where id_uti like '"+id+"' ";
    
           try {
               st=cnx.createStatement();
@@ -91,10 +92,9 @@ public class serviceUtilisateur implements IserviceUtilisateur{
      * @return
      */
     @Override
-    public List<utilisateur> displayall() {
-        List<utilisateur> list=new ArrayList<>();
-
-           String requete="select * from utilisateurs";
+    public utilisateur displayall(String mail,String password) {
+        utilisateur user=new utilisateur();
+           String requete="select * from utilisateurs where mail_uti='"+mail+"' and password_uti='"+password+"'";
         ResultSet rs;
           try {
               st=cnx.createStatement();
@@ -102,14 +102,14 @@ public class serviceUtilisateur implements IserviceUtilisateur{
              while(rs.next()){
 
             utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"),rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"));
-
-              list.add(usr);
+            user=usr;
+            return user;
         }
           } catch (SQLException ex) {
               Logger.getLogger(utilisateur.class.getName()).log(Level.SEVERE, null, ex);
           }
        
-        return list;
+        return user;
     }
 
     /**

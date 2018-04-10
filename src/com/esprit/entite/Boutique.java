@@ -29,7 +29,7 @@ public class Boutique {
     public Boutique() {
     }
 
-    public Boutique(int id, String nom_bout, String adresse_bout, String mail_bout, String password_bout, int telephone_bout, String activite_bout) {
+    public Boutique(int id, String nom_bout, String mail_bout, String password_bout,String adresse_bout, int telephone_bout, String activite_bout) {
         this.id = id;
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
@@ -39,7 +39,7 @@ public class Boutique {
         this.activite_bout = activite_bout;
     }
 
-    public Boutique(String nom_bout, String adresse_bout, String mail_bout, String password_bout, int telephone_bout, String activite_bout) {
+    public Boutique(String nom_bout, String mail_bout, String password_bout,String adresse_bout, int telephone_bout, String activite_bout) {
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
         this.mail_bout = mail_bout;
@@ -105,41 +105,7 @@ public class Boutique {
     }
 
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Boutique other = (Boutique) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.password_bout != other.password_bout) {
-            return false;
-        }
-        if (this.telephone_bout != other.telephone_bout) {
-            return false;
-        }
-        if (!Objects.equals(this.nom_bout, other.nom_bout)) {
-            return false;
-        }
-        if (!Objects.equals(this.adresse_bout, other.adresse_bout)) {
-            return false;
-        }
-        if (!Objects.equals(this.mail_bout, other.mail_bout)) {
-            return false;
-        }
-        if (!Objects.equals(this.activite_bout, other.activite_bout)) {
-            return false;
-        }
-        return true;
-    }
+   
 
     @Override
     public String toString() {

@@ -43,7 +43,7 @@ public class ServiceBoutique implements IserviceBoutique{
     }
 
     @Override
-    public void delete_boutique(Boutique t) {
+    public void delete_boutique(Boutique t ,int id) {
         String req = "delete from boutiques where id=?";
         try {
             statement = connection.prepareStatement(req);
@@ -55,8 +55,8 @@ public class ServiceBoutique implements IserviceBoutique{
     }
 
     @Override
-    public void update_boutique(Boutique t) {
-        String req = "update boutiques SET nom_bout=?,mail_bout=?,password_bout=?,adresse_bout=?,telephone_bout=?,activite_bout=? where id=?";
+    public void update_boutique(Boutique t , int id) {
+        String req = "update boutiques SET nom_bout=?,mail_bout=?,password_bout=?,adresse_bout=?,telephone_bout=?,activite_bout=? where id_bout='"+id+"'";
        try {
             statement = connection.prepareStatement(req);
             statement = connection.prepareStatement(req);
@@ -92,39 +92,43 @@ public class ServiceBoutique implements IserviceBoutique{
     }
 
     @Override
-    public Boutique displayboutique(int telephone_bout ) {
-        String req = "Select * from boutiques where telephone_bout="+telephone_bout;
-        Boutique boutique = null;
+    public Boutique displayboutique(String mail,String password ) {
+        Boutique bout=new Boutique();
+        String req = "Select * from boutiques where mail_bout='"+mail+"' and password_bout='"+password+"' ";
         try {
             statement = connection.prepareStatement(req);
             ResultSet rs = statement.executeQuery(req);
             while (rs.next()) {
                 
-                boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
+                Boutique bou= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
+                bout=bou;
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        return boutique;
+        return bout;
     }
 
-    public Boutique display_b(String mail,String password) {
+    @Override
+    public String display_b(String mail,String password) {
         String req= "select * from boutiques where mail_bout='"+mail+"' and password_bout='"+password+"'";
-        Boutique boutique= null;
+        String ch="";
         try {
             statement = connection.prepareStatement(req);
             ResultSet rs = statement.executeQuery(req);
           while (rs.next()) {
                 
-                boutique= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
-            }
+                Boutique bou= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
+                ch=bou.getMail_bout()+bou.getPassword_bout();
+                return ch;
+          }
    
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
             
         
-            return boutique;
+            return ch;
 
 }
 
