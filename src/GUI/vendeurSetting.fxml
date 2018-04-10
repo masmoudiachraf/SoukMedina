@@ -17,7 +17,7 @@
             <JFXTextField fx:id="tfadresse" layoutX="68.0" layoutY="152.0" />
             <JFXTextField fx:id="tftelephone" layoutX="68.0" layoutY="189.0" />
             <JFXTextField fx:id="tfactivite" layoutX="68.0" layoutY="225.0" />
-            <JFXButton fx:id="modifier" layoutX="105.0" layoutY="286.0" onAction="#update_user_profil" text="Modifier" />
+            <JFXButton fx:id="modifier" layoutX="105.0" layoutY="274.0" onAction="#update_user_profil" text="Modifier" />
             <Label fx:id="labid" disable="true" layoutX="181.0" layoutY="329.0" text="Label" visible="false" />
          </children>
       </Pane>

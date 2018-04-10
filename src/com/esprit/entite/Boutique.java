@@ -29,7 +29,7 @@ public class Boutique {
     public Boutique() {
     }
 
-    public Boutique(int id, String nom_bout, String adresse_bout, String mail_bout, String password_bout, int telephone_bout, String activite_bout) {
+    public Boutique(int id, String nom_bout, String mail_bout, String password_bout,String adresse_bout, int telephone_bout, String activite_bout) {
         this.id = id;
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
@@ -39,7 +39,7 @@ public class Boutique {
         this.activite_bout = activite_bout;
     }
 
-    public Boutique(String nom_bout, String adresse_bout, String mail_bout, String password_bout, int telephone_bout, String activite_bout) {
+    public Boutique(String nom_bout, String mail_bout, String password_bout,String adresse_bout, int telephone_bout, String activite_bout) {
         this.nom_bout = nom_bout;
         this.adresse_bout = adresse_bout;
         this.mail_bout = mail_bout;

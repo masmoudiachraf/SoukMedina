@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,6 +48,8 @@ public class VendeurinterfaceController implements Initializable {
     private Label labid;
     @FXML
     private Label labactivite;
+    @FXML
+    private JFXButton btngtarticle;
 
     /**
      * Initializes the controller class.
@@ -81,9 +84,14 @@ public class VendeurinterfaceController implements Initializable {
             Stage stage =new Stage();
             stage.setScene(new Scene(p));
             stage.show();
+            
            VendeurSettingController userzone= Loader.getController();
            userzone.userinformation(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText(),labactivite.getText());
           
+    }
+
+    @FXML
+    private void redirection_gestion_article(ActionEvent event) {
     }
     
     

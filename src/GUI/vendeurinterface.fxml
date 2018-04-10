@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -38,6 +39,7 @@
             <Image url="@../Assets/logout.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="btngtarticle" layoutX="499.0" layoutY="77.0" onAction="#redirection_gestion_article" text="Gestion Articles" />
       
     </children>
 </AnchorPane>

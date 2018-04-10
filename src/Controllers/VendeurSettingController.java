@@ -10,6 +10,7 @@ import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +57,7 @@ public class VendeurSettingController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     public void userinformation(String labid, String tfnom, String tfmail,String tfpassword ,String tfadresse,String tftelephone, String tfactivite) {
@@ -71,7 +72,7 @@ public class VendeurSettingController implements Initializable {
     @FXML
     private void update_user_profil(ActionEvent event) {
         ServiceBoutique sb= new ServiceBoutique();
-        Boutique b=new Boutique(tfnom.getText(),tfadresse.getText(), tfmail.getText(), tfpassword.getText(),Integer.parseInt(tftelephone.getText()), tfactivite.getText());
+        Boutique b=new Boutique(tfnom.getText(), tfmail.getText(), tfpassword.getText(),tfadresse.getText(),Integer.parseInt(tftelephone.getText()), tfactivite.getText());
         sb.update_boutique(b, Integer.parseInt(labid.getText()));
         FXMLLoader Loader= new FXMLLoader();
         Loader.setLocation(getClass().getResource("/GUI/LoginGui.fxml"));

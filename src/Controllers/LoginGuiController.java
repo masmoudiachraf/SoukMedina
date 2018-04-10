@@ -54,8 +54,6 @@ public class LoginGuiController implements Initializable {
     @FXML
     private StackPane interface_container;
     @FXML
-    private JFXButton login_btnconnect;
-    @FXML
     private JFXTextField login_mailTf;
     @FXML
     private JFXPasswordField login_passTf;
@@ -107,28 +105,16 @@ public class LoginGuiController implements Initializable {
         content.setActions(btnBoutique,btnUser);
         dialog.show();
     }
-    
-    /**
-     *
-     * @param window
-     * @param destination
-     * @throws Exception
-     */
-    public void start(Stage window, String destination) throws Exception {
-        Scene scene =  new Scene(FXMLLoader.load(getClass().getResource(destination)));
-        window.setScene(scene);
-        window.show();
-    }
+ 
 
     @FXML
-    private void authentifier_click(ActionEvent event) {
-           ServiceBoutique sb= new ServiceBoutique();
+    private void authentification(ActionEvent event) {
+         ServiceBoutique sb= new ServiceBoutique();
            serviceUtilisateur su= new serviceUtilisateur();
            String mail= login_mailTf.getText();
             String password= login_passTf.getText();    
-        String ch=su.display_u(mail, password);
-        String ch1=sb.display_b(mail,password);        
-            if(login_mailTf.getText().equals("") && login_passTf.getText().equals(""))
+               
+            if(login_mailTf.getText().equals("") || login_passTf.getText().equals(""))
             {
              JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Mode"));
@@ -149,7 +135,8 @@ public class LoginGuiController implements Initializable {
         dialog.show();
         }
             
-            if(ch1.equals(mail+password)){
+           else if(sb.display_b(mail,password).equals(mail+password)){
+            
                 FXMLLoader Loader= new FXMLLoader();
            Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
             try {
@@ -167,10 +154,9 @@ public class LoginGuiController implements Initializable {
           
             }
         else
-        if (ch.equals(mail+password))
-        { 
-           FXMLLoader Loader= new FXMLLoader();
-           Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
+        if (su.display_u(mail, password).equals(mail+password))
+        {  FXMLLoader Loader= new FXMLLoader();
+           Loader.setLocation(getClass().getResource("/GUI/.fxml"));
             try {
                 Loader.load();
                 
@@ -208,6 +194,24 @@ public class LoginGuiController implements Initializable {
         dialog.show();
        
         
-    }}
-    
+    }
+    }
+      
+    /**
+     *
+     * @param window
+     * @param destination
+     * @throws Exception
+     */
+    public void start(Stage window, String destination) throws Exception {
+        Scene scene =  new Scene(FXMLLoader.load(getClass().getResource(destination)));
+        window.setScene(scene);
+        window.show();
+    }
 }
+
+
+/*
+
+*/
+
