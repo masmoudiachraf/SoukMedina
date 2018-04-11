@@ -93,12 +93,14 @@ public class AdminController implements Initializable {
         mail_uti.setCellValueFactory(new PropertyValueFactory<>("mail_uti"));
         password_uti.setCellValueFactory(new PropertyValueFactory<>("password_uti"));
         adresse_uti.setCellValueFactory(new PropertyValueFactory<>("adresse_uti"));
-       telephone_uti.setCellValueFactory(new PropertyValueFactory<>("telephone_uti"));
+        telephone_uti.setCellValueFactory(new PropertyValueFactory<>("telephone_uti"));
+        naissance_uti.setCellValueFactory(new PropertyValueFactory<>("naissance_uti"));
+       
         ServiceBoutique sb = new ServiceBoutique();
           ArrayList arraylist1 = (ArrayList) sb.displayall_boutique();
            ObservableList obs1 = FXCollections.observableArrayList(arraylist1);
            tableview1.setItems(obs1);
-           id_bout.setCellValueFactory(new PropertyValueFactory<>("id_bout"));
+           id_bout.setCellValueFactory(new PropertyValueFactory<>("id"));
            nom_bout.setCellValueFactory(new PropertyValueFactory<>("nom_bout"));
            mail_bout.setCellValueFactory(new PropertyValueFactory<>("mail_bout"));
            password_bout.setCellValueFactory(new PropertyValueFactory<>("password_bout"));
