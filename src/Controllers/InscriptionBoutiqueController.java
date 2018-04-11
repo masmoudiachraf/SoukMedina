@@ -62,6 +62,9 @@ public class InscriptionBoutiqueController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         itemList.add("Act1");
+        itemList.add("Act2");
+        itemList.add("Act3");
+        itemList.add("Act4");
         ObservableList obs = FXCollections.observableList(itemList);
         activite_bout.setItems(obs);
     }    
@@ -75,7 +78,7 @@ public class InscriptionBoutiqueController implements Initializable {
           String adresse= adresse_bout.getText();
           String telephone= telephone_bout.getText();
           String activite = activite_bout.getValue().toString();
-          Boutique b= new Boutique(nom, adresse, mail, password, 26812226, activite);
+          Boutique b= new Boutique(nom, adresse, mail, password, Integer.parseInt(telephone), activite);
           sb.insert_boutique(b);
  
       

@@ -84,7 +84,7 @@ public class AdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         serviceUtilisateur su = new serviceUtilisateur();
-         ArrayList arraylist = (ArrayList) su.displayall();
+         ArrayList arraylist = (ArrayList) su.displayall1();
         ObservableList obs = FXCollections.observableArrayList(arraylist);
         tableview.setItems(obs);
           id_uti.setCellValueFactory(new PropertyValueFactory<>("id_uti"));

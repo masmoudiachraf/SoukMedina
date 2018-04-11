@@ -14,10 +14,10 @@ import java.util.List;
  */
 public interface IserviceBoutique {
     void insert_boutique(Boutique bou);
-    void delete_boutique(Boutique bou);
-     void update_boutique(Boutique bou);
+    void delete_boutique(Boutique bou,int id);
+     void update_boutique(Boutique bou, int id);
     List<Boutique> displayall_boutique();
-    Boutique displayboutique(int tel);
-      Boutique display_b(String mail,String password);
+    Boutique displayboutique(String mail,String password);
+      String display_b(String mail,String password);
     //public void ajouterBoutique(Boutique b);
 }
