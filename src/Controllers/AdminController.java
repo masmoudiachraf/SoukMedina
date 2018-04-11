@@ -6,6 +6,7 @@
 package Controllers;
 
 import com.esprit.entite.utilisateur;
+import com.esprit.service.ServiceBoutique;
 import com.esprit.service.serviceUtilisateur;
 import java.io.IOException;
 import java.net.URL;
@@ -59,6 +60,22 @@ public class AdminController implements Initializable {
          private TableColumn<?,?> naissance_uti;
     @FXML
     private Button Inserer_boutique;
+    @FXML
+    private TableView<?> tableview1;
+    @FXML
+    private TableColumn<?, ?> id_bout;
+    @FXML
+    private TableColumn<?, ?> nom_bout;
+    @FXML
+    private TableColumn<?, ?> mail_bout;
+    @FXML
+    private TableColumn<?, ?> password_bout;
+    @FXML
+    private TableColumn<?, ?> adresse_bout;
+    @FXML
+    private TableColumn<?, ?> telephone_bout;
+    @FXML
+    private TableColumn<?, ?> activite_bout;
         
     /**
      * Initializes the controller class.
@@ -77,8 +94,17 @@ public class AdminController implements Initializable {
         password_uti.setCellValueFactory(new PropertyValueFactory<>("password_uti"));
         adresse_uti.setCellValueFactory(new PropertyValueFactory<>("adresse_uti"));
        telephone_uti.setCellValueFactory(new PropertyValueFactory<>("telephone_uti"));
-        
-          
+        ServiceBoutique sb = new ServiceBoutique();
+          ArrayList arraylist1 = (ArrayList) sb.displayall_boutique();
+           ObservableList obs1 = FXCollections.observableArrayList(arraylist1);
+           tableview1.setItems(obs1);
+           id_bout.setCellValueFactory(new PropertyValueFactory<>("id_bout"));
+           nom_bout.setCellValueFactory(new PropertyValueFactory<>("nom_bout"));
+           mail_bout.setCellValueFactory(new PropertyValueFactory<>("mail_bout"));
+           password_bout.setCellValueFactory(new PropertyValueFactory<>("password_bout"));
+          adresse_bout.setCellValueFactory(new PropertyValueFactory<>("adresse_bout"));
+        telephone_bout.setCellValueFactory(new PropertyValueFactory<>("telephone_bout"));
+          activite_bout.setCellValueFactory(new PropertyValueFactory<>("activite_bout"));
     }    
 
     @FXML
