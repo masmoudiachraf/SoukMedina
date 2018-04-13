@@ -23,6 +23,7 @@ public class test {
          su.update_user(u,4833275);*/
         /*ServiceBoutique sb=new ServiceBoutique();
         Boutique b=new Boutique("showtime", "gafsa", "showtime@gmail.com", "123456789", 20202020, "artisanat");
+
         sb.update_boutique(b, 3);*/
         articlesService as=new articlesService();
         Boutique b=new Boutique(1);
@@ -31,6 +32,7 @@ public class test {
        // as.insert_article(a);
         System.out.println(as.displayall(4));
         System.out.println("ok dki");
+
     }
     
 }

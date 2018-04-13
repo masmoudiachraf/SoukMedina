@@ -111,6 +111,27 @@ public class serviceUtilisateur implements IserviceUtilisateur{
        
         return user;
     }
+    
+    
+     public List<utilisateur> displayall1() {
+        utilisateur user=new utilisateur();
+        List<utilisateur> list =new ArrayList<>();
+           String requete="select * from utilisateurs ";
+        ResultSet rs;
+          try {
+              st=cnx.createStatement();
+               rs=st.executeQuery(requete);
+             while(rs.next()){
+
+            utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"),rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"));
+           list.add(usr);
+        }
+          } catch (SQLException ex) {
+              Logger.getLogger(utilisateur.class.getName()).log(Level.SEVERE, null, ex);
+          }
+       
+        return list;
+    }
 
     /**
      *
