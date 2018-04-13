@@ -7,18 +7,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VendeurSettingController">
+<AnchorPane id="AnchorPane" fx:id="panex" prefHeight="400.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VendeurSettingController">
     <children>
-      <Pane layoutX="151.0" layoutY="21.0" prefHeight="364.0" prefWidth="271.0">
+      <Pane prefHeight="400.0" prefWidth="160.0">
          <children>
-            <JFXTextField fx:id="tfnom" layoutX="68.0" layoutY="31.0" />
-            <JFXTextField fx:id="tfmail" layoutX="68.0" layoutY="74.0" />
-            <JFXTextField fx:id="tfpassword" layoutX="68.0" layoutY="112.0" />
-            <JFXTextField fx:id="tfadresse" layoutX="68.0" layoutY="152.0" />
-            <JFXTextField fx:id="tftelephone" layoutX="68.0" layoutY="189.0" />
-            <JFXTextField fx:id="tfactivite" layoutX="68.0" layoutY="225.0" />
-            <JFXButton fx:id="modifier" layoutX="105.0" layoutY="274.0" onAction="#update_user_profil" text="Modifier" />
+            <JFXTextField fx:id="tfnom" layoutX="13.0" layoutY="56.0" />
+            <JFXTextField fx:id="tfmail" layoutX="13.0" layoutY="99.0" />
+            <JFXTextField fx:id="tfpassword" layoutX="13.0" layoutY="138.0" />
+            <JFXTextField fx:id="tfadresse" layoutX="13.0" layoutY="175.0" />
+            <JFXTextField fx:id="tftelephone" layoutX="13.0" layoutY="213.0" />
+            <JFXTextField fx:id="tfactivite" layoutX="13.0" layoutY="252.0" />
+            <JFXButton fx:id="modifier" layoutX="18.0" layoutY="304.0" onAction="#update_user_profil" text="Modifier" />
             <Label fx:id="labid" disable="true" layoutX="181.0" layoutY="329.0" text="Label" visible="false" />
+            <JFXButton fx:id="btnannuler" layoutX="84.0" layoutY="304.0" text="Annuler" />
          </children>
       </Pane>
    </children>

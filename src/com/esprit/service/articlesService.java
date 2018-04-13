@@ -38,7 +38,7 @@ public class articlesService implements Iservicearticles{
 
     @Override
     public void insert_article(articles p) {
-        String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_fk,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie()+ "','"+p.getBoutique_fk().getId()+"')";
+        String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_art,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie()+ "','"+p.getBoutique_fk().getId()+"')";
    
           try {
               st=cnx.createStatement();
@@ -72,21 +72,21 @@ public class articlesService implements Iservicearticles{
           }
     }
 
-    @Override
-    public List<articles> displayall() {
+   @Override
+    public List<articles> displayall(int id_bou) {
                 List<articles> list=new ArrayList<>();
 
-           String requete="select * from articles";
+           String requete="select * from articles where boutiques_fk='"+id_bou+"'";
         ResultSet rs;
          
- Boutique b= new Boutique();
+ Boutique b= new Boutique(id_bou);
           try {
               
         
               st=cnx.createStatement();
                rs=st.executeQuery(requete);
              while(rs.next()){
-                 b.setId(rs.getInt("boutique_fk"));
+                 b.setId(rs.getInt("boutiques_fk"));
             articles p=new articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),rs.getString("categorie_art"),b);
               list.add(p);
         }
@@ -97,6 +97,30 @@ public class articlesService implements Iservicearticles{
         return list;
                 
     }
+    /*    @Override
+    public articles displayall(int id_bou) {
+        articles a = null;
+           String requete="select * from articles where boutiques_fk='"+id_bou+"'";
+        ResultSet rs;
+         
+            Boutique b= new Boutique(id_bou);
+          try {
+              
+        
+              st=cnx.createStatement();
+               rs=st.executeQuery(requete);
+             while(rs.next()){
+                 b.setId(rs.getInt("boutiques_fk"));
+            articles p=new articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),rs.getString("categorie_art"),b);
+              a=p;
+        }
+          } catch (SQLException ex) {
+              Logger.getLogger(articlesService.class.getName()).log(Level.SEVERE, null, ex);
+          }
+       
+        return a;
+                
+    }*/
 
   
     

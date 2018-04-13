@@ -35,7 +35,7 @@ public class articles {
     }
    
 
-    public articles(String nom, String taille, String couleur, float prix, categorie categorie_fk,Boutique boutique_fk) {
+    public articles(String nom, String taille, String couleur, float prix, String categorie,Boutique boutique_fk) {
         this.nom = nom;
         this.taille = taille;
         this.couleur = couleur;
@@ -107,14 +107,14 @@ public class articles {
         return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
- /*   public String toString() {
+ /*   @Override
+   public String toString() {
          return  "id=" + id + ", nom=" + nom + ", taille=" + taille +", couleur=" + couleur + ", prix=" + prix ;
     }*/
 
-    
+   
     public String toString() {
-        return "articles{" + "id=" + id + ", nom=" + nom + ", taille=" + taille + ", couleur=" + couleur + ", prix=" + prix + ", categorie=" + categorie + ", boutique_fk=" + boutique_fk + '}';
+        return "****"+id+"****\nNom: "+ nom+"\nTaille: "  + taille +"\nCouleur: "  +couleur  +"\nPrix: "+ prix  +"\nCategorie: "+ categorie+"\n" ;
     }
     
     
