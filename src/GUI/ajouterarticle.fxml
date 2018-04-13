@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterarticleController">
+   <children>
+      <JFXTextField fx:id="tfnom" layoutX="13.0" layoutY="54.0" promptText="Nom" />
+      <JFXTextField fx:id="tftaille" layoutX="13.0" layoutY="101.0" promptText="Taille" />
+      <JFXTextField fx:id="tfcouleur" layoutX="16.0" layoutY="149.0" promptText="Couleur" />
+      <JFXTextField fx:id="tfprix" layoutX="13.0" layoutY="197.0" promptText="Prix" />
+      <JFXComboBox fx:id="tfcategorie" layoutX="16.0" layoutY="239.0" prefHeight="25.0" prefWidth="135.0" promptText="Categories" />
+      <JFXButton fx:id="btnajouterarticle" layoutX="29.0" layoutY="297.0" onAction="#ajouter_article" text="Ajouter" />
+      <JFXButton layoutX="84.0" layoutY="297.0" text="Annuler" />
+      <Label fx:id="labid" disable="true" layoutX="29.0" layoutY="347.0" text="Label" visible="false" />
+   </children>
+</AnchorPane>

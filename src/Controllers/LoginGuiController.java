@@ -5,8 +5,10 @@
  */
 package Controllers;
 
+import com.esprit.entite.articles;
 import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
+import com.esprit.service.articlesService;
 import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -108,9 +110,10 @@ public class LoginGuiController implements Initializable {
  
 
     @FXML
-    private void authentification(ActionEvent event) {
+    private void authentification(ActionEvent event) throws IOException {
          ServiceBoutique sb= new ServiceBoutique();
            serviceUtilisateur su= new serviceUtilisateur();
+           articlesService as=new articlesService();
            String mail= login_mailTf.getText();
             String password= login_passTf.getText();    
                
@@ -136,8 +139,15 @@ public class LoginGuiController implements Initializable {
         }
             
            else if(sb.display_b(mail,password).equals(mail+password)){
+               FXMLLoader Loader= new FXMLLoader();
+               Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
+            AnchorPane pane=Loader.load();
+            loginParent.getChildren().setAll(pane); 
+            VendeurinterfaceController userzone= Loader.getController();
             
-                FXMLLoader Loader= new FXMLLoader();
+            userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
+            
+            /*   FXMLLoader Loader= new FXMLLoader();
            Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
             try {
                 Loader.load();
@@ -151,7 +161,7 @@ public class LoginGuiController implements Initializable {
             stage.show();
             VendeurinterfaceController userzone= Loader.getController();
             userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
-          
+          */
             }
         else
         if (su.display_u(mail, password).equals(mail+password))

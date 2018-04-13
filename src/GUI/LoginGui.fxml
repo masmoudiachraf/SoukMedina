@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="loginParent" prefHeight="458.0" prefWidth="789.0" style="-fx-background-color: #F5F5F5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginGuiController">
+<AnchorPane id="AnchorPane" fx:id="loginParent" prefHeight="400.0" prefWidth="789.0" style="-fx-background-color: #F5F5F5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginGuiController">
     <stylesheets>
         <URL value="@/StyleSheets/logingui.css" />
     </stylesheets>

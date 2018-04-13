@@ -18,12 +18,15 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -51,6 +54,10 @@ public class VendeurSettingController implements Initializable {
     private Label labid;
     @FXML
     private JFXTextField tfactivite;
+    @FXML
+    private AnchorPane panex;
+    @FXML
+    private JFXButton btnannuler;
 
     /**
      * Initializes the controller class.
@@ -70,12 +77,24 @@ public class VendeurSettingController implements Initializable {
         this.tfactivite.setText(tfactivite);
     }
     @FXML
-    private void update_user_profil(ActionEvent event) {
+    private void update_user_profil(ActionEvent event) throws IOException {
         ServiceBoutique sb= new ServiceBoutique();
         Boutique b=new Boutique(tfnom.getText(), tfmail.getText(), tfpassword.getText(),tfadresse.getText(),Integer.parseInt(tftelephone.getText()), tfactivite.getText());
         sb.update_boutique(b, Integer.parseInt(labid.getText()));
-        FXMLLoader Loader= new FXMLLoader();
-        Loader.setLocation(getClass().getResource("/GUI/LoginGui.fxml"));
+           
+        
+        modifier.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    start((Stage) modifier.getScene().getWindow(), "/GUI/LoginGui.fxml");
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
+       /* Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
             try {
                 Loader.load();
                 
@@ -85,9 +104,13 @@ public class VendeurSettingController implements Initializable {
             Parent p=Loader.getRoot();
             Stage stage =new Stage();
             stage.setScene(new Scene(p));
-            stage.show();
+            stage.show();*/
     }
 
     
-
+ public void start(Stage window, String destination) throws Exception {
+        Scene scene =  new Scene(FXMLLoader.load(getClass().getResource(destination)));
+        window.setScene(scene);
+        window.show();
+    }
 }

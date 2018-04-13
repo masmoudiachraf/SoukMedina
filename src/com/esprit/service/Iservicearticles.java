@@ -17,5 +17,6 @@ public interface Iservicearticles {
     void insert_article(articles p);
     void delete(int id);
      void update(articles p,int id);
-    List<articles> displayall();
+    List<articles> displayall(int id_bou);
+     //articles displayall(int id_bou);
 }
