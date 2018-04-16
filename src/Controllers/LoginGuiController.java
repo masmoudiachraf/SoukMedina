@@ -146,22 +146,6 @@ public class LoginGuiController implements Initializable {
             VendeurinterfaceController userzone= Loader.getController();
             
             userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
-            
-            /*   FXMLLoader Loader= new FXMLLoader();
-           Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
-            try {
-                Loader.load();
-                
-            } catch (IOException e) {
-                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, e);
-            }
-            Parent p=Loader.getRoot();
-            Stage stage =new Stage();
-            stage.setScene(new Scene(p));
-            stage.show();
-            VendeurinterfaceController userzone= Loader.getController();
-            userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
-          */
             }
         else
         if (su.display_u(mail, password).equals(mail+password))

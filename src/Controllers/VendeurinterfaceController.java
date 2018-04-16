@@ -68,11 +68,11 @@ public class VendeurinterfaceController implements Initializable {
     @FXML
     private JFXButton btnajoutarticle;
     @FXML
-    private JFXButton btnsupparticle;
-    @FXML
-    private JFXButton btnupdatearticle;
-    @FXML
     private FlowPane listArticleFlowPane;
+    @FXML
+    private JFXButton btnrefresh;
+    @FXML
+    private Pane ajoutartpane;
 
     /**
      * Initializes the controller class.
@@ -81,7 +81,7 @@ public class VendeurinterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listArticleFlowPane.setHgap(4);
+       
     }    
 
     public void userinformation(String labid,String labnom, String labmail,String labpassword ,String labadresse,String labtelephone, String labactivite) throws IOException {
@@ -98,15 +98,15 @@ public class VendeurinterfaceController implements Initializable {
         System.out.println(labid);
         /*ObservableList obs = FXCollections.observableArrayList(arraylist);
         articlelv.setItems(obs);*/
-        for (articles article : arraylist) {
-            //listArticleFlowPane.getChildren().add(article);         
-            
+        for (articles article : arraylist) {            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ArticleItem.fxml"));
                     Pane newLoadedPane = loader.load();
                     //newLoadedPane.prefWidthProperty().bind(listArticleFlowPane.prefWidthProperty());
                     ArticleItemController controller = loader.<ArticleItemController>getController();
                     controller.loadArticle(article);
                     listArticleFlowPane.getChildren().add(newLoadedPane);
+                    newLoadedPane.setStyle("-fx-border-color:black");
+                    
         }
         
     }
@@ -117,25 +117,10 @@ public class VendeurinterfaceController implements Initializable {
          FXMLLoader Loader= new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/vendeurSetting.fxml"));
             Pane pane=Loader.load();
-            panesetting.getChildren().setAll(pane);  
+            
+            ajoutartpane.getChildren().setAll(pane);  
             VendeurSettingController userzone= Loader.getController();
-           userzone.userinformation(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText(),labactivite.getText());
-    /*FXMLLoader Loader= new FXMLLoader();
-           Loader.setLocation(getClass().getResource("/GUI/vendeurSetting.fxml"));
-            try {
-                Loader.load();
-                
-            } catch (IOException e) {
-                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, e);
-            }
-            Parent p=Loader.getRoot();
-            Stage stage =new Stage();
-            stage.setScene(new Scene(p));
-            stage.show();
-          VendeurSettingController userzone= Loader.getController();
-           userzone.userinformation(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText(),labactivite.getText());  
-           */
-          
+           userzone.userinformation(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText(),labactivite.getText());         
     }
 
     @FXML
@@ -143,22 +128,41 @@ public class VendeurinterfaceController implements Initializable {
          FXMLLoader Loader= new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/ajouterarticle.fxml"));
             Pane pane=Loader.load();
-            panesetting.getChildren().setAll(pane);  
+            ajoutartpane.getChildren().setAll(pane);  
              AjouterarticleController ajoutzone =Loader.getController();
             ajoutzone.getid_boutique(labid.getText());
-
     }
 
     @FXML
-    private void redirection_supp_article(ActionEvent event) throws IOException {
-          FXMLLoader Loader= new FXMLLoader();
-            Loader.setLocation(getClass().getResource("/GUI/supprimerarticle.fxml"));
-            Pane pane=Loader.load();
-            panesetting.getChildren().setAll(pane);  
-            SupprimerarticleController suppzone = Loader.getController();
-            suppzone.getid_boutique(labid.getText());
-           
+    private void refresh(ActionEvent event) throws IOException {
+      articlesService as=new articlesService();
+        ArrayList<articles> arraylist = (ArrayList) as.displayall(Integer.parseInt(labid.getText()));
+        listArticleFlowPane.getChildren().clear();
+        for (articles article : arraylist) {
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ArticleItem.fxml"));
+                    Pane newLoadedPane = loader.load();
+                    ArticleItemController controller = loader.<ArticleItemController>getController();
+                    controller.loadArticle(article);
+                    listArticleFlowPane.getChildren().add(newLoadedPane);
+                    newLoadedPane.setStyle("-fx-border-color:black");
+                    
+        }   
     }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+        FXMLLoader Loader= new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/LoginGui.fxml"));
+            Pane pane=Loader.load();
+            
+            vendeurguiroot.getChildren().setAll(pane); 
+    }
+
+    
+
+   
+
 
     
     

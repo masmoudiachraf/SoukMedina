@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="panex" prefHeight="400.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VendeurSettingController">
     <children>
-      <Pane prefHeight="400.0" prefWidth="160.0">
+      <Pane prefHeight="400.0" prefWidth="160.0" style="-fx-background-color: #F5F5F5;">
          <children>
             <JFXTextField fx:id="tfnom" layoutX="13.0" layoutY="56.0" />
             <JFXTextField fx:id="tfmail" layoutX="13.0" layoutY="99.0" />
@@ -19,7 +19,7 @@
             <JFXTextField fx:id="tfactivite" layoutX="13.0" layoutY="252.0" />
             <JFXButton fx:id="modifier" layoutX="18.0" layoutY="304.0" onAction="#update_user_profil" text="Modifier" />
             <Label fx:id="labid" disable="true" layoutX="181.0" layoutY="329.0" text="Label" visible="false" />
-            <JFXButton fx:id="btnannuler" layoutX="84.0" layoutY="304.0" text="Annuler" />
+            <JFXButton fx:id="btnannuler" layoutX="84.0" layoutY="304.0" onAction="#annuler" text="Annuler" />
          </children>
       </Pane>
    </children>

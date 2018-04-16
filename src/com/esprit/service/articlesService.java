@@ -38,7 +38,7 @@ public class articlesService implements Iservicearticles{
 
     @Override
     public void insert_article(articles p) {
-        String requete="insert into articles (nom_art,taille_art,couleur_art,prix_art,categorie_art,boutiques_fk) values ('"+p.getNom()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie()+ "','"+p.getBoutique_fk().getId()+"')";
+        String requete="insert into articles (nom_art,image_art,taille_art,couleur_art,prix_art,categorie_art,boutiques_fk) values ('"+p.getNom()+"','"+p.getImage()+"','"+p.getTaille()+"','"+p.getCouleur()+"','"+p.getPrix()+ "','"+p.getCategorie()+ "','"+p.getBoutique_fk().getId()+"')";
    
           try {
               st=cnx.createStatement();
@@ -50,7 +50,7 @@ public class articlesService implements Iservicearticles{
 
     @Override
     public void delete(int id) {
-         String requete="delete from articles where id_art ="+id;
+         String requete="delete from articles where id_art ='"+id+"'";
    
           try {
               st=cnx.createStatement();
@@ -60,8 +60,9 @@ public class articlesService implements Iservicearticles{
           }
     }
 
+      @Override
     public void update(articles p, int id) {
-         String requete="update articles set nom_art='"+p.getNom()+"' , taille_art='"+p.getTaille()+"' , couleur_art='" +p.getCouleur()+"' , prix_art='" + p.getPrix()+"' where id_art="+id;
+         String requete="update articles set nom_art='"+p.getNom()+"' ,taille_art='"+p.getTaille()+"' , couleur_art='" +p.getCouleur()+"' , prix_art='" + p.getPrix()+"' ,categorie_art='"+p.getCategorie()+"' where id_art="+id;
 
           try {
               
@@ -87,7 +88,7 @@ public class articlesService implements Iservicearticles{
                rs=st.executeQuery(requete);
              while(rs.next()){
                  b.setId(rs.getInt("boutiques_fk"));
-            articles p=new articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),rs.getString("categorie_art"),b);
+            articles p=new articles(rs.getInt(1), rs.getString("nom_art") ,rs.getString("image_art"),rs.getString("taille_art"), rs.getString("couleur_art"), rs.getFloat("prix_art"),rs.getString("categorie_art"),b);
               list.add(p);
         }
           } catch (SQLException ex) {

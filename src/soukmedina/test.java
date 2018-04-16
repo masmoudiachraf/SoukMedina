@@ -27,9 +27,9 @@ public class test {
         articlesService as=new articlesService();
         Boutique b=new Boutique(1);
        
-        articles a= new articles("fdv", "f", "rfg", 20, "rfe", b);
+       // articles a= new articles("fdv", "f", "rfg", 20, "rfe", b);
        // as.insert_article(a);
-        System.out.println(as.displayall(4));
+        as.delete(3);
         System.out.println("ok dki");
     }
     

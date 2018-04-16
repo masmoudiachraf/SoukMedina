@@ -16,7 +16,8 @@ public class articles {
     
     private int id ;
     private String nom;
-    private String taille;
+    private String image;
+    private String taille; 
     private String couleur;
     private float prix;
     private String categorie;
@@ -24,25 +25,43 @@ public class articles {
     
     public articles() {};
 
-    public articles(int id, String nom, String taille, String couleur, float prix, String categorie,Boutique boutique_fk) {
+    public articles(int id, String nom, String image, String taille, String couleur, float prix, String categorie, Boutique boutique_fk) {
         this.id = id;
         this.nom = nom;
+        this.image = image;
         this.taille = taille;
         this.couleur = couleur;
         this.prix = prix;
-        this.categorie= categorie ;
-        this.boutique_fk=boutique_fk;
+        this.categorie = categorie;
+        this.boutique_fk = boutique_fk;
     }
-   
 
-    public articles(String nom, String taille, String couleur, float prix, String categorie,Boutique boutique_fk) {
+    public articles(String nom, String image, String taille, String couleur, float prix, String categorie, Boutique boutique_fk) {
+        this.nom = nom;
+        this.image = image;
+        this.taille = taille;
+        this.couleur = couleur;
+        this.prix = prix;
+        this.categorie = categorie;
+        this.boutique_fk = boutique_fk;
+    }
+
+    public articles(String nom, String taille, String couleur, float prix, String categorie) {
         this.nom = nom;
         this.taille = taille;
         this.couleur = couleur;
         this.prix = prix;
         this.categorie = categorie;
-        this.boutique_fk=boutique_fk;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     
 
     public int getId() {
