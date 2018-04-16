@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
+   <children>
+      <TableView fx:id="tableview" layoutX="25.0" layoutY="66.0" prefHeight="182.0" prefWidth="652.0">
+        <columns>
+          <TableColumn fx:id="id_uti" prefWidth="75.0" text="id_uti" />
+          <TableColumn fx:id="nom_uti" prefWidth="75.0" text="nom_uti" />
+            <TableColumn fx:id="prenom_uti" prefWidth="82.0" text="prenom_uti" />
+            <TableColumn fx:id="mail_uti" prefWidth="75.0" text="mail_uti" />
+            <TableColumn fx:id="password_uti" prefWidth="89.0" text="password_uti" />
+            <TableColumn fx:id="adresse_uti" prefWidth="75.0" text="adresse_uti" />
+            <TableColumn fx:id="telephone_uti" prefWidth="94.0" text="telephone_uti" />
+            <TableColumn fx:id="naissance_uti" prefWidth="86.0" text="naissance_uti" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableview1" layoutX="25.0" layoutY="292.0" prefHeight="182.0" prefWidth="613.0">
+         <columns>
+            <TableColumn fx:id="id_bout" prefWidth="75.0" text="id_bout" />
+            <TableColumn fx:id="nom_bout" prefWidth="75.0" text="nom_bout" />
+            <TableColumn fx:id="mail_bout" prefWidth="82.0" text="mail_bout" />
+            <TableColumn fx:id="password_bout" prefWidth="95.0" text="password_bout" />
+            <TableColumn fx:id="adresse_bout" prefWidth="78.0" text="adresse_bout" />
+            <TableColumn fx:id="telephone_bout" prefWidth="104.0" text="telephone_bout" />
+            <TableColumn fx:id="activite_bout" prefWidth="101.0" text="activite_bout" />
+         </columns>
+      </TableView>
+      <Button fx:id="Inserer_boutique" layoutX="92.0" layoutY="23.0" mnemonicParsing="false" onAction="#Inserer_boutique" text="Inserer_boutique" />
+   </children>
+</AnchorPane>
