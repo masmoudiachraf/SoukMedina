@@ -6,51 +6,37 @@
 package Controllers;
 
 import com.esprit.entite.articles;
-import com.esprit.service.articlesService;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
-
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author iskander
  */
-public class ArticleItemController implements Initializable {
+public class ArticleitemuserController implements Initializable {
 
+    @FXML
+    private AnchorPane panearticleitem;
     @FXML
     private Label articleItemlabel;
     @FXML
@@ -59,32 +45,26 @@ public class ArticleItemController implements Initializable {
     private Label articleItemlabel2;
     @FXML
     private Label articleItemlabel3;
-         @FXML
-    private JFXButton btndeletearticle;
-    
-         @FXML
+    @FXML
     private Label articleItemlabel4;
     @FXML
     private Label articleItemlabel5;
     @FXML
-    private JFXButton btnmodifierarticle;
-    @FXML
-    private AnchorPane panearticleitem;
+    private JFXButton btndeletearticle;
     @FXML
     private ImageView imagevi;
     @FXML
-    private StackPane interface_containe;
+    private StackPane interface_container;
     @FXML
     private Hyperlink linkdetails;
 
     /**
      * Initializes the controller class.
      */
-   
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }  
-    
+    }   
     public void loadArticle(articles article) throws FileNotFoundException{
         String sourceimage=article.getImage();
         articleItemlabel.setText(Integer.toString(article.getId()));
@@ -106,70 +86,9 @@ public class ArticleItemController implements Initializable {
     }
 
     @FXML
-    private void supprimer_article(ActionEvent event) {
-        articlesService as=new articlesService();
-        as.delete(Integer.parseInt(articleItemlabel.getText()));    
-        panearticleitem.setVisible(false);
-         panearticleitem.setStyle("-fx-background-color:rgba(255, 255, 255, 0);");
-    }
-
-  
-      @FXML
-    private void modifier_article(ActionEvent event) {
-        List<String> itemList = new ArrayList<String>();
-     itemList.add("cat1");
-        itemList.add("cat2");
-        itemList.add("cat3");
-        itemList.add("cat4");
-        ObservableList obs = FXCollections.observableList(itemList);
-        
-        JFXDialogLayout content = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(interface_containe, content, JFXDialog.DialogTransition.CENTER);
-        JFXTextField nom=new JFXTextField(articleItemlabel1.getText());
-        JFXTextField taille=new JFXTextField(articleItemlabel2.getText());
-        JFXTextField couleur=new JFXTextField(articleItemlabel3.getText());
-        JFXTextField prix=new JFXTextField(articleItemlabel4.getText());
-        JFXComboBox<?> categorie =new JFXComboBox<>();
-        categorie.setPrefWidth(130);
-        categorie.setItems(obs);
-        
-        JFXButton Modifier = new JFXButton("OK");
-        JFXButton Annuler = new JFXButton("anuuler");
-        Modifier.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    articlesService as=new articlesService();
-                    articles art=new articles(nom.getText(), taille.getText(), couleur.getText(), Float.parseFloat(prix.getText()), categorie.getValue().toString());
-                    as.update(art,Integer.parseInt(articleItemlabel.getText() ));
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        Annuler.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        
-        content.setPrefSize(120, 200);
-                content.setActions(nom,taille,couleur,prix,categorie,Modifier,Annuler);
-                dialog.show();
-           
-        
-    }
-
-    @FXML
     private void details(ActionEvent event) {
         JFXDialogLayout content = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(interface_containe, content, JFXDialog.DialogTransition.CENTER);
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         Label taille=new Label(articleItemlabel2.getText());
         Label couleur=new Label(articleItemlabel3.getText());
         Label categorie=new Label(articleItemlabel5.getText());
@@ -190,7 +109,8 @@ public class ArticleItemController implements Initializable {
          content.setBody(new Text("Taille: "+taille.getText()+"\n\nCouleur: "+taille.getText()+"\n\nCatégorie: "+categorie.getText()));
                 content.setActions(annuler);
                 dialog.show();
+        
     }
-
-  
+    
+    
 }

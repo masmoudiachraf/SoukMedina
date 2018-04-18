@@ -5,8 +5,6 @@
  */
 package Controllers;
 
-import com.esprit.entite.articles;
-import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.articlesService;
 import com.esprit.service.serviceUtilisateur;
@@ -15,11 +13,8 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.java.swing.plaf.windows.resources.windows;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,10 +25,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -144,41 +135,17 @@ public class LoginGuiController implements Initializable {
             AnchorPane pane=Loader.load();
             loginParent.getChildren().setAll(pane); 
             VendeurinterfaceController userzone= Loader.getController();
-            
-            userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
-            
-            /*   FXMLLoader Loader= new FXMLLoader();
-           Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
-            try {
-                Loader.load();
-                
-            } catch (IOException e) {
-                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, e);
-            }
-            Parent p=Loader.getRoot();
-            Stage stage =new Stage();
-            stage.setScene(new Scene(p));
-            stage.show();
-            VendeurinterfaceController userzone= Loader.getController();
-            userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
-          */
-            }
+            userzone.boutiqueinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
+            userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()));
+           }
         else
         if (su.display_u(mail, password).equals(mail+password))
         {  FXMLLoader Loader= new FXMLLoader();
-           Loader.setLocation(getClass().getResource("/GUI/.fxml"));
-            try {
-                Loader.load();
-                
-            } catch (IOException e) {
-                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, e);
-            }
-            Parent p=Loader.getRoot();
-            Stage stage =new Stage();
-            stage.setScene(new Scene(p));
-            stage.show();
-            //VendeurinterfaceController userzone= Loader.getController();
-            //userzone.userinformation(String.valueOf(su.displayall(mail, password).getId_uti()),su.displayall(mail, password).getNom_uti(),su.displayall(mail, password).getPrenom_uti(),su.displayall(mail, password).getMail_uti(),su.displayall(mail, password).getPassword_uti(),su.displayall(mail, password).getAdresse_uti(),String.valueOf(su.displayall(mail, password).getTelephone_uti()),su.displayall(mail, password).getNaissance_uti());
+           Loader.setLocation(getClass().getResource("/GUI/UserInterface.fxml"));
+           AnchorPane pane=Loader.load();
+            loginParent.getChildren().setAll(pane); 
+            UserInterfaceController userzone= Loader.getController();
+            userzone.userinformation(String.valueOf(su.displayall(mail, password).getId_uti()),su.displayall(mail, password).getNom_uti(),su.displayall(mail, password).getPrenom_uti(),su.displayall(mail, password).getMail_uti(),su.displayall(mail, password).getPassword_uti(),su.displayall(mail, password).getAdresse_uti(),String.valueOf(su.displayall(mail, password).getTelephone_uti()),su.displayall(mail, password).getNaissance_uti());
           
             
         }

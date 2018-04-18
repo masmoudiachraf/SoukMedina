@@ -6,27 +6,19 @@
 package Controllers;
 
 import com.esprit.entite.Boutique;
-import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
-import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -81,30 +73,7 @@ public class VendeurSettingController implements Initializable {
         ServiceBoutique sb= new ServiceBoutique();
         Boutique b=new Boutique(tfnom.getText(), tfmail.getText(), tfpassword.getText(),tfadresse.getText(),Integer.parseInt(tftelephone.getText()), tfactivite.getText());
         sb.update_boutique(b, Integer.parseInt(labid.getText()));
-           
-        
-        modifier.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    start((Stage) modifier.getScene().getWindow(), "/GUI/LoginGui.fxml");
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
 
-       /* Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
-            try {
-                Loader.load();
-                
-            } catch (IOException e) {
-                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, e);
-            }
-            Parent p=Loader.getRoot();
-            Stage stage =new Stage();
-            stage.setScene(new Scene(p));
-            stage.show();*/
     }
 
     
@@ -112,5 +81,11 @@ public class VendeurSettingController implements Initializable {
         Scene scene =  new Scene(FXMLLoader.load(getClass().getResource(destination)));
         window.setScene(scene);
         window.show();
+    }
+
+    @FXML
+    private void annuler(ActionEvent event) {
+           panex.setVisible(false);
+         panex.setStyle("-fx-background-color:rgba(255, 255, 255, 0);");
     }
 }
