@@ -40,24 +40,28 @@
                </padding></FlowPane>
          </content>
       </ScrollPane>
-      <Pane layoutX="160.0" layoutY="4.0" prefHeight="59.0" prefWidth="623.0">
-         <children>
-              <Hyperlink fx:id="linksetting" layoutX="466.0" layoutY="28.0" onAction="#direction_update_profile" text="Mon compte" textFill="#e10875" />
-              <Hyperlink fx:id="linklogout" layoutX="544.0" layoutY="28.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
-            <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="493.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Assets/setting.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="573.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Assets/logout.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
       <JFXButton fx:id="btnajoutarticle" layoutX="181.0" layoutY="77.0" onAction="#ajouter_article_gui" text="Ajouter article" />
       <JFXButton fx:id="btnrefresh" layoutX="657.0" layoutY="77.0" onAction="#refresh" text="Refresh les articles" />
+      <StackPane fx:id="interface_container" layoutX="152.0" prefHeight="60.0" prefWidth="623.0">
+         <children>
+            <Pane prefHeight="60.0" prefWidth="623.0">
+               <children>
+                  <Hyperlink fx:id="linksetting" layoutX="466.0" layoutY="28.0" onAction="#direction_update_profile" text="Mon compte" textFill="#e10875" />
+                  <Hyperlink fx:id="linklogout" layoutX="544.0" layoutY="28.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="493.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/setting.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="573.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/logout.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
       
     </children>
 </AnchorPane>

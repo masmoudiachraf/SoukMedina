@@ -25,13 +25,13 @@ public class test {
         Boutique b=new Boutique("showtime", "gafsa", "showtime@gmail.com", "123456789", 20202020, "artisanat");
 
         sb.update_boutique(b, 3);*/
-        articlesService as=new articlesService();
-        Boutique b=new Boutique(1);
+      //  articlesService as=new articlesService();
+        //Boutique b=new Boutique(1);
        
        // articles a= new articles("fdv", "f", "rfg", 20, "rfe", b);
        // as.insert_article(a);
-        as.delete(3);
-        System.out.println("ok dki");
+        //as.delete(3);
+        //System.out.println("ok dki");
 
     }
     

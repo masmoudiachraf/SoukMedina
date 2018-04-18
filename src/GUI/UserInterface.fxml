@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserinterfaceController">
-    
+<AnchorPane id="AnchorPane" fx:id="paneuserinterface" prefHeight="400.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserInterfaceController">
+   <children>
+      <ScrollPane fx:id="scrolpaneboutiques" prefHeight="400.0" prefWidth="160.0">
+         <content>
+            <FlowPane fx:id="flowpaneboutiques" prefHeight="400.0" prefWidth="160.0" />
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="scrolpanearticles" layoutX="172.0" layoutY="106.0" prefHeight="294.0" prefWidth="594.0">
+         <content>
+            <FlowPane fx:id="flowpanearticles" prefHeight="294.0" prefWidth="594.0" />
+         </content>
+      </ScrollPane>
+      <StackPane fx:id="interface_container" layoutX="160.0" layoutY="-2.0" prefHeight="80.0" prefWidth="623.0">
+         <children>
+            <Pane fx:id="panenavbar" prefHeight="60.0" prefWidth="623.0">
+               <children>
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="576.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/logout.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="499.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/setting.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="linklogout" layoutX="548.0" layoutY="20.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
+                  <Hyperlink fx:id="linksetting" layoutX="472.0" layoutY="20.0" onAction="#update_profile" text="Mon compte" textFill="#e10875" />
+                  <Label fx:id="labid" layoutX="122.0" layoutY="38.0" text="Label" visible="false" />
+                  <Label fx:id="labnom" layoutX="75.0" layoutY="16.0" text="Label" />
+                  <Label fx:id="labprenom" layoutX="117.0" layoutY="16.0" text="Label" visible="false" />
+                  <Label fx:id="labmail" layoutX="103.0" layoutY="36.0" text="Label" visible="false" />
+                  <Label fx:id="labpassword" layoutX="150.0" layoutY="36.0" text="Label" visible="false" />
+                  <Label fx:id="labadresse" layoutX="14.0" layoutY="36.0" text="Label" visible="false" />
+                  <Label fx:id="labtelephone" layoutX="52.0" layoutY="38.0" text="Label" visible="false" />
+                  <Label fx:id="labnaissance" layoutX="75.0" layoutY="38.0" text="Label" visible="false" />
+                  <Label layoutX="12.0" layoutY="16.0" text="Bienvenue " />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
 </AnchorPane>

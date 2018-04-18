@@ -5,21 +5,32 @@
  */
 package Controllers;
 
+import com.esprit.entite.Boutique;
 import com.esprit.entite.articles;
+import com.esprit.entite.utilisateur;
+import com.esprit.service.ServiceBoutique;
 import com.esprit.service.articlesService;
+import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
@@ -30,6 +41,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -73,6 +85,8 @@ public class VendeurinterfaceController implements Initializable {
     private JFXButton btnrefresh;
     @FXML
     private Pane ajoutartpane;
+    @FXML
+    private StackPane interface_container;
 
     /**
      * Initializes the controller class.
@@ -83,8 +97,8 @@ public class VendeurinterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        
     }    
-
-    public void userinformation(String labid,String labnom, String labmail,String labpassword ,String labadresse,String labtelephone, String labactivite) throws IOException {
+    public void boutiqueinformation(String labid,String labnom, String labmail,String labpassword ,String labadresse,String labtelephone, String labactivite)
+    {
         this.labid.setText(labid);
         this.labnom.setText(labnom);
         this.labmail.setText(labmail);
@@ -93,11 +107,16 @@ public class VendeurinterfaceController implements Initializable {
         this.labadresse.setText(labadresse);
         this.labactivite.setText(labactivite);
         
+    }
+    public void userinformation(String labid) throws IOException {
+        
         articlesService as=new articlesService();
         ArrayList<articles> arraylist = (ArrayList) as.displayall(Integer.parseInt(labid));
-        System.out.println(labid);
         /*ObservableList obs = FXCollections.observableArrayList(arraylist);
         articlelv.setItems(obs);*/
+         listArticleFlowPane.setPadding(new Insets(5, 5, 8, 8));
+                   listArticleFlowPane.setVgap(10);
+                   listArticleFlowPane.setHgap(8);
         for (articles article : arraylist) {            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ArticleItem.fxml"));
                     Pane newLoadedPane = loader.load();
@@ -105,7 +124,7 @@ public class VendeurinterfaceController implements Initializable {
                     ArticleItemController controller = loader.<ArticleItemController>getController();
                     controller.loadArticle(article);
                     listArticleFlowPane.getChildren().add(newLoadedPane);
-                    newLoadedPane.setStyle("-fx-border-color:black");
+                    newLoadedPane.setStyle("-fx-border-color:black;"+"-fx-border-radius:1em;");
                     
         }
         
@@ -114,14 +133,68 @@ public class VendeurinterfaceController implements Initializable {
 
     @FXML
     private void direction_update_profile(ActionEvent event) throws IOException {
-         FXMLLoader Loader= new FXMLLoader();
+            List<String> itemList = new ArrayList<String>();
+
+        itemList.add("Act1");
+        itemList.add("Act2");
+        itemList.add("Act3");
+        itemList.add("Act4");
+        ObservableList obs = FXCollections.observableList(itemList);      
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        JFXTextField nom=new JFXTextField(labnom.getText());
+        JFXTextField mail=new JFXTextField(labmail.getText());
+        JFXTextField password=new JFXTextField(labpassword.getText());
+        JFXTextField adresse=new JFXTextField(labadresse.getText());
+        JFXTextField telephone=new JFXTextField(labtelephone.getText());
+        JFXComboBox<?> activite_bout = new JFXComboBox<>();
+        activite_bout.setItems(obs);
+        activite_bout.setPrefWidth(120);
+
+        
+        JFXButton Modifier = new JFXButton("Modifier");
+        JFXButton Annuler = new JFXButton("anuuler");
+        Modifier.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    ServiceBoutique sb= new ServiceBoutique();
+        Boutique b=new Boutique(nom.getText(), mail.getText(), password.getText(),adresse.getText(),Integer.parseInt(telephone.getText()), activite_bout.getValue().toString());
+        sb.update_boutique(b, Integer.parseInt(labid.getText()));
+       // panesetting.getChildren().clear();
+        
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        Annuler.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        content.setPrefSize(120, 200);
+                content.setActions(nom,mail,password,adresse,telephone,activite_bout,Modifier,Annuler);
+                dialog.show();
+        
+        
+        
+         /*FXMLLoader Loader= new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/vendeurSetting.fxml"));
             Pane pane=Loader.load();
             
             ajoutartpane.getChildren().setAll(pane);  
             VendeurSettingController userzone= Loader.getController();
            userzone.userinformation(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText(),labactivite.getText());         
-    }
+           */
+}
 
     @FXML
     private void ajouter_article_gui(ActionEvent event) throws IOException {
@@ -138,6 +211,7 @@ public class VendeurinterfaceController implements Initializable {
       articlesService as=new articlesService();
         ArrayList<articles> arraylist = (ArrayList) as.displayall(Integer.parseInt(labid.getText()));
         listArticleFlowPane.getChildren().clear();
+        
         for (articles article : arraylist) {
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ArticleItem.fxml"));
@@ -145,7 +219,7 @@ public class VendeurinterfaceController implements Initializable {
                     ArticleItemController controller = loader.<ArticleItemController>getController();
                     controller.loadArticle(article);
                     listArticleFlowPane.getChildren().add(newLoadedPane);
-                    newLoadedPane.setStyle("-fx-border-color:black");
+                    newLoadedPane.setStyle("-fx-border-color:black;"+"-fx-border-radius:1em;");
                     
         }   
     }

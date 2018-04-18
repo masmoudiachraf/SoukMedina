@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import soukmedina.SoukMedina;
+import soukmedina.souk;
 
 /**
  *
@@ -34,7 +34,7 @@ public class datasource {
          
             
         } catch (SQLException ex) {
-            Logger.getLogger(SoukMedina.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(souk.class.getName()).log(Level.SEVERE, null, ex);
         
         }
       }
