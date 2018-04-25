@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,9 @@ import javafx.stage.Stage;
  */
 public class ArticleItemController implements Initializable {
 
+    VendeurinterfaceController parentController;
+    articles article;
+
     @FXML
     private Label articleItemlabel;
     @FXML
@@ -59,15 +63,15 @@ public class ArticleItemController implements Initializable {
     private Label articleItemlabel2;
     @FXML
     private Label articleItemlabel3;
-         @FXML
+    @FXML
     private JFXButton btndeletearticle;
-    
-         @FXML
+
+    @FXML
     private Label articleItemlabel4;
     @FXML
     private Label articleItemlabel5;
     @FXML
-    private JFXButton btnmodifierarticle;
+    private ImageView btnmodifierarticle;
     @FXML
     private AnchorPane panearticleitem;
     @FXML
@@ -76,28 +80,57 @@ public class ArticleItemController implements Initializable {
     private StackPane interface_containe;
     @FXML
     private Hyperlink linkdetails;
+    @FXML
+    private ImageView deleteArticleIv;
+    @FXML
+    private ImageView articleDetails;
 
     /**
      * Initializes the controller class.
      */
-   
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }  
-    
-    public void loadArticle(articles article) throws FileNotFoundException{
-        String sourceimage=article.getImage();
+        btnmodifierarticle.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                parentController.mofiferArticle(article);
+            }
+        });
+
+        deleteArticleIv.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                parentController.deleteArticle(articleItemlabel.getText());
+            }
+        });
+
+        articleDetails.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                parentController.displayDetailsArticle(article);
+            }
+        });
+    }
+
+    public void loadArticle(articles article, VendeurinterfaceController parentController) throws FileNotFoundException {
+        this.article = article;
+        this.parentController = parentController;
+        String sourceimage = article.getImage();
         articleItemlabel.setText(Integer.toString(article.getId()));
         articleItemlabel1.setText(article.getNom());
-        if(sourceimage.equals("")){
-        FileInputStream inputstream=new FileInputStream("C:\\Users\\iskander\\Desktop\\setting.png");
-        Image img=new Image(inputstream);
-        imagevi.setImage(img);
-        }
-        else{
-        FileInputStream inputstream=new FileInputStream(sourceimage);
-        Image img=new Image(inputstream);
-        imagevi.setImage(img);
+        if (sourceimage.equals("")) {
+
+            try {
+                Image img = new Image((getClass().getResource("/Assets/article.png")).toURI().toString());
+                imagevi.setImage(img);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(ArticleitemuserController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Image img = new Image(sourceimage);
+            imagevi.setImage(img);
         }
         articleItemlabel2.setText(article.getTaille());
         articleItemlabel3.setText(article.getCouleur());
@@ -105,92 +138,4 @@ public class ArticleItemController implements Initializable {
         articleItemlabel5.setText(article.getCategorie());
     }
 
-    @FXML
-    private void supprimer_article(ActionEvent event) {
-        articlesService as=new articlesService();
-        as.delete(Integer.parseInt(articleItemlabel.getText()));    
-        panearticleitem.setVisible(false);
-         panearticleitem.setStyle("-fx-background-color:rgba(255, 255, 255, 0);");
-    }
-
-  
-      @FXML
-    private void modifier_article(ActionEvent event) {
-        List<String> itemList = new ArrayList<String>();
-     itemList.add("cat1");
-        itemList.add("cat2");
-        itemList.add("cat3");
-        itemList.add("cat4");
-        ObservableList obs = FXCollections.observableList(itemList);
-        
-        JFXDialogLayout content = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(interface_containe, content, JFXDialog.DialogTransition.CENTER);
-        JFXTextField nom=new JFXTextField(articleItemlabel1.getText());
-        JFXTextField taille=new JFXTextField(articleItemlabel2.getText());
-        JFXTextField couleur=new JFXTextField(articleItemlabel3.getText());
-        JFXTextField prix=new JFXTextField(articleItemlabel4.getText());
-        JFXComboBox<?> categorie =new JFXComboBox<>();
-        categorie.setPrefWidth(130);
-        categorie.setItems(obs);
-        
-        JFXButton Modifier = new JFXButton("OK");
-        JFXButton Annuler = new JFXButton("anuuler");
-        Modifier.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    articlesService as=new articlesService();
-                    articles art=new articles(nom.getText(), taille.getText(), couleur.getText(), Float.parseFloat(prix.getText()), categorie.getValue().toString());
-                    as.update(art,Integer.parseInt(articleItemlabel.getText() ));
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        Annuler.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        
-        content.setPrefSize(120, 200);
-                content.setActions(nom,taille,couleur,prix,categorie,Modifier,Annuler);
-                dialog.show();
-           
-        
-    }
-
-    @FXML
-    private void details(ActionEvent event) {
-        JFXDialogLayout content = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(interface_containe, content, JFXDialog.DialogTransition.CENTER);
-        Label taille=new Label(articleItemlabel2.getText());
-        Label couleur=new Label(articleItemlabel3.getText());
-        Label categorie=new Label(articleItemlabel5.getText());
-        JFXButton annuler = new JFXButton("OK");
-        annuler.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        
-        );
-         content.setPrefSize(120, 200);
-         content.setBody(new Text("Taille: "+taille.getText()+"\n\nCouleur: "+taille.getText()+"\n\nCatégorie: "+categorie.getText()));
-                content.setActions(annuler);
-                dialog.show();
-    }
-
-  
 }

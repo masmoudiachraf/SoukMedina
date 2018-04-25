@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="AnchorContainerItem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="112.0" prefWidth="114.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BoutiqueItemListViewController">
+    <stylesheets>
+            <URL value="@/StyleSheets/boutiqueitemlistview.css" />
+         </stylesheets>
+    <children>
+      <AnchorPane id="AnchorPane" fx:id="boutiqueItemAnchorContainer" layoutX="-13.0" layoutY="-25.0" prefHeight="98.0" prefWidth="86.0" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <ImageView fx:id="boutiqueItemImageView" fitHeight="59.0" fitWidth="63.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="14.0">
+               <image>
+                  <Image url="@../Assets/shop.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="boutiqueItemLabel" alignment="CENTER" layoutX="24.0" layoutY="78.0" prefHeight="20.0" prefWidth="82.0" text="Boutique" textAlignment="CENTER" textFill="#f1687d" textOverrun="CLIP" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

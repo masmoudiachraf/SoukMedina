@@ -1,0 +1,36 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+#panesetting{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+}
+
+#listArticleFlowPane{
+    -fx-background-color:transparent;
+    -fx-vbar-policy : never;
+    -fx-hbar-policy : never;
+}
+
+#listArticleFlowPaneContainer{
+    -fx-background-color:transparent;
+    -fx-vbar-policy : never;
+    -fx-hbar-policy : never;
+}
+
+#addBtn{
+    -fx-background-color:white;
+    -fx-effect: dropshadow(three-pass-box, grey, 12, 0, 0, 0);
+    -fx-background-radius : 50px;
+    -fx-border-radius : 50px;
+    -fx-color : #da067e;
+}
+
+#addBtn:hover{
+    -fx-background-color:#EEEEEE;
+}

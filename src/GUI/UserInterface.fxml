@@ -7,47 +7,62 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" fx:id="paneuserinterface" prefHeight="400.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserInterfaceController">
+<AnchorPane id="AnchorPane" fx:id="paneuserinterface" prefHeight="459.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserInterfaceController">
    <children>
-      <ScrollPane fx:id="scrolpaneboutiques" prefHeight="400.0" prefWidth="160.0">
-         <content>
-            <FlowPane fx:id="flowpaneboutiques" prefHeight="400.0" prefWidth="160.0" />
-         </content>
-      </ScrollPane>
-      <ScrollPane fx:id="scrolpanearticles" layoutX="172.0" layoutY="106.0" prefHeight="294.0" prefWidth="594.0">
-         <content>
-            <FlowPane fx:id="flowpanearticles" prefHeight="294.0" prefWidth="594.0" />
-         </content>
-      </ScrollPane>
-      <StackPane fx:id="interface_container" layoutX="160.0" layoutY="-2.0" prefHeight="80.0" prefWidth="623.0">
+      <StackPane fx:id="interface_container" layoutX="160.0" layoutY="-2.0" prefHeight="80.0" prefWidth="623.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane fx:id="panenavbar" prefHeight="60.0" prefWidth="623.0">
                <children>
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="576.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ScrollPane fx:id="scrolpaneboutiques" layoutX="9.0" layoutY="5.0" prefHeight="447.0" prefWidth="116.0">
+                     <content>
+                        <FlowPane fx:id="flowpaneboutiques" prefHeight="435.0" prefWidth="110.0" />
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane fx:id="scrolpanearticles" layoutX="161.0" layoutY="80.0" prefHeight="379.0" prefWidth="628.0">
+                     <content>
+                        <FlowPane fx:id="flowpanearticles" prefHeight="377.0" prefWidth="626.0" />
+                     </content>
+                  </ScrollPane>
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="724.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/logout.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="499.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="630.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/setting.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="linklogout" layoutX="548.0" layoutY="20.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
-                  <Hyperlink fx:id="linksetting" layoutX="472.0" layoutY="20.0" onAction="#update_profile" text="Mon compte" textFill="#e10875" />
+                  <Hyperlink fx:id="linklogout" layoutX="697.0" layoutY="35.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
+                  <Hyperlink fx:id="linksetting" layoutX="603.0" layoutY="35.0" onAction="#update_profile" text="Mon compte" textFill="#e10875" />
                   <Label fx:id="labid" layoutX="122.0" layoutY="38.0" text="Label" visible="false" />
-                  <Label fx:id="labnom" layoutX="75.0" layoutY="16.0" text="Label" />
+                  <Label fx:id="labnom" layoutX="227.0" layoutY="25.0" text="Label" visible="false" />
                   <Label fx:id="labprenom" layoutX="117.0" layoutY="16.0" text="Label" visible="false" />
                   <Label fx:id="labmail" layoutX="103.0" layoutY="36.0" text="Label" visible="false" />
                   <Label fx:id="labpassword" layoutX="150.0" layoutY="36.0" text="Label" visible="false" />
                   <Label fx:id="labadresse" layoutX="14.0" layoutY="36.0" text="Label" visible="false" />
                   <Label fx:id="labtelephone" layoutX="52.0" layoutY="38.0" text="Label" visible="false" />
                   <Label fx:id="labnaissance" layoutX="75.0" layoutY="38.0" text="Label" visible="false" />
-                  <Label layoutX="12.0" layoutY="16.0" text="Bienvenue " />
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="554.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/panier.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="linksetting1" layoutX="545.0" layoutY="35.0" text="Panier" textFill="#e10875" />
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="189.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/loop.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="recherArticleTextField" layoutX="227.0" layoutY="21.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" />
                </children>
             </Pane>
          </children>
       </StackPane>
    </children>
+   <stylesheets>
+      <URL value="@/StyleSheets/userinterface.css" />
+   </stylesheets>
 </AnchorPane>
