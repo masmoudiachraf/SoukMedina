@@ -6,9 +6,7 @@
 package com.esprit.service;
 
 
-import com.esprit.entite.Boutique;
 import com.esprit.entite.utilisateur;
-import java.util.List;
 
 /**
  *
