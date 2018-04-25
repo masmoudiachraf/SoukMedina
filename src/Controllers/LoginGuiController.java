@@ -5,6 +5,10 @@
  */
 package Controllers;
 
+import com.esprit.entite.Administator;
+import com.esprit.entite.Boutique;
+import com.esprit.entite.utilisateur;
+import com.esprit.service.ServiceAdmin;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.articlesService;
 import com.esprit.service.serviceUtilisateur;
@@ -27,6 +31,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -38,6 +43,12 @@ import javafx.stage.Stage;
  */
 public class LoginGuiController implements Initializable {
 
+    ServiceBoutique sb = new ServiceBoutique();
+    serviceUtilisateur su = new serviceUtilisateur();
+    articlesService as = new articlesService();
+    ServiceAdmin serviceAdmin = new ServiceAdmin();
+    Administator admin = null;
+    
     @FXML
     private AnchorPane loginContainer;
     @FXML
@@ -55,18 +66,19 @@ public class LoginGuiController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+
+    }
 
     @FXML
     private void inscrir_tap(ActionEvent event) {
-        
-             JFXDialogLayout content = new JFXDialogLayout();
+
+        JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Mode"));
         content.setBody(new Text("Vous réprésentez un boutique ou vous êtes un simple utilisateur ?"));
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
@@ -83,97 +95,94 @@ public class LoginGuiController implements Initializable {
                 }
             }
         });
-        
+
         btnBoutique.setOnAction(new EventHandler<ActionEvent>() {
-                  @Override
-                  public void handle(ActionEvent event) {
-                      try {
-                          start((Stage) btnUser.getScene().getWindow(), "/GUI/InscriptionBoutique.fxml");
-                          dialog.close();
-                      } catch (Exception ex) {
-                          Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                  }
-              });
-        content.setActions(btnBoutique,btnUser);
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    start((Stage) btnUser.getScene().getWindow(), "/GUI/InscriptionBoutique.fxml");
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        content.setActions(btnBoutique, btnUser);
         dialog.show();
     }
- 
 
     @FXML
     private void authentification(ActionEvent event) throws IOException {
-         ServiceBoutique sb= new ServiceBoutique();
-           serviceUtilisateur su= new serviceUtilisateur();
-           articlesService as=new articlesService();
-           String mail= login_mailTf.getText();
-            String password= login_passTf.getText();    
-               
-            if(login_mailTf.getText().equals("") || login_passTf.getText().equals(""))
-            {
-             JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Mode"));
-        content.setBody(new Text("Saisir vos informations! "));
-        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton btnalert = new JFXButton("OK");
-        btnalert.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        content.setActions(btnalert);
-        dialog.show();
-        }
-            
-           else if(sb.display_b(mail,password).equals(mail+password)){
-               FXMLLoader Loader= new FXMLLoader();
-               Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
-            AnchorPane pane=Loader.load();
-            loginParent.getChildren().setAll(pane); 
-            VendeurinterfaceController userzone= Loader.getController();
-            userzone.boutiqueinformation(String.valueOf(sb.displayboutique(mail, password).getId()), sb.displayboutique(mail, password).getNom_bout(), sb.displayboutique(mail, password).getMail_bout(),sb.displayboutique(mail, password).getPassword_bout(), sb.displayboutique(mail, password).getAdresse_bout(), String.valueOf(sb.displayboutique(mail, password).getTelephone_bout()), sb.displayboutique(mail, password).getActivite_bout());
-            userzone.userinformation(String.valueOf(sb.displayboutique(mail, password).getId()));
-           }
-        else
-        if (su.display_u(mail, password).equals(mail+password))
-        {  FXMLLoader Loader= new FXMLLoader();
-           Loader.setLocation(getClass().getResource("/GUI/UserInterface.fxml"));
-           AnchorPane pane=Loader.load();
-            loginParent.getChildren().setAll(pane); 
-            UserInterfaceController userzone= Loader.getController();
-            userzone.userinformation(String.valueOf(su.displayall(mail, password).getId_uti()),su.displayall(mail, password).getNom_uti(),su.displayall(mail, password).getPrenom_uti(),su.displayall(mail, password).getMail_uti(),su.displayall(mail, password).getPassword_uti(),su.displayall(mail, password).getAdresse_uti(),String.valueOf(su.displayall(mail, password).getTelephone_uti()),su.displayall(mail, password).getNaissance_uti());
-          
-            
-        }
         
-        else
-        {
-              JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Mode"));
-        content.setBody(new Text("verifier votre mail et password "));
-        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton btnalert = new JFXButton("OK");
-        btnalert.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+        String mail = login_mailTf.getText();
+        String password = login_passTf.getText();
+
+        if (login_mailTf.getText().equals("") || login_passTf.getText().equals("")) {
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Mode"));
+            content.setBody(new Text("Saisir vos informations! "));
+            JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+            JFXButton btnalert = new JFXButton("OK");
+            btnalert.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        dialog.close();
+                    } catch (Exception ex) {
+                        Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
-        });
-        content.setActions(btnalert);
-        dialog.show();
-       
-        
+            });
+            content.setActions(btnalert);
+            dialog.show();
+        } else if (sb.display_b(mail, password).equals(mail + password)) {
+            Boutique boutique = sb.displayboutique(mail, password);
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
+            AnchorPane pane = Loader.load();
+            loginParent.getChildren().setAll(pane);
+            VendeurinterfaceController userzone = Loader.getController();
+            userzone.boutiqueinformation(String.valueOf(boutique.getId()), boutique.getNom_bout(), boutique.getMail_bout(),boutique.getPassword_bout(), boutique.getAdresse_bout(), String.valueOf(boutique.getTelephone_bout()), boutique.getActivite_bout());
+            userzone.userinformation(String.valueOf(boutique.getId()));
+        } else if (su.display_u(mail, password).equals(mail + password)) {
+            utilisateur user = su.displayall(mail, password);
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/UserInterface.fxml"));
+            AnchorPane pane = Loader.load();
+            loginParent.getChildren().setAll(pane);
+            UserInterfaceController userzone = Loader.getController();
+            userzone.userinformation(String.valueOf(user.getId_uti()), user.getNom_uti(), user.getPrenom_uti(), user.getMail_uti(), user.getPassword_uti(), user.getAdresse_uti(), String.valueOf(user.getTelephone_uti()), user.getNaissance_uti());
+
+        }else if (serviceAdmin.loginAdmin(new Administator(mail, password)) != null) {
+            Administator admin = serviceAdmin.loginAdmin(new Administator(mail, password));
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/admin.fxml"));
+            Pane pane = Loader.load();
+            loginParent.getChildren().setAll(pane);
+            AdminController userzone = Loader.getController();
+            //userzone.userinformation(String.valueOf(user.getId_uti()), user.getNom_uti(), user.getPrenom_uti(), user.getMail_uti(), user.getPassword_uti(), user.getAdresse_uti(), String.valueOf(user.getTelephone_uti()), user.getNaissance_uti());
+        }else {
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Mode"));
+            content.setBody(new Text("verifier votre mail et password "));
+            JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+            JFXButton btnalert = new JFXButton("OK");
+            btnalert.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        dialog.close();
+                    } catch (Exception ex) {
+                        Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            content.setActions(btnalert);
+            dialog.show();
+
+        }
     }
-    }
-      
+
     /**
      *
      * @param window
@@ -181,7 +190,7 @@ public class LoginGuiController implements Initializable {
      * @throws Exception
      */
     public void start(Stage window, String destination) throws Exception {
-        Scene scene =  new Scene(FXMLLoader.load(getClass().getResource(destination)));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource(destination)));
         window.setScene(scene);
         window.show();
     }
@@ -190,5 +199,4 @@ public class LoginGuiController implements Initializable {
 
 /*
 
-*/
-
+ */

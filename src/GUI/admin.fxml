@@ -1,36 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
+
+<StackPane fx:id="stackPaneContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
    <children>
-      <TableView fx:id="tableview" layoutX="25.0" layoutY="66.0" prefHeight="182.0" prefWidth="652.0">
-        <columns>
-          <TableColumn fx:id="id_uti" prefWidth="75.0" text="id_uti" />
-          <TableColumn fx:id="nom_uti" prefWidth="75.0" text="nom_uti" />
-            <TableColumn fx:id="prenom_uti" prefWidth="82.0" text="prenom_uti" />
-            <TableColumn fx:id="mail_uti" prefWidth="75.0" text="mail_uti" />
-            <TableColumn fx:id="password_uti" prefWidth="89.0" text="password_uti" />
-            <TableColumn fx:id="adresse_uti" prefWidth="75.0" text="adresse_uti" />
-            <TableColumn fx:id="telephone_uti" prefWidth="94.0" text="telephone_uti" />
-            <TableColumn fx:id="naissance_uti" prefWidth="86.0" text="naissance_uti" />
-        </columns>
-      </TableView>
-      <TableView fx:id="tableview1" layoutX="25.0" layoutY="292.0" prefHeight="182.0" prefWidth="613.0">
-         <columns>
-            <TableColumn fx:id="id_bout" prefWidth="75.0" text="id_bout" />
-            <TableColumn fx:id="nom_bout" prefWidth="75.0" text="nom_bout" />
-            <TableColumn fx:id="mail_bout" prefWidth="82.0" text="mail_bout" />
-            <TableColumn fx:id="password_bout" prefWidth="95.0" text="password_bout" />
-            <TableColumn fx:id="adresse_bout" prefWidth="78.0" text="adresse_bout" />
-            <TableColumn fx:id="telephone_bout" prefWidth="104.0" text="telephone_bout" />
-            <TableColumn fx:id="activite_bout" prefWidth="101.0" text="activite_bout" />
-         </columns>
-      </TableView>
-      <Button fx:id="Inserer_boutique" layoutX="92.0" layoutY="23.0" mnemonicParsing="false" onAction="#Inserer_boutique" text="Inserer_boutique" />
+      <AnchorPane id="AnchorPane" prefHeight="459.0" prefWidth="789.0">
+         <children>
+            <AnchorPane fx:id="barSide" prefHeight="200.0" prefWidth="130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <AnchorPane prefHeight="25.0" prefWidth="13.0" AnchorPane.topAnchor="150.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0">
+                           <image>
+                              <Image url="@../Assets/adminUser.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="userBtn" layoutX="37.0" onAction="#diplayUsers" prefHeight="25.0" prefWidth="85.0" text="Utilisateurs" textFill="#f1687d" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="25.0" prefWidth="13.0" AnchorPane.topAnchor="190.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0">
+                           <image>
+                              <Image url="@../Assets/adminShop.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="boutiqueBtn" layoutX="37.0" onAction="#displayBoutiqe" prefHeight="25.0" prefWidth="85.0" text="Boutique" textFill="#f1687d" />
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="101.0" fitWidth="105.0" layoutX="15.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0">
+                     <image>
+                        <Image url="@../Assets/userAvatar.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anchorHeader" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #F1687D;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrateur" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="13.0" />
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="91.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="195.0" AnchorPane.topAnchor="15.0">
+                     <image>
+                        <Image url="@../Assets/white_search.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="linklogout" layoutX="696.0" layoutY="27.0" text="Déconnexion" textFill="WHITE" />
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="721.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/white_logout.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="640.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/admin_settings.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="linklogout1" layoutX="613.0" layoutY="27.0" text="Mon compte" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tableview" layoutX="134.0" layoutY="90.0" prefHeight="379.0" prefWidth="649.0" AnchorPane.topAnchor="90.0">
+               <columns>
+                  <TableColumn fx:id="id_uti" prefWidth="75.0" text="id_uti" />
+                  <TableColumn fx:id="nom_uti" prefWidth="75.0" text="nom_uti" />
+                  <TableColumn fx:id="prenom_uti" prefWidth="82.0" text="prenom_uti" />
+                  <TableColumn fx:id="mail_uti" prefWidth="75.0" text="mail_uti" />
+                  <TableColumn fx:id="password_uti" prefWidth="89.0" text="password_uti" />
+                  <TableColumn fx:id="adresse_uti" prefWidth="75.0" text="adresse_uti" />
+                  <TableColumn fx:id="telephone_uti" prefWidth="94.0" text="telephone_uti" />
+                  <TableColumn fx:id="naissance_uti" prefWidth="86.0" text="naissance_uti" />
+               </columns>
+            </TableView>
+            <TableView fx:id="tableview1" layoutX="133.0" layoutY="88.0" prefHeight="379.0" prefWidth="610.0" visible="false">
+               <columns>
+                  <TableColumn fx:id="id_bout" prefWidth="75.0" text="id_bout" />
+                  <TableColumn fx:id="nom_bout" prefWidth="75.0" text="nom_bout" />
+                  <TableColumn fx:id="mail_bout" prefWidth="82.0" text="mail_bout" />
+                  <TableColumn fx:id="password_bout" prefWidth="95.0" text="password_bout" />
+                  <TableColumn fx:id="adresse_bout" prefWidth="78.0" text="adresse_bout" />
+                  <TableColumn fx:id="telephone_bout" prefWidth="104.0" text="telephone_bout" />
+                  <TableColumn fx:id="activite_bout" prefWidth="101.0" text="activite_bout" />
+               </columns>
+            </TableView>
+            <JFXButton fx:id="Inserer_boutique" layoutX="134.0" layoutY="57.0" onAction="#Inserer_boutique" text="Inserer boutique" visible="false" />
+            <JFXButton fx:id="Inserer_utilisateur" layoutX="666.0" layoutY="57.0" text="Inserer Utilisateur" />
+         </children>
+         <stylesheets>
+            <URL value="@/StyleSheets/admin.css" />
+         </stylesheets>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
