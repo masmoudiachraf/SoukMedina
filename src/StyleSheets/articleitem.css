@@ -5,3 +5,31 @@
 .mainFxmlClass {
 
 }
+
+#panearticleitem{
+    -fx-background-color: black;
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+    -fx-padding: 25px;
+}
+
+#btnmodifierarticle{
+    -fx-image: url("../Assets/edit.png");
+}
+
+#btnmodifierarticle:hover{
+       -fx-image: url("../Assets/edit_hover.png");
+}
+#deleteArticleIv{
+    -fx-image: url("../Assets/delete_article.png");
+}
+
+#deleteArticleIv:hover{
+    -fx-image: url("../Assets/delete_article_hover.png");
+}
+
+#articleDetails{
+    -fx-image: url("../Assets/information.png");
+}
+#articleDetails:hover{
+    -fx-image: url("../Assets/information_hover.png");
+}

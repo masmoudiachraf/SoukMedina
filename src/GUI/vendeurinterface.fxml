@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.web.*?>
@@ -11,53 +12,74 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
-<AnchorPane id="AnchorPane" fx:id="vendeurguiroot" prefHeight="400.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VendeurinterfaceController">
+<AnchorPane id="AnchorPane" fx:id="vendeurguiroot" prefHeight="459.0" prefWidth="789.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VendeurinterfaceController">
+    <stylesheets>
+      <URL value="@/StyleSheets/vendeurInterface.css" />
+   </stylesheets>
     <children>
-        <Pane fx:id="panesetting" layoutY="11.0" prefHeight="400.0" prefWidth="160.0">
-            <children>
-                <Label fx:id="labnom" contentDisplay="CENTER" layoutX="63.0" layoutY="117.0" text="Label" textFill="#e81e8d" />
-                <Label fx:id="labmail" contentDisplay="CENTER" layoutX="63.0" layoutY="147.0" text="Label" textFill="#e81e8d" />
-                <Label fx:id="labtelephone" contentDisplay="CENTER" layoutX="63.0" layoutY="177.0" text="Label" textFill="#e81e8d" />
-                <Label fx:id="labadresse" contentDisplay="CENTER" layoutX="63.0" layoutY="208.0" text="Label" textFill="#e81e8d" />
-                <Label fx:id="labactivite" contentDisplay="CENTER" layoutX="63.0" layoutY="237.0" text="Label" textFill="#e81e8d" />
-            <ImageView fitHeight="103.0" fitWidth="95.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Assets/user.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="labpassword" disable="true" layoutX="63.0" layoutY="325.0" text="Label" visible="false" />
-            <Label fx:id="labid" disable="true" layoutX="64.0" layoutY="348.0" text="Label" visible="false" />
-            
-                              </children>
-        </Pane>
-      <Pane fx:id="ajoutartpane" prefHeight="400.0" prefWidth="160.0" />
-      <ScrollPane layoutX="181.0" layoutY="106.0" prefHeight="294.0" prefWidth="594.0">
-         <content>
-            <FlowPane fx:id="listArticleFlowPane" prefHeight="294.0" prefWidth="594.0">
-               <padding>
-                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-               </padding></FlowPane>
-         </content>
-      </ScrollPane>
-      <JFXButton fx:id="btnajoutarticle" layoutX="181.0" layoutY="77.0" onAction="#ajouter_article_gui" text="Ajouter article" />
-      <JFXButton fx:id="btnrefresh" layoutX="657.0" layoutY="77.0" onAction="#refresh" text="Refresh les articles" />
-      <StackPane fx:id="interface_container" layoutX="152.0" prefHeight="60.0" prefWidth="623.0">
+      <StackPane fx:id="interface_container" layoutX="152.0" prefHeight="60.0" prefWidth="623.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="60.0" prefWidth="623.0">
                <children>
-                  <Hyperlink fx:id="linksetting" layoutX="466.0" layoutY="28.0" onAction="#direction_update_profile" text="Mon compte" textFill="#e10875" />
-                  <Hyperlink fx:id="linklogout" layoutX="544.0" layoutY="28.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="493.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Assets/setting.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="573.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Assets/logout.png" />
-                     </image>
-                  </ImageView>
+                  <AnchorPane prefHeight="459.0" prefWidth="789.0">
+                     <children>
+                        <Pane fx:id="ajoutartpane" prefHeight="400.0" prefWidth="140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          <Pane fx:id="panesetting" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                  <Label fx:id="labnom" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="221.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                                  <Label fx:id="labmail" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="254.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                                  <Label fx:id="labtelephone" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="284.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                                  <Label fx:id="labadresse" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="315.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                                  <Label fx:id="labactivite" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="344.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                              <ImageView fitHeight="129.0" fitWidth="131.0" layoutX="36.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/userAvatar.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="labpassword" disable="true" layoutX="63.0" layoutY="325.0" text="Label" visible="false" />
+                              <Label fx:id="labid" disable="true" layoutX="64.0" layoutY="348.0" text="Label" visible="false" />
+                              
+                                                            </children>
+                          </Pane>
+                        <AnchorPane prefHeight="343.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <ScrollPane fx:id="listArticleFlowPaneContainer" layoutY="-36.0" prefHeight="379.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-36.0">
+                                 <content>
+                                    <FlowPane fx:id="listArticleFlowPane" prefHeight="376.0" prefWidth="578.0">
+                                       <padding>
+                                          <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </content>
+                              </ScrollPane>
+                              <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addArticleClick" prefHeight="30.0" prefWidth="30.0" text="+" textFill="#e10875" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
+                           </children>
+                        </AnchorPane>
+                        <Hyperlink fx:id="linksetting" layoutX="611.0" layoutY="42.0" onAction="#direction_update_profile" text="Mon compte" textFill="#e10875" />
+                        <Hyperlink fx:id="linklogout" layoutX="699.0" layoutY="42.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="638.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/setting.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="726.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/logout.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="vendeurRecherArticleTextField" layoutX="289.0" layoutY="26.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" />
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="251.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/loop.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
          </children>

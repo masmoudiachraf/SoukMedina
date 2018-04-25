@@ -5,3 +5,22 @@
 .mainFxmlClass {
 
 }
+
+#scrolpaneboutiques{
+    -fx-background-color:transparent;
+    -fx-vbar-policy : never;
+    -fx-effect: dropshadow(three-pass-box, grey, 2, 0, 0, 0);
+
+}
+
+#scrolpanearticles{
+    -fx-background-color:transparent;
+}
+
+#flowpaneboutiques{ 
+  
+}
+
+#flowpanearticles{
+    -fx-padding: 5px;
+}

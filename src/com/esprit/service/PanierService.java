@@ -37,7 +37,6 @@ public class PanierService implements IservicePanier{
     @Override
     public void insert(Panier p) {
         String requete="insert into panier (utilisateurs_fk,articles_fk,quantite,etat) values ('"+p.getUtilisateurs_fk().getId_uti()+"','"+p.getArticles_fk().getId()+"','"+p.getQuantite()+"','"+p.getEtat_panier()+"')";
-   
           try {
               st=cnx.createStatement();
               st.executeUpdate(requete);
