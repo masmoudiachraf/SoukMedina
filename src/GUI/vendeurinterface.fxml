@@ -72,12 +72,13 @@
                               <Image url="@../Assets/logout.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="vendeurRecherArticleTextField" layoutX="289.0" layoutY="26.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" />
-                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="251.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                        <TextField fx:id="vendeurRecherArticleTextField" layoutX="241.0" layoutY="26.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" />
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="203.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Assets/loop.png" />
                            </image>
                         </ImageView>
+                        <Hyperlink fx:id="linkcontact" layoutX="555.0" layoutY="41.0" onAction="#send_mail" text="Contact" textFill="#e10875" />
                      </children>
                   </AnchorPane>
                </children>

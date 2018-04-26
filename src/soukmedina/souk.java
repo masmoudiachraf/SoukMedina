@@ -21,7 +21,7 @@ public class souk extends Application {
     public void start(Stage primaryStage) throws IOException {
        
         
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/GUI/testmail.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/GUI/LoginGui.fxml")));
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
