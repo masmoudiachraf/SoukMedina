@@ -8,6 +8,7 @@ package Controllers;
 import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.serviceUtilisateur;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -28,9 +29,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -76,6 +79,20 @@ public class AdminController implements Initializable {
     private TableColumn<?, ?> telephone_bout;
     @FXML
     private TableColumn<?, ?> activite_bout;
+    @FXML
+    private AnchorPane barSide;
+    @FXML
+    private AnchorPane anchorHeader;
+    @FXML
+    private Hyperlink linklogout;
+    @FXML
+    private Hyperlink linklogout1;
+    @FXML
+    private JFXButton userBtn;
+    @FXML
+    private JFXButton boutiqueBtn;
+    @FXML
+    private JFXButton Inserer_utilisateur;
         
     /**
      * Initializes the controller class.
@@ -123,8 +140,22 @@ public class AdminController implements Initializable {
             Stage stage =new Stage();
             stage.setScene(new Scene(p));
             stage.show();
-            
+    }
 
+    @FXML
+    private void diplayUsers(ActionEvent event) {
+        tableview.setVisible(true);
+        tableview1.setVisible(false);
+        Inserer_boutique.setVisible(false);
+        Inserer_utilisateur.setVisible(true);
+    }
+
+    @FXML
+    private void displayBoutiqe(ActionEvent event) {
+        tableview.setVisible(false);
+        tableview1.setVisible(true);
+        Inserer_utilisateur.setVisible(false);
+        Inserer_boutique.setVisible(true);
     }
    
     

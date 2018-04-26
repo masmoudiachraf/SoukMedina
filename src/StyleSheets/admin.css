@@ -1,0 +1,16 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+#anchorHeader{
+    -fx-background-color: #F1687D;
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+}
+
+#barSide{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, grey, 3, 0, 0, 0);
+}
