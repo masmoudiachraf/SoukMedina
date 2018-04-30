@@ -1,0 +1,43 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+#articleImage{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, grey, 3, 0, 0, 0);
+}
+
+#backBtn{
+    -fx-background-color:#F1687D;
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+    -fx-background-radius : 50px;
+    -fx-border-radius : 50px;
+    -fx-color : #da067e;
+}
+
+#backBtn:hover{
+    -fx-background-color:#B54E5E;
+    -fx-effect: dropshadow(three-pass-box, grey, 12, 0, 0, 0);
+}
+
+#articleAjouterPanier{
+    -fx-background-color:#F1687D;
+}
+
+#articleAjouterPanier:hover{
+    -fx-background-color:#B54E5E;
+}
+
+#commentairesFlowPaneContainer{
+    -fx-background-color:transparent;
+    -fx-vbar-policy : never;
+    -fx-hbar-policy : never;
+}
+
+#commentairesFlowPane{
+    -fx-padding: 5px;
+}

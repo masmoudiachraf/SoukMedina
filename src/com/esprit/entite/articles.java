@@ -133,7 +133,7 @@ public class articles {
 
    
     public String toString() {
-        return "****"+id+"****\nNom: "+ nom+"\nTaille: "  + taille +"\nCouleur: "  +couleur  +"\nPrix: "+ prix  +"\nCategorie: "+ categorie+"\n" ;
+        return "****"+id+"****\nNom: "+ nom+"\nTaille: "  + taille+"\nImage: "  + image +"\nCouleur: "  +couleur  +"\nPrix: "+ prix  +"\nCategorie: "+ categorie+"\n" ;
     }
     
     

@@ -101,6 +101,7 @@ public class VendeurinterfaceController implements Initializable {
     private Button addBtn;
 
     ArrayList<articles> listArticles ;
+    public static Boutique logedBoutique;
     /**
      * Initializes the controller class.
      *

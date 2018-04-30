@@ -1,0 +1,14 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+#commentaireContainer{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, grey, 3, 0, 0, 0);
+    -fx-background-radius : 5px;
+    -fx-border-radius : 5px;
+}

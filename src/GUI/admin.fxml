@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-
 <StackPane fx:id="stackPaneContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="459.0" prefWidth="789.0">
@@ -71,7 +70,7 @@
                   <Hyperlink fx:id="linklogout1" layoutX="613.0" layoutY="27.0" text="Mon compte" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <TableView fx:id="tableview" layoutX="134.0" layoutY="90.0" prefHeight="379.0" prefWidth="649.0" AnchorPane.topAnchor="90.0">
+            <TableView fx:id="tableview" layoutX="698.0" layoutY="386.0" prefHeight="83.0" prefWidth="85.0" AnchorPane.topAnchor="386.0">
                <columns>
                   <TableColumn fx:id="id_uti" prefWidth="75.0" text="id_uti" />
                   <TableColumn fx:id="nom_uti" prefWidth="75.0" text="nom_uti" />
@@ -96,6 +95,7 @@
             </TableView>
             <JFXButton fx:id="Inserer_boutique" layoutX="134.0" layoutY="57.0" onAction="#Inserer_boutique" text="Inserer boutique" visible="false" />
             <JFXButton fx:id="Inserer_utilisateur" layoutX="666.0" layoutY="57.0" text="Inserer Utilisateur" />
+            <JFXListView fx:id="usersListView" layoutX="190.0" layoutY="103.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
          </children>
          <stylesheets>
             <URL value="@/StyleSheets/admin.css" />

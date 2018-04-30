@@ -49,6 +49,9 @@ public class LoginGuiController implements Initializable {
     ServiceAdmin serviceAdmin = new ServiceAdmin();
     Administator admin = null;
     
+    public static utilisateur logedUser = null;
+    public static Boutique logedBoutique = null;
+    public static Administator logedAdmin = null;
     @FXML
     private AnchorPane loginContainer;
     @FXML
@@ -141,9 +144,10 @@ public class LoginGuiController implements Initializable {
             Loader.setLocation(getClass().getResource("/GUI/vendeurinterface.fxml"));
             AnchorPane pane = Loader.load();
             loginParent.getChildren().setAll(pane);
-            VendeurinterfaceController userzone = Loader.getController();
-            userzone.boutiqueinformation(String.valueOf(boutique.getId()), boutique.getNom_bout(), boutique.getMail_bout(),boutique.getPassword_bout(), boutique.getAdresse_bout(), String.valueOf(boutique.getTelephone_bout()), boutique.getActivite_bout());
-            userzone.userinformation(String.valueOf(boutique.getId()));
+            VendeurinterfaceController boutiquecontroller = Loader.getController();
+            boutiquecontroller.logedBoutique = boutique;
+            boutiquecontroller.boutiqueinformation(String.valueOf(boutique.getId()), boutique.getNom_bout(), boutique.getMail_bout(),boutique.getPassword_bout(), boutique.getAdresse_bout(), String.valueOf(boutique.getTelephone_bout()), boutique.getActivite_bout());
+            boutiquecontroller.userinformation(String.valueOf(boutique.getId()));
         } else if (su.display_u(mail, password).equals(mail + password)) {
             utilisateur user = su.displayall(mail, password);
             FXMLLoader Loader = new FXMLLoader();
@@ -151,10 +155,12 @@ public class LoginGuiController implements Initializable {
             AnchorPane pane = Loader.load();
             loginParent.getChildren().setAll(pane);
             UserInterfaceController userzone = Loader.getController();
+            userzone.logedUser = user;
             userzone.userinformation(String.valueOf(user.getId_uti()), user.getNom_uti(), user.getPrenom_uti(), user.getMail_uti(), user.getPassword_uti(), user.getAdresse_uti(), String.valueOf(user.getTelephone_uti()), user.getNaissance_uti());
 
         }else if (serviceAdmin.loginAdmin(new Administator(mail, password)) != null) {
             Administator admin = serviceAdmin.loginAdmin(new Administator(mail, password));
+            logedAdmin = admin;
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/admin.fxml"));
             Pane pane = Loader.load();

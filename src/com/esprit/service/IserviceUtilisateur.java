@@ -21,5 +21,5 @@ public interface IserviceUtilisateur {
     utilisateur displayall(String mail,String password);
     String displayutilisateur(String mail);
     String display_u(String mail,String password);
-
+    utilisateur selectSingleUtilisateur(int id);
 }

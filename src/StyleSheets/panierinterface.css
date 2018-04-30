@@ -1,0 +1,14 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+#panierInterfaceFloawPaneContainer{
+    -fx-background-color:transparent;
+    -fx-vbar-policy : never;
+    -fx-effect: dropshadow(three-pass-box, grey, 2, 0, 0, 0);
+
+}

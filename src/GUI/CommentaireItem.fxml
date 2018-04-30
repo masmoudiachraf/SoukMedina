@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="77.0" prefWidth="300.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CommentaireItemController">
+    <stylesheets>
+        <URL value="@/StyleSheets/commentaireitem.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane fx:id="commentaireContainer" prefHeight="77.0" prefWidth="300.0">
+         <children>
+            <Hyperlink fx:id="userName" layoutY="2.0" onAction="#signalerProfileBtn" prefHeight="23.0" prefWidth="214.0" text="Hyperlink" textFill="#f1687d" />
+            <ImageView fx:id="editCommentaireIv" fitHeight="20.0" fitWidth="14.0" layoutX="224.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/edit.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="DeleteCommentaireIv" fitHeight="14.0" fitWidth="14.0" layoutX="263.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/delete_article.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="CommantaireText" layoutX="6.0" layoutY="22.0" prefHeight="34.0" prefWidth="289.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

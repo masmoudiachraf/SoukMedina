@@ -50,7 +50,7 @@
                         <Image url="@../Assets/panier.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="linksetting1" layoutX="545.0" layoutY="35.0" text="Panier" textFill="#e10875" />
+                  <Hyperlink fx:id="panierLink" layoutX="545.0" layoutY="35.0" onAction="#panierClick" text="Panier" textFill="#e10875" />
                   <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="189.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/loop.png" />

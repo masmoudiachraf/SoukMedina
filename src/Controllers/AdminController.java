@@ -9,6 +9,7 @@ import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTreeTableColumn;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -100,6 +101,8 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        JFXTreeTableColumn<utilisateur,String> nomCol = new JFXTreeTableColumn<>("Nom");
+        
         serviceUtilisateur su = new serviceUtilisateur();
          ArrayList arraylist = (ArrayList) su.displayall1();
         ObservableList obs = FXCollections.observableArrayList(arraylist);
