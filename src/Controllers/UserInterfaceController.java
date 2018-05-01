@@ -55,6 +55,9 @@ public class UserInterfaceController implements Initializable {
     articlesService as = new articlesService();
     ArrayList<articles> listArticle;
     utilisateur user;
+    
+    public static utilisateur logedUser;
+    public static articles selectedArticle = null;
 
     @FXML
     private AnchorPane paneuserinterface;
@@ -94,9 +97,9 @@ public class UserInterfaceController implements Initializable {
 
     private StackPane userInterfaceContainer;
     @FXML
-    private Hyperlink linksetting1;
-    @FXML
     private TextField recherArticleTextField;
+    @FXML
+    private Hyperlink panierLink;
 
     /**
      * Initializes the controller class.
@@ -130,58 +133,11 @@ public class UserInterfaceController implements Initializable {
         this.labpassword.setText(labpassword);
         this.labtelephone.setText(labtelephone);
         this.labadresse.setText(labadresse);
-        this.labnaissance.setText(labnaissance);
-            
+        this.labnaissance.setText(labnaissance);     
         user = new utilisateur(Integer.parseInt(labid), labmail, labprenom, labmail, labpassword, labadresse, Integer.parseInt(labtelephone), labnaissance);
-        /* ServiceBoutique sb=new ServiceBoutique();           
-        ArrayList<Boutique> arraylist = (ArrayList) sb.displayall_boutique();
-                  flowpaneboutiques.setPadding(new Insets(5, 5, 8, 8));
-                   flowpaneboutiques.setVgap(10);
-                   flowpaneboutiques.setHgap(8);
-         for(Boutique boutique : arraylist) {
-             
-            Label id=new Label(String.valueOf(boutique.getId()));
-            id.setVisible(false);
-            Label nom=new Label(boutique.getNom_bout());
-            Label activite=new Label(boutique.getActivite_bout());
-            
-             JFXButton b=new JFXButton(nom.getText()+"\n"+activite.getText());
-           
-           b.setPrefSize(120, 100);
-           //b.setStyle("-fx-border-color:black;"+"-fx-border-radius:5em;");
-           flowpaneboutiques.getChildren().addAll(b);
-           b.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                flowpanearticles.getChildren().clear();
-                 articlesService as=new articlesService();    
-                  flowpanearticles.setPadding(new Insets(5, 5, 8, 8));
-                   flowpanearticles.setVgap(10);
-                   flowpanearticles.setHgap(8);
-                   
-                   
-                     ArrayList<articles> arraylist2 = (ArrayList) as.displayall(Integer.parseInt(id.getText()));
-                    for (articles article : arraylist2) {            
-                     try {
-                         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/GUI/articleitemuser.fxml"));
-                         Pane newLoadedPane2 = loader2.load();
-                         ArticleitemuserController controller2 = loader2.<ArticleitemuserController>getController();
-                         controller2.loadArticle(article);
-                         newLoadedPane2.setStyle("-fx-border-color:black;"+"-fx-border-radius:1em;");
-                         flowpanearticles.getChildren().add(newLoadedPane2);
-                     } catch (IOException ex) {
-                         Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                    
-        }   
-            }
-        }
-           
-           );
-         }      
-         */
     }
 
+    
     @FXML
     private void logout(ActionEvent event) throws IOException {
         FXMLLoader Loader = new FXMLLoader();
@@ -194,12 +150,12 @@ public class UserInterfaceController implements Initializable {
     private void update_profile(ActionEvent event) {
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXTextField nom = new JFXTextField(labnom.getText());
-        JFXTextField prenom = new JFXTextField(labprenom.getText());
-        JFXTextField mail = new JFXTextField(labmail.getText());
-        JFXTextField password = new JFXTextField(labpassword.getText());
-        JFXTextField adresse = new JFXTextField(labadresse.getText());
-        JFXTextField telephone = new JFXTextField(labtelephone.getText());
+        JFXTextField nom = new JFXTextField(logedUser.getNom_uti());
+        JFXTextField prenom = new JFXTextField(logedUser.getPrenom_uti());
+        JFXTextField mail = new JFXTextField(logedUser.getMail_uti());
+        JFXTextField password = new JFXTextField(logedUser.getPassword_uti());
+        JFXTextField adresse = new JFXTextField(logedUser.getAdresse_uti());
+        JFXTextField telephone = new JFXTextField(Integer.toString(logedUser.getTelephone_uti()));
         JFXButton Modifier = new JFXButton("Modifier");
         JFXButton Annuler = new JFXButton("anuuler");
         Modifier.setOnAction(new EventHandler<ActionEvent>() {
@@ -249,6 +205,7 @@ public class UserInterfaceController implements Initializable {
         }
     }
 
+<<<<<<< HEAD
     public void detailBoutiquePopup(Boutique boutique) throws IOException{
          FXMLLoader Loader = new FXMLLoader();
          Loader.setLocation(getClass().getResource("/GUI/BoutiqueItemDetails.fxml"));
@@ -265,6 +222,9 @@ public class UserInterfaceController implements Initializable {
     } 
     
     public void articleDetailsClick(articles article, String quantite) {
+=======
+    public void articleDetailsClick(articles article) {
+>>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         Label taille = new Label(article.getTaille());
@@ -289,11 +249,10 @@ public class UserInterfaceController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    if (Integer.parseInt(quantite)>0) {
-                         Panier panier = new Panier(user, article, Integer.parseInt(quantite), "In Hold");
+                        Panier panier = new Panier(user, article, 1, "In Hold");
                         PanierService ps = new PanierService();
                         ps.insert(panier);
-                    }
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -301,7 +260,7 @@ public class UserInterfaceController implements Initializable {
         }
         );
         //content.setPrefSize(120, 200);
-        content.setBody(new Text("Taille: " + taille.getText() + "\n\nCouleur: " + taille.getText() + "\n\nCatégorie: " + categorie.getText() + "\n\nQuantité: " + quantite));
+        content.setBody(new Text("Taille: " + taille.getText() + "\n\nCouleur: " + taille.getText() + "\n\nCatégorie: " + categorie.getText()));
         content.setActions(ok, addPanier);
         dialog.show();
     }
@@ -331,4 +290,37 @@ public class UserInterfaceController implements Initializable {
 
     }
 
+    
+    public void openArticleDetails(articles article){
+        try {
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/ArticleInterface.fxml"));
+            AnchorPane pane = Loader.load();
+            paneuserinterface.getChildren().setAll(pane);
+            ArticleInterfaceController articleController = Loader.getController();
+            articleController.article = article;
+            
+            articleController.loadVariables();
+        } catch (IOException ex) {
+            Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void panierClick(ActionEvent event) {
+        openPanierInterface();
+    }
+    
+    public void openPanierInterface(){
+        try {
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/PanierInterface.fxml"));
+            AnchorPane pane = Loader.load();
+            paneuserinterface.getChildren().setAll(pane);
+            PanierInterfaceController panierController = Loader.getController();
+            panierController.loadArticlesIntoPanier();
+        } catch (IOException ex) {
+            Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

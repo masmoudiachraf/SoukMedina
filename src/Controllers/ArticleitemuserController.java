@@ -20,7 +20,9 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -29,6 +31,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -40,7 +43,7 @@ public class ArticleitemuserController implements Initializable {
     UserInterfaceController parentController;
     
     articles article;
-    
+        
     @FXML
     private AnchorPane panearticleitem;
     @FXML
@@ -63,39 +66,26 @@ public class ArticleitemuserController implements Initializable {
     private StackPane interface_container;
     @FXML
     private Hyperlink linkdetails;
-    @FXML
-    private Label quantite;
-    @FXML
-    private ImageView addQuantite;
-    @FXML
-    private ImageView removeQuantite;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        addQuantite.addEventHandler(MouseEvent.MOUSE_PRESSED,
-            new EventHandler<MouseEvent>() {
+        interface_container.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                quantite.setText(Integer.toString(Integer.parseInt(quantite.getText())+1));
-            }
-        });
-        
-        removeQuantite.addEventHandler(MouseEvent.MOUSE_PRESSED,
-            new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (Integer.parseInt(quantite.getText())>0) {
-                  quantite.setText(Integer.toString(Integer.parseInt(quantite.getText())-1));  
+                try {
+                    parentController.openArticleDetails(article);
+                    
+                } catch (Exception ex) {
+                    Logger.getLogger(ArticleitemuserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
             }
         });
     }   
     public void loadArticle(articles article, UserInterfaceController parentController) throws FileNotFoundException{
-        quantite.setText("0");
         this.parentController = parentController;
         this.article = article;
         String sourceimage=article.getImage();
@@ -123,31 +113,14 @@ public class ArticleitemuserController implements Initializable {
     @FXML
     private void details(ActionEvent event) {
         
-        parentController.articleDetailsClick(article,quantite.getText());
-       /* JFXDialogLayout content = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        Label taille=new Label(articleItemlabel2.getText());
-        Label couleur=new Label(articleItemlabel3.getText());
-        Label categorie=new Label(articleItemlabel5.getText());
-        JFXButton annuler = new JFXButton("OK");
-        annuler.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        
-        );
-        // content.setPrefSize(120, 200);
-         content.setBody(new Text("Taille: "+taille.getText()+"\n\nCouleur: "+taille.getText()+"\n\nCatégorie: "+categorie.getText()));
-                content.setActions(annuler);
-                dialog.show();
-        */
+        parentController.articleDetailsClick(article);
+      
     }
     
     
+     public void start(Stage window, String destination) throws Exception {
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource(destination)));
+        window.setScene(scene);
+        window.show();
+    }
 }

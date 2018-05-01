@@ -6,10 +6,13 @@
 
 }
 
-#panearticleitem{
-    -fx-background-color: black;
+#interface_container{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, grey, 3, 0, 0, 0);
+}
+
+#interface_container:hover{
     -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
-    -fx-padding: 25px;
 }
 
 #btnmodifierarticle{

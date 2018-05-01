@@ -80,6 +80,7 @@
                   <Hyperlink fx:id="linklogout1" layoutX="613.0" layoutY="27.0" text="Mon compte" textFill="WHITE" />
                </children>
             </AnchorPane>
+<<<<<<< HEAD
             <TableView fx:id="tableview2" layoutX="129.0" layoutY="74.0" prefHeight="379.0" prefWidth="489.0">
                <columns>
                   <TableColumn fx:id="nom_uti2" prefWidth="75.0" text="nom_uti" />
@@ -91,6 +92,9 @@
                </columns>
             </TableView>
             <TableView fx:id="tableview" layoutX="130.0" layoutY="73.0" prefHeight="379.0" prefWidth="489.0" AnchorPane.topAnchor="73.0">
+=======
+            <TableView fx:id="tableview" layoutX="698.0" layoutY="386.0" prefHeight="83.0" prefWidth="85.0" AnchorPane.topAnchor="386.0">
+>>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
                <columns>
                   <TableColumn fx:id="nom_uti" prefWidth="75.0" text="nom_uti" />
                   <TableColumn fx:id="prenom_uti" prefWidth="82.0" text="prenom_uti" />
@@ -109,8 +113,14 @@
                   <TableColumn fx:id="activite_bout" prefWidth="101.0" text="activite_bout" />
                </columns>
             </TableView>
+<<<<<<< HEAD
             <Button fx:id="Export_to_pdf" layoutX="649.0" layoutY="250.0" mnemonicParsing="false" onAction="#Export_to_pdf" prefHeight="24.0" prefWidth="101.0" text="Export_to_pdf" />
             <Button fx:id="btnsupp" layoutX="649.0" layoutY="74.0" mnemonicParsing="false" onAction="#supprimer_signialer_users" prefHeight="24.0" prefWidth="101.0" text="Supprimer" />
+=======
+            <JFXButton fx:id="Inserer_boutique" layoutX="134.0" layoutY="57.0" onAction="#Inserer_boutique" text="Inserer boutique" visible="false" />
+            <JFXButton fx:id="Inserer_utilisateur" layoutX="666.0" layoutY="57.0" text="Inserer Utilisateur" />
+            <JFXListView fx:id="usersListView" layoutX="190.0" layoutY="103.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+>>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
          </children>
          <stylesheets>
             <URL value="@/StyleSheets/admin.css" />

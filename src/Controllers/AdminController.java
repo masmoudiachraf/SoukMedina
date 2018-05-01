@@ -20,9 +20,14 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
+<<<<<<< HEAD
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import java.io.FileOutputStream;
+=======
+import com.jfoenix.controls.JFXTreeTableColumn;
+import java.io.IOException;
+>>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +132,12 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+<<<<<<< HEAD
         btnsupp.setVisible(false);
+=======
+        JFXTreeTableColumn<utilisateur,String> nomCol = new JFXTreeTableColumn<>("Nom");
+        
+>>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
         serviceUtilisateur su = new serviceUtilisateur();
           arraylist = (ArrayList) su.displayall1();
         ObservableList obs = FXCollections.observableArrayList(arraylist);

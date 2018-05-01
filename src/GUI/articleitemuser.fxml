@@ -10,8 +10,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="interface_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="163.0" prefWidth="143.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ArticleitemuserController">
-   <children>
+<StackPane fx:id="interface_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="142.0" prefWidth="143.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ArticleitemuserController">
+   <stylesheets>
+      <URL value="@/StyleSheets/articleitem.css" />
+   </stylesheets>
+    <children>
       <AnchorPane id="AnchorPane" fx:id="panearticleitem" prefHeight="156.0" prefWidth="152.0" styleClass="mainFxmlClass">
          <children>
             <Label fx:id="articleItemlabel" disable="true" layoutX="10.0" layoutY="3.0" text="Label" visible="false" />
@@ -20,28 +23,14 @@
             <Label fx:id="articleItemlabel4" layoutX="3.0" layoutY="23.0" text="Label" visible="false" />
             <Label fx:id="articleItemlabel5" layoutX="2.0" layoutY="67.0" text="Label" visible="false" />
             <JFXButton fx:id="btndeletearticle" layoutX="99.0" layoutY="94.0" text="add" visible="false" AnchorPane.bottomAnchor="23.0" />
-            <Hyperlink fx:id="linkdetails" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="79.0" layoutY="99.0" onAction="#details" prefHeight="23.0" prefWidth="69.0" text="Détails" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="6.0" />
+            <Hyperlink fx:id="linkdetails" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="79.0" layoutY="99.0" onAction="#details" prefHeight="23.0" prefWidth="69.0" text="Détails" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="6.0" />
             <ImageView fx:id="imagevi" fitHeight="100.0" fitWidth="132.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="1.0" />
             <Label fx:id="articleItemlabel1" layoutX="10.0" layoutY="105.0" text="Label" AnchorPane.bottomAnchor="0.0" />
-            <Label layoutX="10.0" layoutY="113.0" text="Quantité" />
-            <Label fx:id="quantite" layoutX="110.0" layoutY="113.0" text="Label" />
-            <ImageView fx:id="addQuantite" fitHeight="17.0" fitWidth="17.0" layoutX="85.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Assets/plus.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="removeQuantite" fitHeight="17.0" fitWidth="17.0" layoutX="60.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Assets/delete.png" />
-               </image>
-            </ImageView>
          </children>
          <padding>
             <Insets bottom="6.0" left="2.0" right="6.0" top="2.0" />
          </padding>
       </AnchorPane>
    </children>
-   <stylesheets>
-      <URL value="@/StyleSheets/articleitem.css" />
-   </stylesheets>
+   
 </StackPane>
