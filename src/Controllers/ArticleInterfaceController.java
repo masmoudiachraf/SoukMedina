@@ -13,6 +13,7 @@ import com.esprit.entite.utilisateur;
 import com.esprit.service.PanierService;
 import com.esprit.service.ServiceCommentaire;
 import com.esprit.service.articlesService;
+import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -51,12 +52,6 @@ import javafx.stage.Stage;
 public class ArticleInterfaceController implements Initializable {
 
     @FXML
-    private Hyperlink linksetting1;
-    @FXML
-    private Hyperlink linksetting;
-    @FXML
-    private Hyperlink linklogout;
-    @FXML
     private ImageView articleImage;
     @FXML
     private Label articleName;
@@ -74,7 +69,6 @@ public class ArticleInterfaceController implements Initializable {
     private Label couleurLabel;
     @FXML
     private Label prixLabel;
-    @FXML
     private Button backBtn;
     @FXML
     private FlowPane commentairesFlowPane;
@@ -96,13 +90,9 @@ public class ArticleInterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            commentairesFlowPane.setVgap(5);
-            commentairesFlowPane.setHgap(5);
-            backBtn.setGraphic(new ImageView((getClass().getResource("/Assets/backBtn.png")).toURI().toString()));
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(ArticleInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        commentairesFlowPane.setVgap(5);
+        commentairesFlowPane.setHgap(5);
+        // backBtn.setGraphic(new ImageView((getClass().getResource("/Assets/backBtn.png")).toURI().toString()));
     }    
 
     public void loadVariables(){
@@ -141,13 +131,6 @@ public class ArticleInterfaceController implements Initializable {
             }
         });
     }
-    @FXML
-    private void update_profile(ActionEvent event) {
-    }
-
-    @FXML
-    private void logout(ActionEvent event) {
-    }
 
     @FXML
     private void AjouterPanierAction(ActionEvent event) {
@@ -157,14 +140,13 @@ public class ArticleInterfaceController implements Initializable {
     }
 
 
-    @FXML
-    private void backBtnClick(ActionEvent event) {
+    /*private void backBtnClick(ActionEvent event) {
         try {
             start((Stage) backBtn.getScene().getWindow(), "/GUI/UserInterface.fxml");
         } catch (Exception ex) {
             Logger.getLogger(ArticleInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
     
      public void start(Stage window, String destination) throws Exception {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource(destination)));
@@ -302,8 +284,11 @@ public class ArticleInterfaceController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
+                    serviceUtilisateur su=new serviceUtilisateur();
+                    su.update_user_signial(user, user.getId_uti());
                     
                     dialog.close();
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
                 }

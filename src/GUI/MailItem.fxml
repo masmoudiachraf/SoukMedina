@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<StackPane fx:id="interface_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="223.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MailItemController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="210.0" prefWidth="223.0">
+         <children>
+            <TextField fx:id="objet" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="200.0" promptText="Objet" />
+            <TextArea fx:id="message" layoutX="10.0" layoutY="50.0" prefHeight="200.0" prefWidth="200.0" promptText="Message" />
+            <JFXButton layoutX="66.0" layoutY="255.0" onAction="#envoyer_mail" prefHeight="25.0" prefWidth="89.0" text="Envoyer" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

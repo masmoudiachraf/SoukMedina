@@ -6,15 +6,19 @@
 package Controllers;
 
 import com.esprit.entite.Boutique;
+import com.esprit.entite.Mail;
 import com.esprit.entite.articles;
 import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
 import com.esprit.service.articlesService;
+import com.esprit.service.serviceMail;
 import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -84,11 +88,7 @@ public class VendeurinterfaceController implements Initializable {
     private Label articleexmple;
     private ListView<?> articlelv;
     @FXML
-    private JFXButton btnajoutarticle;
-    @FXML
     private FlowPane listArticleFlowPane;
-    @FXML
-    private JFXButton btnrefresh;
     @FXML
     private Pane ajoutartpane;
     @FXML
@@ -101,7 +101,11 @@ public class VendeurinterfaceController implements Initializable {
     private Button addBtn;
 
     ArrayList<articles> listArticles ;
+    @FXML
+    private Hyperlink linkcontact;
+
     public static Boutique logedBoutique;
+
     /**
      * Initializes the controller class.
      *
@@ -172,8 +176,12 @@ public class VendeurinterfaceController implements Initializable {
                     ServiceBoutique sb = new ServiceBoutique();
                     Boutique b = new Boutique(nom.getText(), mail.getText(), password.getText(), adresse.getText(), Integer.parseInt(telephone.getText()), activite_bout.getValue().toString());
                     sb.update_boutique(b, Integer.parseInt(labid.getText()));
-                    // panesetting.getChildren().clear();
-
+                    labnom.setText(nom.getText());
+                    labmail.setText(mail.getText());
+                    labadresse.setText(adresse.getText());
+                    labtelephone.setText(telephone.getText());
+                    labactivite.setText(activite_bout.getValue().toString());
+                    
                     dialog.close();
                 } catch (Exception ex) {
                     Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
@@ -203,9 +211,9 @@ public class VendeurinterfaceController implements Initializable {
             VendeurSettingController userzone= Loader.getController();
            userzone.userinformation(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText(),labactivite.getText());         
          */
+        
     }
 
-    @FXML
     private void ajouter_article_gui(ActionEvent event) throws IOException {
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(getClass().getResource("/GUI/ajouterarticle.fxml"));
@@ -215,7 +223,6 @@ public class VendeurinterfaceController implements Initializable {
         ajoutzone.getid_boutique(labid.getText());
     }
 
-    @FXML
     private void refresh(ActionEvent event) throws IOException {
         refreshArticle();
     }
@@ -432,6 +439,79 @@ public class VendeurinterfaceController implements Initializable {
         content.setPrefSize(120, 200);
                 content.setActions(nom,taille,couleur,prix,categorie,Modifier,Annuler);
                 dialog.show();
+    }
+
+    @FXML
+    private void send_mail(ActionEvent event) {
+        serviceMail  sm=new serviceMail();
+     JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        JFXTextField from=new JFXTextField();
+        JFXTextField to=new JFXTextField();
+        JFXTextField object=new JFXTextField();
+        JFXTextArea message= new JFXTextArea();
+        JFXButton send = new JFXButton("envoyer");
+        JFXButton ok = new JFXButton("ok");
+        JFXButton Annuler = new JFXButton("annuler");
+        send.setPrefWidth(80);
+        Annuler.setPrefWidth(80);
+        from.setText("De: "+labmail.getText());
+        JFXPasswordField password = new JFXPasswordField();
+        password.setPromptText("Mot de passe de votre compte");
+        password.setPrefWidth(180);
+        from.setEditable(false);
+        from.setPrefWidth(180);
+        to.setPromptText("Destinataire");
+        to.setPrefWidth(180);
+        object.setPromptText("Objet");
+        object.setPrefWidth(180);
+        message.setPromptText("Rédigez votre message...");
+        message.setPrefSize(180, 200);
+      
+        send.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    JFXDialogLayout content = new JFXDialogLayout();
+                    JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+                    ok.setOnAction(new EventHandler<ActionEvent>() {
+                             @Override
+                            public void handle(ActionEvent event) {
+                                try {
+                                    Mail m=new Mail(from.getText(), password.getText(), to.getText(), object.getText(), message.getText(), "smtp.gmail.com");
+                                    sm.sendMail(m);
+                                    dialog.close();
+                    
+                                } catch (Exception ex) {
+                                  Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                                  }
+                                    }
+                                      });
+                    
+                                      
+                                content.setPrefSize(200, 80);
+                                content.setActions(password,ok);
+                                dialog.show(); 
+                    
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+       
+         Annuler.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        content.setPrefSize(200, 200);
+                content.setActions(from,to,object,message,send,Annuler);
+                dialog.show();   
     }
 
 }

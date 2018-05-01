@@ -35,10 +35,13 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
@@ -204,6 +207,21 @@ public class UserInterfaceController implements Initializable {
         }
     }
 
+    public void detailBoutiquePopup(Boutique boutique) throws IOException{
+         FXMLLoader Loader = new FXMLLoader();
+         Loader.setLocation(getClass().getResource("/GUI/BoutiqueItemDetails.fxml"));
+        Pane pane = Loader.load();
+        BoutiqueItemDetailsController controller = Loader.<BoutiqueItemDetailsController>getController();
+        controller.loadBoutique(boutique);
+        controller.loaduser(labmail.getText());
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        content.setBody(pane);
+        content.setPrefSize(500, 210);
+        dialog.show();
+        
+    } 
+    
     public void articleDetailsClick(articles article) {
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
@@ -276,11 +294,15 @@ public class UserInterfaceController implements Initializable {
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/ArticleInterface.fxml"));
             AnchorPane pane = Loader.load();
-            paneuserinterface.getChildren().setAll(pane);
             ArticleInterfaceController articleController = Loader.getController();
-            articleController.article = article;
-            
+            articleController.article = article; 
             articleController.loadVariables();
+            JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        content.setBody(pane);
+        content.setPrefSize(USE_COMPUTED_SIZE,USE_COMPUTED_SIZE);
+        dialog.setPrefSize(USE_COMPUTED_SIZE,USE_COMPUTED_SIZE);
+        dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }

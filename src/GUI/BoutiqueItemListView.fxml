@@ -21,11 +21,16 @@
                   <Image url="@../Assets/shop.png" />
                </image>
             </ImageView>
-            <Label fx:id="boutiqueItemLabel" alignment="CENTER" layoutX="24.0" layoutY="78.0" prefHeight="20.0" prefWidth="82.0" text="Boutique" textAlignment="CENTER" textFill="#f1687d" textOverrun="CLIP" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="boutiqueItemLabel" alignment="CENTER" layoutY="78.0" prefHeight="20.0" prefWidth="82.0" text="Boutique" textAlignment="CENTER" textFill="#f1687d" textOverrun="CLIP" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <ImageView fx:id="boutiqueDetails" fitHeight="20.0" fitWidth="20.0" layoutX="79.0" layoutY="47.0" onMousePressed="#details_boutiques" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/information.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

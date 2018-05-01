@@ -11,9 +11,9 @@
 
 <AnchorPane id="AnchorPane" fx:id="paneuserinterface" prefHeight="459.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserInterfaceController">
    <children>
-      <StackPane fx:id="interface_container" layoutX="160.0" layoutY="-2.0" prefHeight="80.0" prefWidth="623.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane fx:id="interface_container" layoutX="160.0" layoutY="-2.0" prefHeight="459.0" prefWidth="789.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane fx:id="panenavbar" prefHeight="60.0" prefWidth="623.0">
+            <Pane fx:id="panenavbar" prefHeight="459.0" prefWidth="789.0">
                <children>
                   <ScrollPane fx:id="scrolpaneboutiques" layoutX="9.0" layoutY="5.0" prefHeight="447.0" prefWidth="116.0">
                      <content>
