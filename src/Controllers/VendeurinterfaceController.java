@@ -101,12 +101,11 @@ public class VendeurinterfaceController implements Initializable {
     private Button addBtn;
 
     ArrayList<articles> listArticles ;
-<<<<<<< HEAD
     @FXML
     private Hyperlink linkcontact;
-=======
+
     public static Boutique logedBoutique;
->>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
+
     /**
      * Initializes the controller class.
      *

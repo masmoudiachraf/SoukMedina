@@ -45,6 +45,8 @@ public class CommentaireItemController implements Initializable {
     private Label CommantaireText;
     @FXML
     private AnchorPane commentaireContainer;
+    @FXML
+    private ImageView signialimv;
 
     /**
      * Initializes the controller class.
@@ -73,19 +75,28 @@ public class CommentaireItemController implements Initializable {
         userName.setText(user.getNom_uti()+" "+user.getPrenom_uti());
         if(user.getId_uti()==UserInterfaceController.logedUser.getId_uti())
         {
-            editCommentaireIv.setVisible(true);
-            DeleteCommentaireIv.setVisible(true);
+            signialimv.setVisible(false);
+        }
+        else
+            {
+            editCommentaireIv.setVisible(false);
+            DeleteCommentaireIv.setVisible(false);
+        
         }
         CommantaireText.setText(commentaire.getCommentaire());
         parentController = controller;
         this.commentaire = commentaire;
     }
 
+
+
     @FXML
-    private void signalerProfileBtn(ActionEvent event) {
+    private void signialer_user_click(MouseEvent event) {
         if(user.getId_uti()!=UserInterfaceController.logedUser.getId_uti())
         {
             parentController.signalerProfile(user);
+
         }
+        signialimv.setVisible(false);
     }
 }

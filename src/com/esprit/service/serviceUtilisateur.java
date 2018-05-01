@@ -58,7 +58,6 @@ public class serviceUtilisateur implements IserviceUtilisateur {
      * @param password
      */
     @Override
-<<<<<<< HEAD
     public void delete_user(utilisateur user) {
         String requete="delete from utilisateurs where id_uti = '"+user.getId_uti()+"'   ";
    
@@ -68,17 +67,8 @@ public class serviceUtilisateur implements IserviceUtilisateur {
           } catch (SQLException ex) {
               Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
           }
-=======
-    public void delete_user(String mail, String password) {
-        String requete = "delete from utilisateurs where mail_uti = '" + mail + "' and password_uti = '" + password + "'   ";
 
-        try {
-            st = cnx.createStatement();
-            st.executeUpdate(requete);
-        } catch (SQLException ex) {
-            Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
-        }
->>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
+    
     }
 
     /**
@@ -187,10 +177,33 @@ public class serviceUtilisateur implements IserviceUtilisateur {
         }
         return ch;
 
-<<<<<<< HEAD
+
+   
+
+    }
+
+    @Override
+    public utilisateur selectSingleUtilisateur(int id) {
+        String req = "select * from utilisateurs where id_uti=" + id;
+        utilisateur user = null;
+        try {
+            st = cnx.prepareStatement(req);
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                user = new utilisateur(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return user;
+
+    }
+
     @Override
     public void update_user_signial(utilisateur usr, int id) {
-         String requete="update utilisateurs set nbr_signial=nbr_signial+1 where id_uti like '"+id+"' ";
+        String requete="update utilisateurs set nbr_signial=nbr_signial+1 where id_uti like '"+id+"' ";
    
           try {
               st=cnx.createStatement();
@@ -219,29 +232,4 @@ public class serviceUtilisateur implements IserviceUtilisateur {
        
         return list;
     }
-
-   
-=======
-    }
-
-    @Override
-    public utilisateur selectSingleUtilisateur(int id) {
-        String req = "select * from utilisateurs where id_uti=" + id;
-        utilisateur user = null;
-        try {
-            st = cnx.prepareStatement(req);
-            ResultSet rs = st.executeQuery(req);
-            while (rs.next()) {
-
-                user = new utilisateur(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8));
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        }
-        return user;
-
-    }
->>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
-
 }

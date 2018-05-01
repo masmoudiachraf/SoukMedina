@@ -40,6 +40,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
@@ -205,7 +207,6 @@ public class UserInterfaceController implements Initializable {
         }
     }
 
-<<<<<<< HEAD
     public void detailBoutiquePopup(Boutique boutique) throws IOException{
          FXMLLoader Loader = new FXMLLoader();
          Loader.setLocation(getClass().getResource("/GUI/BoutiqueItemDetails.fxml"));
@@ -221,10 +222,7 @@ public class UserInterfaceController implements Initializable {
         
     } 
     
-    public void articleDetailsClick(articles article, String quantite) {
-=======
     public void articleDetailsClick(articles article) {
->>>>>>> 97fc9f63f7123ac6248681f3b68bdf5f8c0a7918
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         Label taille = new Label(article.getTaille());
@@ -296,11 +294,15 @@ public class UserInterfaceController implements Initializable {
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/ArticleInterface.fxml"));
             AnchorPane pane = Loader.load();
-            paneuserinterface.getChildren().setAll(pane);
             ArticleInterfaceController articleController = Loader.getController();
-            articleController.article = article;
-            
+            articleController.article = article; 
             articleController.loadVariables();
+            JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        content.setBody(pane);
+        content.setPrefSize(USE_COMPUTED_SIZE,USE_COMPUTED_SIZE);
+        dialog.setPrefSize(USE_COMPUTED_SIZE,USE_COMPUTED_SIZE);
+        dialog.show();
         } catch (IOException ex) {
             Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
