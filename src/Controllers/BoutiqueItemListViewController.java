@@ -7,11 +7,16 @@
 package Controllers;
 
 import com.esprit.entite.Boutique;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -36,6 +41,8 @@ public class BoutiqueItemListViewController implements Initializable {
     private AnchorPane AnchorContainerItem;
 
     Boutique boutique;
+    @FXML
+    private ImageView boutiqueDetails;
     /**
      * Initializes the controller class.
      */
@@ -56,6 +63,12 @@ public class BoutiqueItemListViewController implements Initializable {
         boutiqueItemLabel.setText(boutique.getNom_bout());
         parentController = controller;
         this.boutique = boutique;
+    }
+
+
+    @FXML
+    private void details_boutiques(MouseEvent event) throws IOException {
+        parentController.detailBoutiquePopup(boutique);
     }
 
     

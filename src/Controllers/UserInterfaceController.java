@@ -35,6 +35,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -248,6 +249,21 @@ public class UserInterfaceController implements Initializable {
         }
     }
 
+    public void detailBoutiquePopup(Boutique boutique) throws IOException{
+         FXMLLoader Loader = new FXMLLoader();
+         Loader.setLocation(getClass().getResource("/GUI/BoutiqueItemDetails.fxml"));
+        Pane pane = Loader.load();
+        BoutiqueItemDetailsController controller = Loader.<BoutiqueItemDetailsController>getController();
+        controller.loadBoutique(boutique);
+        controller.loaduser(labmail.getText());
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        content.setBody(pane);
+        content.setPrefSize(500, 210);
+        dialog.show();
+        
+    } 
+    
     public void articleDetailsClick(articles article, String quantite) {
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);

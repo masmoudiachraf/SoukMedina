@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="interface_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BoutiqueItemDetailsController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="210.0" prefWidth="500.0">
+         <children>
+            <ImageView fx:id="ivimage_bout" fitHeight="150.0" fitWidth="200.0" layoutX="19.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/shop.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labnom_bout" layoutX="201.0" layoutY="16.0" prefHeight="47.0" prefWidth="208.0" text="lab">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="201.0" layoutY="82.0" text="Email" />
+            <Label layoutX="201.0" layoutY="106.0" text="Adresse" />
+            <Label layoutX="201.0" layoutY="132.0" text="Téléphone" />
+            <Label fx:id="labtel_bout" layoutX="276.0" layoutY="131.0" text="Label" />
+            <Label fx:id="labadresse_bout" layoutX="276.0" layoutY="105.0" text="Label" />
+            <Label fx:id="labmail_bout" layoutX="276.0" layoutY="81.0" text="Label" />
+            <JFXButton fx:id="btncontact" layoutX="196.0" layoutY="171.0" onAction="#send_mail_boutique" text="Contacter" />
+            <Label fx:id="labmail_user" layoutX="332.0" layoutY="23.0" text="Label" visible="false" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

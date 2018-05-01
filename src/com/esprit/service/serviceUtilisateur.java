@@ -58,8 +58,8 @@ public class serviceUtilisateur implements IserviceUtilisateur{
      * @param password
      */
     @Override
-    public void delete_user(String mail, String password) {
-        String requete="delete from utilisateurs where mail_uti = '"+mail+"' and password_uti = '"+password+"'   ";
+    public void delete_user(utilisateur user) {
+        String requete="delete from utilisateurs where id_uti = '"+user.getId_uti()+"'   ";
    
           try {
               st=cnx.createStatement();
@@ -177,6 +177,38 @@ public class serviceUtilisateur implements IserviceUtilisateur{
           return ch;
             
            }
+
+    @Override
+    public void update_user_signial(utilisateur usr, int id) {
+         String requete="update utilisateurs set nbr_signial=nbr_signial+1 where id_uti like '"+id+"' ";
+   
+          try {
+              st=cnx.createStatement();
+              st.executeUpdate(requete);
+          } catch (SQLException ex) {
+              Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    }
+
+    @Override
+    public List<utilisateur> display_user_signial() {
+        List<utilisateur> list =new ArrayList<>();
+           String requete="select * from utilisateurs where nbr_signial >=5 ";
+        ResultSet rs;
+          try {
+              st=cnx.createStatement();
+               rs=st.executeQuery(requete);
+             while(rs.next()){
+
+            utilisateur usr=new utilisateur(rs.getInt("id_uti"), rs.getString("nom_uti"), rs.getString("prenom_uti"),rs.getString("mail_uti"), rs.getString("password_uti"),rs.getString("adresse_uti"),rs.getInt("telephone_uti"),rs.getString("naissance_uti"));
+           list.add(usr);
+        }
+          } catch (SQLException ex) {
+              Logger.getLogger(utilisateur.class.getName()).log(Level.SEVERE, null, ex);
+          }
+       
+        return list;
+    }
 
    
 
