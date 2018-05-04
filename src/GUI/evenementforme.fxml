@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="paneeventforme" prefHeight="150.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EvenementformeController">
+   <children>
+      <Label fx:id="labnom_bout" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="156.0" text="Label" textFill="#ff006e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="TAinfoEvent" editable="false" layoutX="144.0" layoutY="6.0" prefHeight="136.0" prefWidth="442.0" />
+   </children>
+</AnchorPane>

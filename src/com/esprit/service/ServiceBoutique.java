@@ -133,5 +133,23 @@ public class ServiceBoutique implements IserviceBoutique{
 
 }
 
+    @Override
+    public Boutique displaySingleboutique(int id) {
+         Boutique bout=new Boutique();
+        String req = "Select * from boutiques where id_bout='"+id+"' ";
+        try {
+            statement = connection.prepareStatement(req);
+            ResultSet rs = statement.executeQuery(req);
+            while (rs.next()) {
+                
+                Boutique bou= new Boutique(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7));
+                bout=bou;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return bout;
+    }
+
    
 }

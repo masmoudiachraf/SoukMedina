@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<StackPane fx:id="interface_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EvenementformeBoutiqueController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="paneeventforme" prefHeight="150.0" prefWidth="600.0">
+         <children>
+            <TextArea fx:id="TAinfoEvent" layoutX="218.0" layoutY="51.0" prefHeight="37.0" prefWidth="149.0" />
+            <ImageView fx:id="btnsupp" fitHeight="33.0" fitWidth="25.0" layoutX="23.0" layoutY="62.0" onMouseClicked="#supprimerEvents" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/delete_article.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnmodifier" fitHeight="25.0" fitWidth="25.0" layoutX="72.0" layoutY="62.0" onMouseClicked="#modifierEvents" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/edit.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="tfobjet" layoutX="218.0" layoutY="17.0" />
+            <TextField fx:id="tfadresse" layoutX="218.0" layoutY="96.0" />
+            <DatePicker fx:id="DPdateDeb" layoutX="402.0" layoutY="50.0" />
+            <DatePicker fx:id="DPDateFin" layoutX="402.0" layoutY="96.0" />
+            <Label layoutX="138.0" layoutY="23.0" text="Objet">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="138.0" layoutY="61.0" text="Description">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="138.0" layoutY="100.0" text="Adresse">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="465.0" layoutY="74.0" text="Date Fin">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="457.0" layoutY="26.0" text="Date Début">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="labid_bout" layoutX="58.0" layoutY="15.0" text="Label" visible="false" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
