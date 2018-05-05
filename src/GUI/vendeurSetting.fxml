@@ -7,20 +7,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="panex" prefHeight="400.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VendeurSettingController">
-    <children>
-      <Pane prefHeight="400.0" prefWidth="160.0" style="-fx-background-color: #F5F5F5;">
+<StackPane fx:id="interface_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.VendeurSettingController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="panex" prefHeight="327.0" prefWidth="160.0">
          <children>
-            <JFXTextField fx:id="tfnom" layoutX="13.0" layoutY="56.0" />
-            <JFXTextField fx:id="tfmail" layoutX="13.0" layoutY="99.0" />
-            <JFXTextField fx:id="tfpassword" layoutX="13.0" layoutY="138.0" />
-            <JFXTextField fx:id="tfadresse" layoutX="13.0" layoutY="175.0" />
-            <JFXTextField fx:id="tftelephone" layoutX="13.0" layoutY="213.0" />
-            <JFXTextField fx:id="tfactivite" layoutX="13.0" layoutY="252.0" />
-            <JFXButton fx:id="modifier" layoutX="18.0" layoutY="304.0" onAction="#update_user_profil" text="Modifier" />
-            <Label fx:id="labid" disable="true" layoutX="181.0" layoutY="329.0" text="Label" visible="false" />
-            <JFXButton fx:id="btnannuler" layoutX="84.0" layoutY="304.0" onAction="#annuler" text="Annuler" />
+            <Pane prefHeight="327.0" prefWidth="160.0" style="-fx-background-color: #F5F5F5;">
+               <children>
+                  <JFXTextField fx:id="tfnom" layoutX="13.0" layoutY="56.0" />
+                  <JFXTextField fx:id="tfmail" layoutX="13.0" layoutY="99.0" />
+                  <JFXTextField fx:id="tfpassword" layoutX="13.0" layoutY="138.0" />
+                  <JFXTextField fx:id="tfadresse" layoutX="13.0" layoutY="175.0" />
+                  <JFXTextField fx:id="tftelephone" layoutX="13.0" layoutY="213.0" />
+                  <JFXButton fx:id="modifier" layoutX="21.0" layoutY="293.0" onAction="#update_user_profil" prefHeight="25.0" prefWidth="116.0" text="Modifier" />
+                  <Label fx:id="labid" disable="true" layoutX="114.0" layoutY="43.0" text="Label" visible="false" />
+                  <JFXComboBox fx:id="CBactivite" layoutX="12.0" layoutY="251.0" prefHeight="25.0" prefWidth="135.0" />
+               </children>
+            </Pane>
          </children>
-      </Pane>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

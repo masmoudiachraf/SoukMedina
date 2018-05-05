@@ -25,24 +25,17 @@
                <children>
                   <AnchorPane prefHeight="459.0" prefWidth="789.0">
                      <children>
-                        <Pane fx:id="ajoutartpane" prefHeight="400.0" prefWidth="140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                          <Pane fx:id="panesetting" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                              <children>
-                                  <Label fx:id="labnom" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="221.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
-                                  <Label fx:id="labmail" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="254.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
-                                  <Label fx:id="labtelephone" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="284.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
-                                  <Label fx:id="labadresse" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="315.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
-                                  <Label fx:id="labactivite" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="344.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
-                              <ImageView fitHeight="129.0" fitWidth="131.0" layoutX="36.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Assets/userAvatar.png" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="labpassword" disable="true" layoutX="63.0" layoutY="325.0" text="Label" visible="false" />
-                              <Label fx:id="labid" disable="true" layoutX="64.0" layoutY="348.0" text="Label" visible="false" />
-                              
-                                                            </children>
-                          </Pane>
+                        <Pane fx:id="ajoutartpane" layoutX="22.0" layoutY="42.0" prefHeight="294.0" prefWidth="160.0" visible="false" AnchorPane.bottomAnchor="123.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="42.0">
+                           <children>
+                              <JFXComboBox fx:id="CBactivite" layoutX="13.0" layoutY="212.0" prefHeight="25.0" prefWidth="135.0" />
+                              <Label fx:id="labid1" disable="true" text="Label" visible="false" />
+                              <JFXButton fx:id="modifier" layoutX="22.0" layoutY="256.0" onAction="#update_user_profil" prefHeight="25.0" prefWidth="116.0" text="Modifier" />
+                              <JFXTextField fx:id="tftelephone" layoutX="13.0" layoutY="172.0" />
+                              <JFXTextField fx:id="tfadresse" layoutX="13.0" layoutY="130.0" />
+                              <JFXTextField fx:id="tfpassword" layoutX="13.0" layoutY="89.0" />
+                              <JFXTextField fx:id="tfmail" layoutX="13.0" layoutY="53.0" />
+                              <JFXTextField fx:id="tfnom" layoutX="13.0" layoutY="18.0" />
+                           </children></Pane>
                         <AnchorPane prefHeight="343.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
                               <ScrollPane fx:id="listArticleFlowPaneContainer" layoutY="-36.0" prefHeight="379.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-36.0">
@@ -60,27 +53,64 @@
                                  </font></Button>
                            </children>
                         </AnchorPane>
-                        <Hyperlink fx:id="linksetting" layoutX="611.0" layoutY="42.0" onAction="#direction_update_profile" text="Mon compte" textFill="#e10875" />
-                        <Hyperlink fx:id="linklogout" layoutX="699.0" layoutY="42.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
-                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="638.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                        <Hyperlink fx:id="linksetting" layoutX="630.0" layoutY="42.0" onAction="#direction_update_profile" text="Mon compte" textFill="#e10875" />
+                        <Hyperlink fx:id="linklogout" layoutX="708.0" layoutY="42.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="657.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Assets/setting.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="726.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="732.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Assets/logout.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="vendeurRecherArticleTextField" layoutX="241.0" layoutY="26.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" />
+                        <TextField fx:id="vendeurRecherArticleTextField" layoutX="233.0" layoutY="26.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="200.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" />
                         <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="203.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Assets/loop.png" />
                            </image>
                         </ImageView>
-                        <Hyperlink fx:id="linkcontact" layoutX="555.0" layoutY="41.0" onAction="#send_mail" text="Contact" textFill="#e10875" />
+                        <Hyperlink fx:id="linkcontact" layoutX="577.0" layoutY="41.0" onAction="#send_mail" text="Contact" textFill="#e10875" />
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="589.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/mail.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="529.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/calendar.png" />
+                           </image>
+                        </ImageView>
+                        <Hyperlink fx:id="linkevent" layoutX="505.0" layoutY="40.0" onAction="#gestionEvents" text="Evenements" textFill="#e10875" />
+                        <ImageView fx:id="imageVnotification" fitHeight="25.0" fitWidth="41.0" layoutX="457.0" layoutY="26.0" onMouseClicked="#notification_evenements" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Assets/notification.png" />
+                           </image>
+                        </ImageView>
+                        <Pane fx:id="panesetting" layoutX="2.0" prefHeight="459.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <Label fx:id="labnom" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="221.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                              <Label fx:id="labmail" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="254.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                              <Label fx:id="labtelephone" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="284.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                              <Label fx:id="labadresse" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="315.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                              <Label fx:id="labactivite" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="344.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#e81e8d" />
+                              <ImageView fitHeight="129.0" fitWidth="131.0" layoutX="36.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Assets/userAvatar.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="labpassword" disable="true" layoutX="63.0" layoutY="325.0" text="Label" visible="false" />
+                              <Label fx:id="labid" disable="true" layoutX="64.0" layoutY="348.0" text="Label" visible="false" />
+                           </children>
+                        </Pane>
                      </children>
                   </AnchorPane>
+                  <Label fx:id="labnbr_event" layoutX="471.0" layoutY="11.0" text="Label" textFill="#ab0a0a">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

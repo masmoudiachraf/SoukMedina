@@ -10,6 +10,8 @@ import com.esprit.entite.articles;
 import com.esprit.service.articlesService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.IOException;
@@ -52,8 +54,6 @@ public class AjouterarticleController implements Initializable {
     @FXML
     private Label labid;
     @FXML
-    private JFXButton annuler;
-    @FXML
     private AnchorPane paneajoutarticle;
   
     
@@ -78,6 +78,7 @@ public class AjouterarticleController implements Initializable {
     }    
     public void getid_boutique(String labid){
         this.labid.setText(labid);
+       
     }
     String filename="";
      @FXML
@@ -100,21 +101,11 @@ public class AjouterarticleController implements Initializable {
         articlesService as=new articlesService();
         Boutique b =new Boutique(Integer.parseInt(labid.getText()));
         b.setId(Integer.parseInt(labid.getText()));
-    articles a=new articles(tfnom.getText(),filename.replace("\\", "/") ,tftaille.getText(), tfcouleur.getText(), Float.parseFloat(tfprix.getText()), tfcategorie.getValue().toString(), b);
+    articles a=new articles(tfnom.getText(),filename ,tftaille.getText(), tfcouleur.getText(), Float.parseFloat(tfprix.getText()), tfcategorie.getValue().toString(), b);
        as.insert_article(a);
-       // System.out.println(filename);
         
     }
 
-  @FXML
-    private void annuler_eta_initial(ActionEvent event) throws IOException {
-         //this.parent.etaInitial();
-         paneajoutarticle.setVisible(false);
-         paneajoutarticle.setStyle("-fx-background-color:rgba(255, 255, 255, 0);");
-
-          
-            
-    }
 
    
     

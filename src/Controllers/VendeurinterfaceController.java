@@ -6,10 +6,12 @@
 package Controllers;
 
 import com.esprit.entite.Boutique;
+import com.esprit.entite.Evenements;
 import com.esprit.entite.Mail;
 import com.esprit.entite.articles;
 import com.esprit.entite.utilisateur;
 import com.esprit.service.ServiceBoutique;
+import com.esprit.service.ServiceEvenements;
 import com.esprit.service.articlesService;
 import com.esprit.service.serviceMail;
 import com.esprit.service.serviceUtilisateur;
@@ -42,11 +44,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.PopupControl;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -105,7 +110,30 @@ public class VendeurinterfaceController implements Initializable {
     private Hyperlink linkcontact;
 
     public static Boutique logedBoutique;
-
+    @FXML
+    private Label labnbr_event;
+    @FXML
+    private ImageView imageVnotification;
+ArrayList<Evenements> arraylist;
+     private int i;
+    @FXML
+    private Hyperlink linkevent;
+    @FXML
+    private JFXComboBox<?> CBactivite;
+    @FXML
+    private Label labid1;
+    @FXML
+    private JFXButton modifier;
+    @FXML
+    private JFXTextField tftelephone;
+    @FXML
+    private JFXTextField tfadresse;
+    @FXML
+    private JFXTextField tfpassword;
+    @FXML
+    private JFXTextField tfmail;
+    @FXML
+    private JFXTextField tfnom;
     /**
      * Initializes the controller class.
      *
@@ -114,9 +142,14 @@ public class VendeurinterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        initialnotification();
     }
-
+    public void initialnotification(){
+     ServiceEvenements se=new ServiceEvenements();
+        arraylist= (ArrayList) se.display_events();
+        i = arraylist.size();
+        labnbr_event.setText(Integer.toString(i));
+    }
     public void boutiqueinformation(String labid, String labnom, String labmail, String labpassword, String labadresse, String labtelephone, String labactivite) {
         this.labid.setText(labid);
         this.labnom.setText(labnom);
@@ -139,7 +172,6 @@ public class VendeurinterfaceController implements Initializable {
         for (articles article : arraylist) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/ArticleItem.fxml"));
             Pane newLoadedPane = loader.load();
-            //newLoadedPane.prefWidthProperty().bind(listArticleFlowPane.prefWidthProperty());
             ArticleItemController controller = loader.<ArticleItemController>getController();
             controller.loadArticle(article, this);
             listArticleFlowPane.getChildren().add(newLoadedPane);
@@ -149,8 +181,19 @@ public class VendeurinterfaceController implements Initializable {
 
     @FXML
     private void direction_update_profile(ActionEvent event) throws IOException {
+        /* FXMLLoader Loader= new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/vendeurSetting.fxml"));
+            Pane pane=Loader.load();
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+            VendeurSettingController userzone= Loader.getController();
+            userzone.loadboutique(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText());         
+            content.setBody(pane);
+        content.setPrefSize(120, 200);
+        dialog.show();
+        
+       ;*/
         List<String> itemList = new ArrayList<String>();
-
         itemList.add("Act1");
         itemList.add("Act2");
         itemList.add("Act3");
@@ -158,76 +201,56 @@ public class VendeurinterfaceController implements Initializable {
         ObservableList obs = FXCollections.observableList(itemList);
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXTextField nom = new JFXTextField(labnom.getText());
-        JFXTextField mail = new JFXTextField(labmail.getText());
-        JFXTextField password = new JFXTextField(labpassword.getText());
-        JFXTextField adresse = new JFXTextField(labadresse.getText());
-        JFXTextField telephone = new JFXTextField(labtelephone.getText());
-        JFXComboBox<?> activite_bout = new JFXComboBox<>();
-        activite_bout.setItems(obs);
-        activite_bout.setPrefWidth(120);
-
-        JFXButton Modifier = new JFXButton("Modifier");
-        JFXButton Annuler = new JFXButton("anuuler");
-        Modifier.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    ServiceBoutique sb = new ServiceBoutique();
-                    Boutique b = new Boutique(nom.getText(), mail.getText(), password.getText(), adresse.getText(), Integer.parseInt(telephone.getText()), activite_bout.getValue().toString());
-                    sb.update_boutique(b, Integer.parseInt(labid.getText()));
-                    labnom.setText(nom.getText());
-                    labmail.setText(mail.getText());
-                    labadresse.setText(adresse.getText());
-                    labtelephone.setText(telephone.getText());
-                    labactivite.setText(activite_bout.getValue().toString());
-                    
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        Annuler.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-
-        content.setPrefSize(120, 200);
-        content.setActions(nom, mail, password, adresse, telephone, activite_bout, Modifier, Annuler);
+        tfnom.setText(labnom.getText());
+        tfmail.setText(labmail.getText());
+        tfpassword.setText(labpassword.getText());
+        tfadresse.setText(labadresse.getText());
+        tftelephone.setText(labtelephone.getText());
+        CBactivite.setItems(obs);
+        content.setBody(ajoutartpane);
+        ajoutartpane.setVisible(true);
+        content.setPrefSize(180,350);
         dialog.show();
-
-        /*FXMLLoader Loader= new FXMLLoader();
-            Loader.setLocation(getClass().getResource("/GUI/vendeurSetting.fxml"));
-            Pane pane=Loader.load();
-            
-            ajoutartpane.getChildren().setAll(pane);  
-            VendeurSettingController userzone= Loader.getController();
-           userzone.userinformation(labid.getText(), labnom.getText(),labmail.getText(),labpassword.getText(),labadresse.getText(),labtelephone.getText(),labactivite.getText());         
-         */
         
     }
 
-    private void ajouter_article_gui(ActionEvent event) throws IOException {
-        FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(getClass().getResource("/GUI/ajouterarticle.fxml"));
-        Pane pane = Loader.load();
-        ajoutartpane.getChildren().setAll(pane);
-        AjouterarticleController ajoutzone = Loader.getController();
-        ajoutzone.getid_boutique(labid.getText());
+    @FXML
+    private void update_user_profil(ActionEvent event) {
+         ServiceBoutique sb= new ServiceBoutique();
+        Boutique b=new Boutique(tfnom.getText(), tfmail.getText(), tfpassword.getText(),tfadresse.getText(),Integer.parseInt(tftelephone.getText()), CBactivite.getValue().toString());
+        sb.update_boutique(b, Integer.parseInt(labid.getText()));
+         labnom.setText(tfnom.getText());
+                    labmail.setText(tfmail.getText());
+                    labadresse.setText(tfadresse.getText());
+                    labtelephone.setText(tftelephone.getText());
+                    labactivite.setText(CBactivite.getValue().toString());
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        content.setBody(new Text("modifier avec succès "));
+        JFXButton ok=new JFXButton("OK");
+       
+        ok.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        );
+        content.setPrefSize(120, 200);
+        content.setActions(ok);
+        dialog.show();
     }
 
-    private void refresh(ActionEvent event) throws IOException {
+    private void refresh() throws IOException {
         refreshArticle();
     }
 
     public void refreshArticle() {
+      
         articlesService as = new articlesService();
         ArrayList<articles> arraylist = (ArrayList) as.displayall(Integer.parseInt(labid.getText()));
         listArticleFlowPane.getChildren().clear();
@@ -322,6 +345,7 @@ public class VendeurinterfaceController implements Initializable {
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         Label taille = new Label(artcle.getTaille());
         Label couleur = new Label(artcle.getCouleur());
+        Label prix = new Label(Float.toString(artcle.getPrix()));
         Label categorie = new Label(artcle.getCategorie());
         JFXButton annuler = new JFXButton("OK");
         annuler.setOnAction(new EventHandler<ActionEvent>() {
@@ -336,7 +360,7 @@ public class VendeurinterfaceController implements Initializable {
         }
         );
         content.setPrefSize(120, 200);
-        content.setBody(new Text("Taille: " + taille.getText() + "\n\nCouleur: " + taille.getText() + "\n\nCatégorie: " + categorie.getText()));
+        content.setBody(new Text("Taille: " + taille.getText() + "\n\nCouleur: " + taille.getText() +"\n\nPrix: "+prix.getText()+" DT"+ "\n\nCatégorie: " + categorie.getText()));
         content.setActions(annuler);
         dialog.show();
     }
@@ -392,53 +416,17 @@ public class VendeurinterfaceController implements Initializable {
     }
 
     @FXML
-    private void addArticleClick(ActionEvent event) {
-        List<String> itemList = new ArrayList<String>();
-        itemList.add("cat1");
-        itemList.add("cat2");
-        itemList.add("cat3");
-        itemList.add("cat4");
-        ObservableList obs = FXCollections.observableList(itemList);
-        
+    private void addArticleClick(ActionEvent event) throws IOException {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(getClass().getResource("/GUI/ajouterarticle.fxml"));
+        Pane pane = Loader.load();
+        AjouterarticleController ajoutzone = Loader.getController();
+        ajoutzone.getid_boutique(labid.getText());
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXTextField nom=new JFXTextField();
-        JFXTextField taille=new JFXTextField();
-        JFXTextField couleur=new JFXTextField();
-        JFXTextField prix=new JFXTextField();
-        JFXComboBox<?> categorie =new JFXComboBox<>();
-        categorie.setPrefWidth(130);
-        categorie.setItems(obs);
-        
-        JFXButton Modifier = new JFXButton("OK");
-        JFXButton Annuler = new JFXButton("anuuler");
-        Modifier.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    articlesService as=new articlesService();
-                    articles art=new articles(nom.getText(), taille.getText(), couleur.getText(), Float.parseFloat(prix.getText()), categorie.getValue().toString());
-                    as.insert_article(art);
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        Annuler.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    dialog.close();
-                } catch (Exception ex) {
-                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        
+        content.setBody(pane);
         content.setPrefSize(120, 200);
-                content.setActions(nom,taille,couleur,prix,categorie,Modifier,Annuler);
-                dialog.show();
+        dialog.show();
     }
 
     @FXML
@@ -513,5 +501,79 @@ public class VendeurinterfaceController implements Initializable {
                 content.setActions(from,to,object,message,send,Annuler);
                 dialog.show();   
     }
+
+    @FXML
+    private void notification_evenements(MouseEvent event) throws IOException {
+        initialnotification();
+        FXMLLoader Loader = new FXMLLoader();
+         Loader.setLocation(getClass().getResource("/GUI/EvenementItem.fxml"));
+        Pane pane = Loader.load();
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        content.setBody(pane);
+        content.setPrefSize(500, 210);
+        dialog.show();
+    }
+
+    @FXML
+    private void gestionEvents(ActionEvent event) throws IOException {
+        
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton ajouter=new JFXButton("Créer");
+        JFXButton modifier = new JFXButton("Mes Evenements");
+        ajouter.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                    FXMLLoader Loader = new FXMLLoader();
+                    Loader.setLocation(getClass().getResource("/GUI/ajouterevenements.fxml"));
+                    Pane pane = Loader.load();
+                    JFXDialogLayout content2 = new JFXDialogLayout();
+                    JFXDialog dialog2 = new JFXDialog(interface_container, content2, JFXDialog.DialogTransition.CENTER);
+                    AjouterevenementsController controller = Loader.<AjouterevenementsController>getController();
+                     controller.loadBoutique(labid.getText());
+                     content2.setHeading(new Text("Créer un évènement:"));
+                    content2.setBody(pane);
+                    content2.setPrefSize(120, 200);
+                    dialog2.show();
+                    
+                } catch (Exception ex) {
+                    Logger.getLogger(VendeurinterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        );
+         modifier.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                    FXMLLoader Loader = new FXMLLoader();
+                    Loader.setLocation(getClass().getResource("/GUI/EvenementItemBoutique.fxml"));
+                    Pane pane = Loader.load();
+                    
+                    JFXDialogLayout content2 = new JFXDialogLayout();
+                    JFXDialog dialog2 = new JFXDialog(interface_container, content2, JFXDialog.DialogTransition.CENTER);
+                    
+                    EvenementItemBoutiqueController controller = Loader.<EvenementItemBoutiqueController>getController();
+                     controller.loadboutique(labid.getText());
+                     content2.setHeading(new Text("Modifier ou supprimer vos évènements:"));
+                    content2.setBody(pane);
+                    content2.setPrefSize(120, 200);
+                    dialog2.show();
+                } catch (Exception ex) {
+                    Logger.getLogger(VendeurinterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        );
+         content.setBody(new Text("Gestion de vos évènements"));
+        content.setActions(ajouter,modifier);
+        content.setPrefSize(200, 50);
+        dialog.show();
+    }
+
 
 }

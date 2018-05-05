@@ -6,11 +6,13 @@
 package Controllers;
 
 import com.esprit.entite.Boutique;
+import com.esprit.entite.Evenements;
 import com.esprit.entite.Panier;
 import com.esprit.entite.articles;
 import com.esprit.entite.utilisateur;
 import com.esprit.service.PanierService;
 import com.esprit.service.ServiceBoutique;
+import com.esprit.service.ServiceEvenements;
 import com.esprit.service.articlesService;
 import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
@@ -37,6 +39,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -102,17 +105,23 @@ public class UserInterfaceController implements Initializable {
     private TextField recherArticleTextField;
     @FXML
     private Hyperlink panierLink;
-
+    @FXML
+    private Label labnbr_event;
+    ArrayList<Evenements> arraylist;
+     private int i;
+    @FXML
+    private ImageView imageVnotification;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        initialnotification();
         flowpaneboutiques.setVgap(8);
         flowpaneboutiques.setHgap(8);
         flowpanearticles.setVgap(8);
         flowpanearticles.setHgap(8);
-
+        
         listBoutiques = serviceBoutique.displayall_boutique();
         listBoutiques.forEach((boutique) -> {
             try {
@@ -126,7 +135,12 @@ public class UserInterfaceController implements Initializable {
             }
         });
     }
-
+    public void initialnotification(){
+        ServiceEvenements se=new ServiceEvenements();
+        arraylist= (ArrayList) se.display_events();
+        i = arraylist.size();
+     labnbr_event.setText(Integer.toString(i));
+    }
     public void userinformation(String labid, String labnom, String labprenom, String labmail, String labpassword, String labadresse, String labtelephone, String labnaissance) throws IOException {
         this.labid.setText(labid);
         this.labnom.setText(labnom);
@@ -324,5 +338,18 @@ public class UserInterfaceController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void notification_evenements(MouseEvent event) throws IOException {
+        initialnotification();
+        FXMLLoader Loader = new FXMLLoader();
+         Loader.setLocation(getClass().getResource("/GUI/EvenementItem.fxml"));
+        Pane pane = Loader.load();
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+        content.setBody(pane);
+        content.setPrefSize(500, 210);
+        dialog.show();
     }
 }
