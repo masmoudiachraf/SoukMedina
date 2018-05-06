@@ -105,7 +105,7 @@ public class VendeurinterfaceController implements Initializable {
     @FXML
     private Button addBtn;
 
-    ArrayList<articles> listArticles ;
+    ArrayList<articles> listArticles;
     @FXML
     private Hyperlink linkcontact;
 
@@ -114,8 +114,8 @@ public class VendeurinterfaceController implements Initializable {
     private Label labnbr_event;
     @FXML
     private ImageView imageVnotification;
-ArrayList<Evenements> arraylist;
-     private int i;
+    ArrayList<Evenements> arraylist;
+    private int i;
     @FXML
     private Hyperlink linkevent;
     @FXML
@@ -134,6 +134,11 @@ ArrayList<Evenements> arraylist;
     private JFXTextField tfmail;
     @FXML
     private JFXTextField tfnom;
+    @FXML
+    private AnchorPane interfaceBoutiqueNavBar;
+    @FXML
+    private Hyperlink linkevent1;
+
     /**
      * Initializes the controller class.
      *
@@ -144,12 +149,14 @@ ArrayList<Evenements> arraylist;
     public void initialize(URL url, ResourceBundle rb) {
         initialnotification();
     }
-    public void initialnotification(){
-     ServiceEvenements se=new ServiceEvenements();
-        arraylist= (ArrayList) se.display_events();
+
+    public void initialnotification() {
+        ServiceEvenements se = new ServiceEvenements();
+        arraylist = (ArrayList) se.display_events();
         i = arraylist.size();
         labnbr_event.setText(Integer.toString(i));
     }
+
     public void boutiqueinformation(String labid, String labnom, String labmail, String labpassword, String labadresse, String labtelephone, String labactivite) {
         this.labid.setText(labid);
         this.labnom.setText(labnom);
@@ -165,7 +172,7 @@ ArrayList<Evenements> arraylist;
 
         articlesService as = new articlesService();
         ArrayList<articles> arraylist = (ArrayList) as.displayall(Integer.parseInt(labid));
-        listArticles=arraylist;
+        listArticles = arraylist;
         listArticleFlowPane.setPadding(new Insets(5, 5, 8, 8));
         listArticleFlowPane.setVgap(8);
         listArticleFlowPane.setHgap(8);
@@ -209,26 +216,26 @@ ArrayList<Evenements> arraylist;
         CBactivite.setItems(obs);
         content.setBody(ajoutartpane);
         ajoutartpane.setVisible(true);
-        content.setPrefSize(180,350);
+        content.setPrefSize(180, 350);
         dialog.show();
-        
+
     }
 
     @FXML
     private void update_user_profil(ActionEvent event) {
-         ServiceBoutique sb= new ServiceBoutique();
-        Boutique b=new Boutique(tfnom.getText(), tfmail.getText(), tfpassword.getText(),tfadresse.getText(),Integer.parseInt(tftelephone.getText()), CBactivite.getValue().toString());
+        ServiceBoutique sb = new ServiceBoutique();
+        Boutique b = new Boutique(tfnom.getText(), tfmail.getText(), tfpassword.getText(), tfadresse.getText(), Integer.parseInt(tftelephone.getText()), CBactivite.getValue().toString());
         sb.update_boutique(b, Integer.parseInt(labid.getText()));
-         labnom.setText(tfnom.getText());
-                    labmail.setText(tfmail.getText());
-                    labadresse.setText(tfadresse.getText());
-                    labtelephone.setText(tftelephone.getText());
-                    labactivite.setText(CBactivite.getValue().toString());
+        labnom.setText(tfnom.getText());
+        labmail.setText(tfmail.getText());
+        labadresse.setText(tfadresse.getText());
+        labtelephone.setText(tftelephone.getText());
+        labactivite.setText(CBactivite.getValue().toString());
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         content.setBody(new Text("modifier avec succès "));
-        JFXButton ok=new JFXButton("OK");
-       
+        JFXButton ok = new JFXButton("OK");
+
         ok.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -250,7 +257,7 @@ ArrayList<Evenements> arraylist;
     }
 
     public void refreshArticle() {
-      
+
         articlesService as = new articlesService();
         ArrayList<articles> arraylist = (ArrayList) as.displayall(Integer.parseInt(labid.getText()));
         listArticleFlowPane.getChildren().clear();
@@ -281,7 +288,7 @@ ArrayList<Evenements> arraylist;
 
     @FXML
     private void rechercheArticleOnKeyPressed(KeyEvent event) {
-         ArrayList<articles> searchedArticles = new ArrayList<>();
+        ArrayList<articles> searchedArticles = new ArrayList<>();
         searchedArticles.clear();
         listArticleFlowPane.getChildren().clear();
         for (articles article : listArticles) {
@@ -306,7 +313,7 @@ ArrayList<Evenements> arraylist;
 
     public void deleteArticle(String id) {
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Mode"));
+        content.setHeading(new Text("Suppression"));
         content.setBody(new Text("Vous voulez vraiment supprmer cet article ?"));
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         JFXButton oui = new JFXButton("oui");
@@ -360,7 +367,7 @@ ArrayList<Evenements> arraylist;
         }
         );
         content.setPrefSize(120, 200);
-        content.setBody(new Text("Taille: " + taille.getText() + "\n\nCouleur: " + taille.getText() +"\n\nPrix: "+prix.getText()+" DT"+ "\n\nCatégorie: " + categorie.getText()));
+        content.setBody(new Text("Taille: " + taille.getText() + "\n\nCouleur: " + taille.getText() + "\n\nPrix: " + prix.getText() + " DT" + "\n\nCatégorie: " + categorie.getText()));
         content.setActions(annuler);
         dialog.show();
     }
@@ -431,19 +438,19 @@ ArrayList<Evenements> arraylist;
 
     @FXML
     private void send_mail(ActionEvent event) {
-        serviceMail  sm=new serviceMail();
-     JFXDialogLayout content = new JFXDialogLayout();
+        serviceMail sm = new serviceMail();
+        JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXTextField from=new JFXTextField();
-        JFXTextField to=new JFXTextField();
-        JFXTextField object=new JFXTextField();
-        JFXTextArea message= new JFXTextArea();
+        JFXTextField from = new JFXTextField();
+        JFXTextField to = new JFXTextField();
+        JFXTextField object = new JFXTextField();
+        JFXTextArea message = new JFXTextArea();
         JFXButton send = new JFXButton("envoyer");
         JFXButton ok = new JFXButton("ok");
         JFXButton Annuler = new JFXButton("annuler");
         send.setPrefWidth(80);
         Annuler.setPrefWidth(80);
-        from.setText("De: "+labmail.getText());
+        from.setText("De: " + labmail.getText());
         JFXPasswordField password = new JFXPasswordField();
         password.setPromptText("Mot de passe de votre compte");
         password.setPrefWidth(180);
@@ -455,7 +462,7 @@ ArrayList<Evenements> arraylist;
         object.setPrefWidth(180);
         message.setPromptText("Rédigez votre message...");
         message.setPrefSize(180, 200);
-      
+
         send.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -463,31 +470,30 @@ ArrayList<Evenements> arraylist;
                     JFXDialogLayout content = new JFXDialogLayout();
                     JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
                     ok.setOnAction(new EventHandler<ActionEvent>() {
-                             @Override
-                            public void handle(ActionEvent event) {
-                                try {
-                                    Mail m=new Mail(from.getText(), password.getText(), to.getText(), object.getText(), message.getText(), "smtp.gmail.com");
-                                    sm.sendMail(m);
-                                    dialog.close();
-                    
-                                } catch (Exception ex) {
-                                  Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                                  }
-                                    }
-                                      });
-                    
-                                      
-                                content.setPrefSize(200, 80);
-                                content.setActions(password,ok);
-                                dialog.show(); 
-                    
+                        @Override
+                        public void handle(ActionEvent event) {
+                            try {
+                                Mail m = new Mail(from.getText(), password.getText(), to.getText(), object.getText(), message.getText(), "smtp.gmail.com");
+                                sm.sendMail(m);
+                                dialog.close();
+
+                            } catch (Exception ex) {
+                                Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    });
+
+                    content.setPrefSize(200, 80);
+                    content.setActions(password, ok);
+                    dialog.show();
+
                 } catch (Exception ex) {
                     Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
-       
-         Annuler.setOnAction(new EventHandler<ActionEvent>() {
+
+        Annuler.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -498,15 +504,15 @@ ArrayList<Evenements> arraylist;
             }
         });
         content.setPrefSize(200, 200);
-                content.setActions(from,to,object,message,send,Annuler);
-                dialog.show();   
+        content.setActions(from, to, object, message, send, Annuler);
+        dialog.show();
     }
 
     @FXML
     private void notification_evenements(MouseEvent event) throws IOException {
         initialnotification();
         FXMLLoader Loader = new FXMLLoader();
-         Loader.setLocation(getClass().getResource("/GUI/EvenementItem.fxml"));
+        Loader.setLocation(getClass().getResource("/GUI/EvenementItem.fxml"));
         Pane pane = Loader.load();
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
@@ -517,10 +523,10 @@ ArrayList<Evenements> arraylist;
 
     @FXML
     private void gestionEvents(ActionEvent event) throws IOException {
-        
+
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton ajouter=new JFXButton("Créer");
+        JFXButton ajouter = new JFXButton("Créer");
         JFXButton modifier = new JFXButton("Mes Evenements");
         ajouter.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -533,19 +539,19 @@ ArrayList<Evenements> arraylist;
                     JFXDialogLayout content2 = new JFXDialogLayout();
                     JFXDialog dialog2 = new JFXDialog(interface_container, content2, JFXDialog.DialogTransition.CENTER);
                     AjouterevenementsController controller = Loader.<AjouterevenementsController>getController();
-                     controller.loadBoutique(labid.getText());
-                     content2.setHeading(new Text("Créer un évènement:"));
+                    controller.loadBoutique(labid.getText());
+                    content2.setHeading(new Text("Créer un évènement:"));
                     content2.setBody(pane);
                     content2.setPrefSize(120, 200);
                     dialog2.show();
-                    
+
                 } catch (Exception ex) {
                     Logger.getLogger(VendeurinterfaceController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
         );
-         modifier.setOnAction(new EventHandler<ActionEvent>() {
+        modifier.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -553,13 +559,13 @@ ArrayList<Evenements> arraylist;
                     FXMLLoader Loader = new FXMLLoader();
                     Loader.setLocation(getClass().getResource("/GUI/EvenementItemBoutique.fxml"));
                     Pane pane = Loader.load();
-                    
+
                     JFXDialogLayout content2 = new JFXDialogLayout();
                     JFXDialog dialog2 = new JFXDialog(interface_container, content2, JFXDialog.DialogTransition.CENTER);
-                    
+
                     EvenementItemBoutiqueController controller = Loader.<EvenementItemBoutiqueController>getController();
-                     controller.loadboutique(labid.getText());
-                     content2.setHeading(new Text("Modifier ou supprimer vos évènements:"));
+                    controller.loadboutique(labid.getText());
+                    content2.setHeading(new Text("Modifier ou supprimer vos évènements:"));
                     content2.setBody(pane);
                     content2.setPrefSize(120, 200);
                     dialog2.show();
@@ -569,11 +575,27 @@ ArrayList<Evenements> arraylist;
             }
         }
         );
-         content.setBody(new Text("Gestion de vos évènements"));
-        content.setActions(ajouter,modifier);
+        content.setBody(new Text("Gestion de vos évènements"));
+        content.setActions(ajouter, modifier);
         content.setPrefSize(200, 50);
         dialog.show();
     }
 
+    @FXML
+    private void gestionNotifications(ActionEvent event) {
+        try {
+            initialnotification();
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/EvenementItem.fxml"));
+            Pane pane = Loader.load();
+            JFXDialogLayout content = new JFXDialogLayout();
+            JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+            content.setBody(pane);
+            content.setPrefSize(500, 210);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(VendeurinterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

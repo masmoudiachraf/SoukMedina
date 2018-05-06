@@ -15,7 +15,7 @@
          <children>
             <ImageView fx:id="ivimage_bout" fitHeight="150.0" fitWidth="200.0" layoutX="19.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Assets/shop.png" />
+                  <Image url="@../Assets/store.png" />
                </image>
             </ImageView>
             <Label fx:id="labnom_bout" layoutX="201.0" layoutY="42.0" prefHeight="47.0" prefWidth="208.0" text="lab">
@@ -29,9 +29,9 @@
             <Label fx:id="labtel_bout" layoutX="292.0" layoutY="137.0" text="Label" />
             <Label fx:id="labadresse_bout" layoutX="292.0" layoutY="111.0" text="Label" />
             <Label fx:id="labmail_bout" layoutX="292.0" layoutY="87.0" text="Label" />
-            <JFXButton fx:id="btncontact" layoutX="196.0" layoutY="171.0" onAction="#send_mail_boutique" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #F1687D;" text="Contacter" textFill="WHITE" />
+            <JFXButton fx:id="btncontact" layoutX="196.0" layoutY="171.0" onAction="#send_mail_boutique" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #3498DB;" text="Contacter" textFill="WHITE" />
             <Label fx:id="labmail_user" layoutX="332.0" layoutY="23.0" text="Label" visible="false" />
-            <Label layoutX="12.0" layoutY="5.0" prefHeight="31.0" prefWidth="192.0" text="Détails de boutique" textFill="#f1687d">
+            <Label layoutX="12.0" layoutY="5.0" prefHeight="31.0" prefWidth="192.0" text="Détails de boutique" textFill="#3498db">
                <font>
                   <Font size="18.0" />
                </font>

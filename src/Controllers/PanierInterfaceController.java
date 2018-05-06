@@ -26,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -56,6 +57,13 @@ public class PanierInterfaceController implements Initializable {
     private JFXButton validerBtn;
     @FXML
     private JFXButton viderBtn;
+    @FXML
+    private JFXButton historiqueBtn;
+    private JFXButton panierBtn1;
+    @FXML
+    private JFXButton panierBtn;
+    @FXML
+    private AnchorPane AnchorHeader;
     
     /**
      * Initializes the controller class.
@@ -65,30 +73,32 @@ public class PanierInterfaceController implements Initializable {
         panierInterfaceFloawPane.setHgap(8);
         panierInterfaceFloawPane.setVgap(8);
         try {
-            backBtn.setGraphic(new ImageView((getClass().getResource("/Assets/home.png")).toURI().toString()));
+            backBtn.setGraphic(new ImageView((getClass().getResource("/Assets/backBtn.png")).toURI().toString()));
         } catch (URISyntaxException ex) {
             Logger.getLogger(PanierInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        panierBtn.setVisible(false);
     }   
     
     public void loadArticlesIntoPanier(){
+        panierInterfaceFloawPane.getChildren().clear();
         listPanier = panierService.displayall(UserInterfaceController.logedUser);
         listPanier.forEach((panier) -> {
-            listarticles.add(arService.displaySingleArticle(panier.getArticles_fk().getId()));
-        });
-        
-        listarticles.forEach((article) -> {
-            try {
+            if(panier.getEtat_panier()==0)
+            {
+                articles article = arService.displaySingleArticle(panier.getArticles_fk().getId());
+                try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/PanierItem.fxml"));
                 Pane newLoadedPane = loader.load();
                 PanierItemController controller = loader.<PanierItemController>getController();
-                controller.loadPanier(article, 0);
+                controller.loadPanier(article, 0, panier, this);
                 panierInterfaceFloawPane.getChildren().add(newLoadedPane);
             } catch (IOException ex) {
                 Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
             }
+            }
         });
+        
             
 
     }
@@ -113,15 +123,66 @@ public class PanierInterfaceController implements Initializable {
 
     @FXML
     private void validerBtnClick(ActionEvent event) {
+        listPanier = panierService.displayall(UserInterfaceController.logedUser);
+        listPanier.forEach((panier) -> {
+            if(panier.getEtat_panier()==0)
+            {
+                panierService.validerPanier(panier);
+                loadArticlesIntoPanier();
+                System.out.println(panier);
+            }
+        });
     }
 
     @FXML
     private void viderBtnClick(ActionEvent event) {
+        listPanier = panierService.displayall(UserInterfaceController.logedUser);
+        listPanier.forEach((panier) -> {
+            if(panier.getEtat_panier()==0)
+            {
+                panierService.delete(panier.getArticles_fk());
+                loadArticlesIntoPanier();
+            }
+        });
     }
     
      public void start(Stage window, String destination) throws Exception {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource(destination)));
         window.setScene(scene);
         window.show();
+    }
+
+    @FXML
+    private void historiquesBtnClick(ActionEvent event) {
+        panierInterfaceFloawPane.getChildren().clear();
+        listPanier = panierService.displayall(UserInterfaceController.logedUser);
+        listPanier.forEach((panier) -> {
+            if(panier.getEtat_panier()!=0)
+            {
+                articles article = arService.displaySingleArticle(panier.getArticles_fk().getId());
+                try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/PanierItem.fxml"));
+                Pane newLoadedPane = loader.load();
+                PanierItemController controller = loader.<PanierItemController>getController();
+                controller.loadPanier(article, 0, panier, this);
+                panierInterfaceFloawPane.getChildren().add(newLoadedPane);
+            } catch (IOException ex) {
+                Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        });
+        
+        validerBtn.setVisible(false);
+        viderBtn.setVisible(false);
+        panierBtn.setVisible(true);
+    }
+
+    @FXML
+    private void returnPanierBtnClick(ActionEvent event) {
+        panierBtn.setVisible(false);
+        loadArticlesIntoPanier();
+        validerBtn.setVisible(true);
+        viderBtn.setVisible(true);
+
     }
 }

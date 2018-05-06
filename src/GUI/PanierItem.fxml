@@ -10,7 +10,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PanierItemController">
    <stylesheets>
         <URL value="@/StyleSheets/panieritem.css" />
@@ -25,7 +24,7 @@
                </image>
             </ImageView>
             <TextField fx:id="panierQuantiteTF" layoutX="591.0" layoutY="26.0" prefHeight="25.0" prefWidth="24.0" />
-            <Label layoutX="534.0" layoutY="30.0" text="Quatité :" />
+            <Label fx:id="quantiteLabel" layoutX="534.0" layoutY="30.0" text="Quatité :" />
             <ImageView fx:id="panierAddQuantite" fitHeight="17.0" fitWidth="15.0" layoutX="621.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Assets/add.png" />
@@ -45,6 +44,7 @@
             <Label layoutX="231.0" layoutY="43.0" text="Couleur :" />
             <Label fx:id="panierTailleLabel" layoutX="287.0" layoutY="22.0" text="Label" />
             <Label fx:id="panierCouleurLabel" layoutX="287.0" layoutY="43.0" text="Label" />
+            <Label fx:id="etat_livraison" alignment="TOP_CENTER" layoutX="445.0" layoutY="32.0" prefHeight="17.0" prefWidth="243.0" text="Label" visible="false" />
          </children>
       </AnchorPane>
    </children>

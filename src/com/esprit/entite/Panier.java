@@ -19,12 +19,12 @@ public class Panier {
    private utilisateur utilisateurs_fk;
    private articles articles_fk;
    private int quantite;
-   private String etat_panier;
+   private int etat_panier;
   
    
     public Panier() {};
 
-   public Panier(utilisateur utilisateurs_fk,articles articles_fk,int quantite, String etat_panier)
+   public Panier(utilisateur utilisateurs_fk,articles articles_fk,int quantite, int etat_panier)
    {
        this.utilisateurs_fk=utilisateurs_fk;
        this.articles_fk=articles_fk;
@@ -32,7 +32,7 @@ public class Panier {
        this.etat_panier=etat_panier;
     }
 
-    public Panier(int id, utilisateur utilisateurs_fk, articles articles_fk, int quantite, String etat_panier) {
+    public Panier(int id, utilisateur utilisateurs_fk, articles articles_fk, int quantite, int etat_panier) {
         this.id = id;
         this.utilisateurs_fk = utilisateurs_fk;
         this.articles_fk = articles_fk;
@@ -53,13 +53,13 @@ public class Panier {
         return quantite;
     }
 
-    public String getEtat_panier() {
+    public int getEtat_panier() {
         return etat_panier;
     }
     
     @Override
     public String toString() {
-        return "Panier{" + "utilisateurs_fk=" + utilisateurs_fk.getId_uti() + ", articles_fk=" + articles_fk.getId() + ", quantite=" + quantite + ", etat_panier=" + etat_panier + '}';
+        return "Panier{ id="+id + "utilisateurs_fk=" + utilisateurs_fk.getId_uti() + ", articles_fk=" + articles_fk.getId() + ", quantite=" + quantite + ", etat_panier=" + etat_panier + '}';
     }
 
     public void setUtilisateurs_fk(utilisateur utilisateurs_fk) {
@@ -74,7 +74,7 @@ public class Panier {
         this.quantite = quantite;
     }
 
-    public void setEtat_panier(String etat_panier) {
+    public void setEtat_panier(int etat_panier) {
         this.etat_panier = etat_panier;
     }
 

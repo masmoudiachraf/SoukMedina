@@ -24,3 +24,16 @@
 #flowpanearticles{
     -fx-padding: 5px;
 }
+
+#labnbr_event{
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+    -fx-background-radius : 50px;
+    -fx-border-radius : 50px;
+    -fx-color : #FFFFFF;
+    -fx-background-color:transparent;
+}
+
+
+#interfaceUserNavBar{
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+}

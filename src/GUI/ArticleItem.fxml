@@ -23,21 +23,21 @@
             <Label fx:id="articleItemlabel3" layoutX="3.0" layoutY="34.0" text="Label" visible="false" />
             <Label fx:id="articleItemlabel4" layoutX="18.0" layoutY="22.0" text="Label" visible="false" />
             <Label fx:id="articleItemlabel5" layoutX="2.0" layoutY="67.0" text="Label" visible="false" />
-            <JFXButton fx:id="btndeletearticle" buttonType="RAISED" layoutX="100.0" layoutY="105.0"  prefHeight="25.0" prefWidth="28.0" text="Supprimer" visible="false" />
-            <ImageView fx:id="btnmodifierarticle" fitHeight="17.0" fitWidth="18.0" layoutX="124.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+            <JFXButton fx:id="btndeletearticle" buttonType="RAISED" layoutX="100.0" layoutY="105.0" prefHeight="25.0" prefWidth="28.0" text="Supprimer" visible="false" />
+            <ImageView fx:id="btnmodifierarticle" fitHeight="17.0" fitWidth="18.0" layoutX="95.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Assets/edit.png" />
+                  <Image url="@../Assets/edit_hover.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="deleteArticleIv" fitHeight="20.0" fitWidth="20.0" layoutX="99.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="deleteArticleIv" fitHeight="20.0" fitWidth="20.0" layoutX="118.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Assets/delete_article.png" />
+                  <Image url="@../Assets/delete_article_hover.png" />
                </image>
             </ImageView>
             <ImageView fx:id="imagevi" fitHeight="94.0" fitWidth="149.0" layoutX="12.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <ImageView fx:id="articleDetails" fitHeight="20.0" fitWidth="20.0" layoutX="72.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Assets/information.png" />
+                  <Image url="@../Assets/information_hover.png" />
                </image>
             </ImageView>
             <Hyperlink fx:id="linkdetails" layoutX="75.0" layoutY="106.0" prefHeight="23.0" prefWidth="28.0" text="Détails" visible="false" />

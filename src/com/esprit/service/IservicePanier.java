@@ -19,4 +19,7 @@ public interface IservicePanier {
     void insert(Panier p);
     void delete(articles articles_fk);
     List<Panier> displayall(utilisateur utilisateur_fk);
+    public Panier displayaSinglePanierEnAttente(utilisateur utilisateur_fk, articles articleDisplayed) ;
+    public void editQuantitePanier(Panier panier);
+    public void validerPanier(Panier panier);
 }

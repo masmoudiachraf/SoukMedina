@@ -134,9 +134,17 @@ public class ArticleInterfaceController implements Initializable {
 
     @FXML
     private void AjouterPanierAction(ActionEvent event) {
-        Panier panier = new Panier(UserInterfaceController.logedUser, article, 1, "In Hold");
+        Panier panier = new Panier(UserInterfaceController.logedUser, article, 1, 0);
         PanierService ps = new PanierService();
-        ps.insert(panier);
+        if (ps.displayaSinglePanierEnAttente(logedUser, article)==null) {
+           ps.insert(panier); 
+        }else{
+            Panier foundPanier = ps.displayaSinglePanierEnAttente(logedUser, article);
+            foundPanier.setQuantite(foundPanier.getQuantite()+1);
+            System.out.println(foundPanier);
+            ps.editQuantitePanier(foundPanier);
+        }
+        
     }
 
 

@@ -11,18 +11,24 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -55,6 +61,8 @@ public class InscriptionBoutiqueController implements Initializable {
     private JFXTextField adresse_bout;
 
     List<String> itemList = new ArrayList<String>();
+    @FXML
+    private JFXButton registerBoutiqueBackBtn;
     /**
      * Initializes the controller class.
      */
@@ -67,6 +75,11 @@ public class InscriptionBoutiqueController implements Initializable {
         itemList.add("Act4");
         ObservableList obs = FXCollections.observableList(itemList);
         activite_bout.setItems(obs);
+        try {
+            registerBoutiqueBackBtn.setGraphic(new ImageView((getClass().getResource("/Assets/backBtn.png")).toURI().toString()));
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(InscriptionBoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
     @FXML
@@ -80,8 +93,23 @@ public class InscriptionBoutiqueController implements Initializable {
           String activite = activite_bout.getValue().toString();
           Boutique b= new Boutique(nom, adresse, mail, password, Integer.parseInt(telephone), activite);
           sb.insert_boutique(b);
- 
-      
     }
     
+    
+    public void start(Stage window, String destination) throws Exception {
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource(destination)));
+        window.setScene(scene);
+        window.show();
+    }
+
+    @FXML
+    private void backBtnClick(ActionEvent event) {
+        try {
+            start((Stage) registerBoutiqueBackBtn.getScene().getWindow(), "/GUI/LoginGui.fxml");
+        } catch (Exception ex) {
+            Logger.getLogger(InscriptionBoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }

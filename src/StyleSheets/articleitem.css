@@ -16,23 +16,24 @@
 }
 
 #btnmodifierarticle{
-    -fx-image: url("../Assets/edit.png");
+    -fx-image: url("../Assets/edit_hover.png");
 }
 
 #btnmodifierarticle:hover{
-       -fx-image: url("../Assets/edit_hover.png");
+       -fx-image: url("../Assets/edit.png");
 }
 #deleteArticleIv{
-    -fx-image: url("../Assets/delete_article.png");
+    -fx-image: url("../Assets/delete_article_hover.png");
+
 }
 
 #deleteArticleIv:hover{
-    -fx-image: url("../Assets/delete_article_hover.png");
+    -fx-image: url("../Assets/delete_article.png");
 }
 
 #articleDetails{
-    -fx-image: url("../Assets/information.png");
+    -fx-image: url("../Assets/information_hover.png");
 }
 #articleDetails:hover{
-    -fx-image: url("../Assets/information_hover.png");
+    -fx-image: url("../Assets/information.png");
 }

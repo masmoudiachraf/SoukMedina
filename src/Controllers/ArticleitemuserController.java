@@ -90,7 +90,9 @@ public class ArticleitemuserController implements Initializable {
         this.article = article;
         String sourceimage=article.getImage();
         articleItemlabel.setText(Integer.toString(article.getId()));
+        //affectation du nom au label 
         articleItemlabel1.setText(article.getNom());
+        // s'il n'a pas d'image
         if(sourceimage.equals("")){
        
             try {
@@ -100,6 +102,7 @@ public class ArticleitemuserController implements Initializable {
                 Logger.getLogger(ArticleitemuserController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        // si il a une image
         else{
         Image img=new Image(sourceimage);
         imagevi.setImage(img);

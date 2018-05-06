@@ -12,7 +12,7 @@
 }
 
 #backBtn{
-    -fx-background-color:#F1687D;
+    -fx-background-color:#3498DB;
     -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
     -fx-background-radius : 50px;
     -fx-border-radius : 50px;
@@ -25,7 +25,7 @@
 }
 
 #articleAjouterPanier{
-    -fx-background-color:#F1687D;
+    -fx-background-color:#3498DB;
 }
 
 #articleAjouterPanier:hover{

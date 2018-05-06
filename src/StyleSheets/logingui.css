@@ -14,42 +14,88 @@
     -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
 }
 
+#loginHeaderLabel{
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+}
  #login_mailTf {
 
-    -fx-prompt-text-fill: #F1687D;
+    -fx-prompt-text-fill: #3498DB;
  }
 
 #login_passTf {
-    -fx-prompt-text-fill: #F1687D;
+    -fx-prompt-text-fill: #3498DB;
 
 }
 
 #login_btnconnect{
-    -fx-background-color: #F1687D;
+    -fx-background-color: #3498DB;
     -fx-text-fill: white;
 }
 
 #login_btnconnect:hover{
-    -fx-background-color: #D65266;
+    -fx-background-color: #6c5ce7;
+    -fx-text-fill: white;
+}
+
+#btnauthentifier{
+    -fx-background-color: #3498DB;
+    -fx-text-fill: white
+}
+#btnauthentifier:hover{
+    -fx-background-color: #6c5ce7;
     -fx-text-fill: white;
 }
 
 #inscription_user{
-    -fx-background-color: #F1687D;
+    -fx-background-color: #3498DB;
     -fx-text-fill: white;
 }
 
 #inscription_user:hover{
-    -fx-background-color: #D65266;
+    -fx-background-color: #6c5ce7;
     -fx-text-fill: white;
 }
 
 #boutique_inscription{
-     -fx-background-color: #F1687D;
+     -fx-background-color: #3498DB;
     -fx-text-fill: white;
 }
 
+
 #boutique_inscription:hover{
-    -fx-background-color: #D65266;
+    -fx-background-color: #6c5ce7;
     -fx-text-fill: white;
+}
+
+#registerBoutiqueBackBtn{
+    -fx-background-color:#3498DB;
+    -fx-effect: dropshadow(three-pass-box, grey, 3, 0, 0, 0);
+    -fx-background-radius : 50px;
+    -fx-border-radius : 50px;
+    -fx-color : #da067e;
+}
+
+#registerBoutiqueBackBtn:hover{
+    -fx-background-color:#3498DB;
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+    -fx-background-radius : 50px;
+    -fx-border-radius : 50px;
+    -fx-color : #da067e;
+}
+
+
+#registerUserBackBtn{
+    -fx-background-color:#3498DB;
+    -fx-effect: dropshadow(three-pass-box, grey, 3, 0, 0, 0);
+    -fx-background-radius : 50px;
+    -fx-border-radius : 50px;
+    -fx-color : #da067e;
+}
+
+#registerUserBackBtn:hover{
+    -fx-background-color:#3498DB;
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+    -fx-background-radius : 50px;
+    -fx-border-radius : 50px;
+    -fx-color : #da067e;
 }

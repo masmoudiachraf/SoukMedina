@@ -18,17 +18,17 @@
          <children>
             <ImageView fx:id="boutiqueItemImageView" fitHeight="59.0" fitWidth="63.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="14.0">
                <image>
-                  <Image url="@../Assets/shop.png" />
+                  <Image url="@../Assets/store.png" />
                </image>
             </ImageView>
-            <Label fx:id="boutiqueItemLabel" alignment="CENTER" layoutY="78.0" prefHeight="20.0" prefWidth="82.0" text="Boutique" textAlignment="CENTER" textFill="#f1687d" textOverrun="CLIP" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="boutiqueItemLabel" alignment="CENTER" layoutY="78.0" prefHeight="20.0" prefWidth="82.0" text="Boutique" textAlignment="CENTER" textFill="#3498db" textOverrun="CLIP" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="boutiqueDetails" fitHeight="20.0" fitWidth="20.0" layoutX="79.0" layoutY="47.0" onMousePressed="#details_boutiques" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="boutiqueDetails" fitHeight="20.0" fitWidth="20.0" layoutX="85.0" onMousePressed="#details_boutiques" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../Assets/information.png" />
+                  <Image url="@../Assets/info.png" />
                </image>
             </ImageView>
          </children>

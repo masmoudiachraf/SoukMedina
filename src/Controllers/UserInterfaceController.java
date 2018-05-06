@@ -261,7 +261,7 @@ public class UserInterfaceController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                        Panier panier = new Panier(user, article, 1, "In Hold");
+                        Panier panier = new Panier(user, article, 1, 0);
                         PanierService ps = new PanierService();
                         ps.insert(panier);
                     

@@ -10,34 +10,43 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" fx:id="paneuserinterface" prefHeight="459.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserInterfaceController">
+<AnchorPane id="AnchorPane" fx:id="paneuserinterface" prefHeight="500.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserInterfaceController">
    <children>
       <StackPane fx:id="interface_container" layoutX="160.0" layoutY="-2.0" prefHeight="459.0" prefWidth="789.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane fx:id="panenavbar" prefHeight="459.0" prefWidth="789.0">
                <children>
-                  <ScrollPane fx:id="scrolpaneboutiques" layoutX="9.0" layoutY="5.0" prefHeight="447.0" prefWidth="116.0">
+                  <AnchorPane fx:id="interfaceUserNavBar" prefHeight="60.0" prefWidth="882.0" style="-fx-background-color: #3498DB;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="116.0" text="Souk Medina" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <ScrollPane fx:id="scrolpaneboutiques" layoutX="9.0" layoutY="80.0" prefHeight="414.0" prefWidth="116.0">
                      <content>
-                        <FlowPane fx:id="flowpaneboutiques" prefHeight="435.0" prefWidth="110.0" />
+                        <FlowPane fx:id="flowpaneboutiques" prefHeight="411.0" prefWidth="110.0" />
                      </content>
                   </ScrollPane>
-                  <ScrollPane fx:id="scrolpanearticles" layoutX="161.0" layoutY="80.0" prefHeight="379.0" prefWidth="628.0">
+                  <ScrollPane fx:id="scrolpanearticles" layoutX="161.0" layoutY="80.0" prefHeight="414.0" prefWidth="705.0">
                      <content>
-                        <FlowPane fx:id="flowpanearticles" prefHeight="377.0" prefWidth="626.0" />
+                        <FlowPane fx:id="flowpanearticles" prefHeight="412.0" prefWidth="703.0" />
                      </content>
                   </ScrollPane>
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="724.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="813.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/logout.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="642.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="731.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/setting.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="linklogout" layoutX="697.0" layoutY="35.0" onAction="#logout" text="Déconnexion" textFill="#da067e" />
-                  <Hyperlink fx:id="linksetting" layoutX="615.0" layoutY="35.0" onAction="#update_profile" text="Mon compte" textFill="#e10875" />
+                  <Hyperlink fx:id="linklogout" layoutX="786.0" layoutY="35.0" onAction="#logout" text="Déconnexion" textFill="WHITE" />
+                  <Hyperlink fx:id="linksetting" layoutX="704.0" layoutY="35.0" onAction="#update_profile" text="Mon compte" textFill="WHITE" />
                   <Label fx:id="labid" layoutX="122.0" layoutY="38.0" text="Label" visible="false" />
                   <Label fx:id="labnom" layoutX="227.0" layoutY="25.0" text="Label" visible="false" />
                   <Label fx:id="labprenom" layoutX="117.0" layoutY="16.0" text="Label" visible="false" />
@@ -46,28 +55,29 @@
                   <Label fx:id="labadresse" layoutX="14.0" layoutY="36.0" text="Label" visible="false" />
                   <Label fx:id="labtelephone" layoutX="52.0" layoutY="38.0" text="Label" visible="false" />
                   <Label fx:id="labnaissance" layoutX="75.0" layoutY="38.0" text="Label" visible="false" />
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="574.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="663.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/panier.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="panierLink" layoutX="565.0" layoutY="35.0" onAction="#panierClick" text="Panier" textFill="#e10875" />
+                  <Hyperlink fx:id="panierLink" layoutX="654.0" layoutY="35.0" onAction="#panierClick" text="Panier" textFill="WHITE" />
                   <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="166.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/loop.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="recherArticleTextField" layoutX="204.0" layoutY="21.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" />
-                  <ImageView fx:id="imageVnotification" fitHeight="25.0" fitWidth="41.0" layoutX="513.0" layoutY="21.0" onMouseClicked="#notification_evenements" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="recherArticleTextField" layoutX="204.0" layoutY="21.0" onKeyPressed="#rechercheArticleOnKeyPressed" prefHeight="25.0" prefWidth="366.0" promptText="Cherchez un article" style="-fx-text-box-border: #3498DB;" />
+                  <ImageView fx:id="imageVnotification" fitHeight="25.0" fitWidth="41.0" layoutX="602.0" layoutY="13.0" onMouseClicked="#notification_evenements" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/notification.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labnbr_event" layoutX="526.0" layoutY="4.0" text="Label" textFill="#ab0a0a">
+                  <Label fx:id="labnbr_event" alignment="CENTER" layoutX="623.0" layoutY="4.0" prefHeight="20.0" prefWidth="15.0" style="-fx-background-color: #F1687D;" text="Label" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
+                  <Hyperlink fx:id="panierLink1" layoutX="579.0" layoutY="35.0" onAction="#panierClick" text="Notification" textFill="WHITE" />
                </children>
             </Pane>
          </children>

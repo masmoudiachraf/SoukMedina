@@ -34,3 +34,9 @@
 #addBtn:hover{
     -fx-background-color:#EEEEEE;
 }
+
+
+#interfaceBoutiqueNavBar{
+        -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+
+}

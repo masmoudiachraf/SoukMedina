@@ -59,18 +59,16 @@ public class BoutiqueItemListViewController implements Initializable {
         
     }    
     
+    
     public void loadBoutique(Boutique boutique, UserInterfaceController controller){
         boutiqueItemLabel.setText(boutique.getNom_bout());
         parentController = controller;
         this.boutique = boutique;
     }
 
-
+    
     @FXML
     private void details_boutiques(MouseEvent event) throws IOException {
         parentController.detailBoutiquePopup(boutique);
     }
-
-    
-    
 }
