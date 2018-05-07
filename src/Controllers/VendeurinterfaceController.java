@@ -375,10 +375,21 @@ public class VendeurinterfaceController implements Initializable {
 
     public void mofiferArticle(articles article) {
         List<String> itemList = new ArrayList<String>();
-        itemList.add("cat1");
-        itemList.add("cat2");
-        itemList.add("cat3");
-        itemList.add("cat4");
+        itemList.add("T-Shirts");
+        itemList.add("Chemises");
+        itemList.add("Pantalons");
+        itemList.add("Robes");
+        itemList.add("Foulardss");
+        itemList.add("Lunettes");
+        itemList.add("Chaussures");
+        itemList.add("Ceintures");
+        itemList.add("Boucles_oreilles");
+        itemList.add("Collierss");
+        itemList.add("Bagues");
+        itemList.add("bracelets");
+        itemList.add("Sac_main");
+        itemList.add("Sac_dos");
+        itemList.add("Pochettes");
         ObservableList obs = FXCollections.observableList(itemList);
 
         JFXDialogLayout content = new JFXDialogLayout();
@@ -400,6 +411,7 @@ public class VendeurinterfaceController implements Initializable {
                     articlesService as = new articlesService();
                     articles art = new articles(nom.getText(), taille.getText(), couleur.getText(), Float.parseFloat(prix.getText()), categorie.getValue().toString());
                     as.update(art, article.getId());
+                    refreshArticle();
                     dialog.close();
                 } catch (Exception ex) {
                     Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);

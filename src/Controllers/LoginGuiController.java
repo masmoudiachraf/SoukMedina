@@ -163,7 +163,7 @@ public class LoginGuiController implements Initializable {
             logedAdmin = admin;
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/admin.fxml"));
-            Pane pane = Loader.load();
+            StackPane pane = Loader.load();
             loginParent.getChildren().setAll(pane);
             AdminController userzone = Loader.getController();
             //userzone.userinformation(String.valueOf(user.getId_uti()), user.getNom_uti(), user.getPrenom_uti(), user.getMail_uti(), user.getPassword_uti(), user.getAdresse_uti(), String.valueOf(user.getTelephone_uti()), user.getNaissance_uti());

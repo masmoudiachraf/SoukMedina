@@ -10,72 +10,78 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<StackPane fx:id="stackPaneContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
+<StackPane fx:id="stackPaneContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="459.0" prefWidth="789.0">
          <children>
-            <AnchorPane fx:id="barSide" layoutY="51.0" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="51.0">
+            <AnchorPane fx:id="barSide" layoutY="51.0" prefHeight="200.0" prefWidth="130.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="51.0">
                <children>
-                  <AnchorPane layoutX="19.0" layoutY="149.0" prefHeight="25.0" prefWidth="13.0" AnchorPane.topAnchor="149.0">
+                  <AnchorPane prefHeight="25.0" prefWidth="13.0" AnchorPane.topAnchor="150.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0">
                            <image>
-                              <Image url="@../Assets/boutiqueProfile.png" />
+                              <Image url="@../Assets/adminUser.png" />
                            </image>
                         </ImageView>
-                        <JFXButton fx:id="userBtn" layoutX="37.0" onAction="#diplayUsers" prefHeight="25.0" prefWidth="85.0" text="Utilisateurs" textFill="#3498db" />
+                        <JFXButton fx:id="userBtn" layoutX="37.0" onAction="#diplayUsers" prefHeight="25.0" prefWidth="85.0" text="Utilisateurs" textFill="#f1687d" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="19.0" layoutY="189.0" prefHeight="25.0" prefWidth="13.0" AnchorPane.topAnchor="189.0">
+                  <AnchorPane prefHeight="25.0" prefWidth="13.0" AnchorPane.topAnchor="190.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0">
                            <image>
-                              <Image url="@../Assets/store.png" />
+                              <Image url="@../Assets/adminShop.png" />
                            </image>
                         </ImageView>
-                        <JFXButton fx:id="boutiqueBtn" layoutX="37.0" onAction="#displayBoutiqe" prefHeight="25.0" prefWidth="85.0" text="Boutique" textFill="#3498db" />
+                        <JFXButton fx:id="boutiqueBtn" layoutX="37.0" onAction="#displayBoutiqe" prefHeight="25.0" prefWidth="85.0" text="Boutique" textFill="#f1687d" />
                      </children>
                   </AnchorPane>
-                  <ImageView fitHeight="101.0" fitWidth="105.0" layoutX="35.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="30.0">
+                  <ImageView fitHeight="101.0" fitWidth="105.0" layoutX="15.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0">
                      <image>
-                        <Image url="@../Assets/boutiqueProfile.png" />
+                        <Image url="@../Assets/userAvatar.png" />
                      </image>
                   </ImageView>
-                  <AnchorPane layoutX="19.0" layoutY="228.0" prefHeight="25.0" prefWidth="13.0">
+                  <AnchorPane layoutY="229.0" prefHeight="25.0" prefWidth="13.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0">
                            <image>
-                              <Image url="@../Assets/boutiqueProfile.png" />
+                              <Image url="@../Assets/adminUser.png" />
                            </image>
                         </ImageView>
-                        <JFXButton fx:id="userBtn2" layoutX="37.0" onAction="#diplayUsers_signialer" prefHeight="25.0" prefWidth="85.0" text="signal" textFill="#3498db" />
+                        <JFXButton fx:id="userBtn2" layoutX="37.0" onAction="#diplayUsers_signialer" prefHeight="25.0" prefWidth="85.0" text="signial" textFill="#f1687d" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchorHeader" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #3498DB;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="anchorHeader" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #F1687D;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrateur" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="13.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Hyperlink fx:id="linklogout" layoutX="792.0" layoutY="27.0" onAction="#logout" text="Déconnexion" textFill="WHITE" />
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="817.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField prefHeight="25.0" prefWidth="280.0" promptText="Cherchez un article" style="-fx-text-box-border: #F1687D;" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="13.0" />
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="91.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="195.0" AnchorPane.topAnchor="15.0">
+                     <image>
+                        <Image url="@../Assets/white_search.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="linklogout" layoutX="696.0" layoutY="27.0" text="Déconnexion" textFill="WHITE" />
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="721.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/white_logout.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="736.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="640.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Assets/admin_settings.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="linklogout1" layoutX="709.0" layoutY="27.0" text="Mon compte" textFill="WHITE" />
+                  <Hyperlink fx:id="linklogout1" layoutX="613.0" layoutY="27.0" text="Mon compte" textFill="WHITE" />
                </children>
             </AnchorPane>
 
-            <TableView fx:id="tableview2" layoutX="201.0" layoutY="74.0" prefHeight="379.0" prefWidth="489.0">
+            <TableView fx:id="tableview2" layoutX="129.0" layoutY="74.0" prefHeight="379.0" prefWidth="489.0">
                <columns>
                   <TableColumn fx:id="nom_uti2" prefWidth="75.0" text="nom_uti" />
                   <TableColumn fx:id="prenom_uti2" prefWidth="82.0" text="prenom_uti" />
@@ -85,7 +91,7 @@
                   <TableColumn fx:id="naissance_uti2" prefWidth="86.0" text="naissance_uti" />
                </columns>
             </TableView>
-            <TableView fx:id="tableview" layoutX="201.0" layoutY="73.0" prefHeight="379.0" prefWidth="489.0" AnchorPane.topAnchor="73.0">
+            <TableView fx:id="tableview" layoutX="130.0" layoutY="73.0" prefHeight="379.0" prefWidth="489.0" AnchorPane.topAnchor="73.0">
 
                <columns>
                   <TableColumn fx:id="nom_uti" prefWidth="75.0" text="nom_uti" />
@@ -96,7 +102,7 @@
                   <TableColumn fx:id="naissance_uti" prefWidth="86.0" text="naissance_uti" />
                </columns>
             </TableView>
-            <TableView fx:id="tableview1" layoutX="201.0" layoutY="73.0" prefHeight="379.0" prefWidth="441.0" visible="false">
+            <TableView fx:id="tableview1" layoutX="133.0" layoutY="61.0" prefHeight="406.0" prefWidth="441.0" visible="false">
                <columns>
                   <TableColumn fx:id="nom_bout" prefWidth="75.0" text="nom_bout" />
                   <TableColumn fx:id="mail_bout" prefWidth="82.0" text="mail_bout" />
@@ -105,8 +111,8 @@
                   <TableColumn fx:id="activite_bout" prefWidth="101.0" text="activite_bout" />
                </columns>
              </TableView>
-            <Button fx:id="Export_to_pdf" layoutX="769.0" layoutY="74.0" mnemonicParsing="false" onAction="#Export_to_pdf" prefHeight="24.0" prefWidth="101.0" text="Export_to_pdf" />
-            <Button fx:id="btnsupp" layoutX="769.0" layoutY="106.0" mnemonicParsing="false" onAction="#supprimer_signialer_users" prefHeight="24.0" prefWidth="101.0" text="Supprimer" visible="false" />
+            <Button fx:id="Export_to_pdf" layoutX="649.0" layoutY="250.0" mnemonicParsing="false" onAction="#Export_to_pdf" prefHeight="24.0" prefWidth="101.0" text="Export_to_pdf" />
+            <Button fx:id="btnsupp" layoutX="649.0" layoutY="74.0" mnemonicParsing="false" onAction="#supprimer_signialer_users" prefHeight="24.0" prefWidth="101.0" text="Supprimer" />
 
             
 

@@ -10,41 +10,46 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="882.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PanierInterfaceController">
-    <stylesheets>
-        <URL value="@/StyleSheets/panierinterface.css" />
-    </stylesheets>
+
+<StackPane fx:id="PanierAnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PanierInterfaceController">
    <children>
-      <AnchorPane fx:id="AnchorHeader" layoutX="16.0" layoutY="12.0" prefHeight="61.0" prefWidth="882.0" style="-fx-background-color: #3498DB;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="882.0" styleClass="mainFxmlClass">
+          <stylesheets>
+              <URL value="@/StyleSheets/panierinterface.css" />
+          </stylesheets>
          <children>
-            <Hyperlink fx:id="linklogout" layoutX="793.0" layoutY="36.0" onAction="#logout" text="Déconnexion" textFill="WHITE" />
-            <Label layoutX="71.0" layoutY="13.0" prefHeight="31.0" prefWidth="192.0" text="Votre Panier" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Hyperlink fx:id="linksetting" layoutX="716.0" layoutY="37.0" onAction="#update_profile" text="Mon compte" textFill="WHITE" />
-            <JFXButton fx:id="backBtn" layoutX="20.0" layoutY="13.0" onAction="#backBtnClick" prefHeight="30.0" prefWidth="30.0" />
-            <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="821.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Assets/logout.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="743.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Assets/setting.png" />
-               </image>
-            </ImageView>
+            <AnchorPane fx:id="AnchorHeader" layoutX="16.0" layoutY="12.0" prefHeight="61.0" prefWidth="882.0" style="-fx-background-color: #3498DB;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Hyperlink fx:id="linklogout" layoutX="793.0" layoutY="36.0" onAction="#logout" text="Déconnexion" textFill="WHITE" />
+                  <Label layoutX="71.0" layoutY="13.0" prefHeight="31.0" prefWidth="192.0" text="Votre Panier" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="linksetting" layoutX="716.0" layoutY="37.0" onAction="#update_profile" text="Mon compte" textFill="WHITE" />
+                  <JFXButton fx:id="backBtn" layoutX="20.0" layoutY="13.0" onAction="#backBtnClick" prefHeight="30.0" prefWidth="30.0" />
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="821.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/logout.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="743.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/setting.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ScrollPane fx:id="panierInterfaceFloawPaneContainer" layoutX="15.0" layoutY="70.0" prefHeight="373.0" prefWidth="860.0">
+               <content>
+                  <FlowPane fx:id="panierInterfaceFloawPane" prefHeight="371.0" prefWidth="855.0" />
+               </content>
+            </ScrollPane>
+            <JFXButton fx:id="validerBtn" layoutX="724.0" layoutY="450.0" onAction="#validerBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Valider Panier" textFill="WHITE" />
+            <JFXButton fx:id="viderBtn" layoutX="564.0" layoutY="450.0" onAction="#viderBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Vider Panier" textFill="WHITE" />
+            <JFXButton fx:id="historiqueBtn" layoutX="16.0" layoutY="450.0" onAction="#historiquesBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Historique" textFill="WHITE" />
+            <JFXButton fx:id="panierBtn" layoutX="170.0" layoutY="450.0" onAction="#returnPanierBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Panier" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="panierInterfaceFloawPaneContainer" layoutX="15.0" layoutY="70.0" prefHeight="373.0" prefWidth="860.0">
-         <content>
-            <FlowPane fx:id="panierInterfaceFloawPane" prefHeight="371.0" prefWidth="855.0" />
-         </content>
-      </ScrollPane>
-      <JFXButton fx:id="validerBtn" layoutX="724.0" layoutY="450.0" onAction="#validerBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Valider Panier" textFill="WHITE" />
-      <JFXButton fx:id="viderBtn" layoutX="564.0" layoutY="450.0" onAction="#viderBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Vider Panier" textFill="WHITE" />
-      <JFXButton fx:id="historiqueBtn" layoutX="16.0" layoutY="450.0" onAction="#historiquesBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Historique" textFill="WHITE" />
-      <JFXButton fx:id="panierBtn" layoutX="170.0" layoutY="450.0" onAction="#returnPanierBtnClick" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498DB;" text="Panier" textFill="WHITE" />
    </children>
-</AnchorPane>
+</StackPane>

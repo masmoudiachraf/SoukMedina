@@ -111,6 +111,10 @@ public class UserInterfaceController implements Initializable {
      private int i;
     @FXML
     private ImageView imageVnotification;
+    @FXML
+    private AnchorPane interfaceUserNavBar;
+    @FXML
+    private Hyperlink notif;
     /**
      * Initializes the controller class.
      */
@@ -331,7 +335,7 @@ public class UserInterfaceController implements Initializable {
         try {
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/GUI/PanierInterface.fxml"));
-            AnchorPane pane = Loader.load();
+            Pane pane = Loader.load();
             paneuserinterface.getChildren().setAll(pane);
             PanierInterfaceController panierController = Loader.getController();
             panierController.loadArticlesIntoPanier();
@@ -351,5 +355,22 @@ public class UserInterfaceController implements Initializable {
         content.setBody(pane);
         content.setPrefSize(500, 210);
         dialog.show();
+    }
+
+    @FXML
+    private void notificationClick(ActionEvent event) {
+        try {
+            initialnotification();
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/EvenementItem.fxml"));
+            Pane pane = Loader.load();
+            JFXDialogLayout content = new JFXDialogLayout();
+            JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+            content.setBody(pane);
+            content.setPrefSize(500, 210);
+            dialog.show();
+        } catch (IOException ex) {
+            Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

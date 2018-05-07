@@ -25,7 +25,6 @@ import com.jfoenix.controls.JFXDialogLayout;
 import java.io.FileOutputStream;
 
 import com.jfoenix.controls.JFXTreeTableColumn;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -45,7 +43,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javax.swing.JFileChooser;
@@ -55,38 +52,35 @@ import javax.swing.JFileChooser;
  *
  * @author Hajer
  */
-public class AdminController implements Initializable {
-
-    List<utilisateur> arraylist;
-    List<Boutique> arraylist1;
-    List<utilisateur> arraylist2;
-    serviceUtilisateur su = new serviceUtilisateur();
-    ServiceBoutique sb = new ServiceBoutique();
+public class AdminControllerOld implements Initializable {
+      List<utilisateur> arraylist;
+      List<Boutique> arraylist1;
+      List<utilisateur> arraylist2;
 
     @FXML
     private TableView<?> tableview;
-
+   
     @FXML
-    private TableColumn<?, ?> nom_uti;
+     private TableColumn<?,?> nom_uti;
     @FXML
-    private TableColumn<?, ?> prenom_uti;
+      private TableColumn<?,?> prenom_uti;
     @FXML
-    private TableColumn<?, ?> mail_uti;
+       private TableColumn<?,?> mail_uti;      
     @FXML
-    private TableColumn<?, ?> adresse_uti;
+        private TableColumn<?,?> adresse_uti;
     @FXML
-    private TableColumn<?, ?> telephone_uti;
+         private TableColumn<?,?> telephone_uti;
     @FXML
-    private TableColumn<?, ?> naissance_uti;
-
+         private TableColumn<?,?> naissance_uti;
+   
     @FXML
     private TableView<?> tableview1;
-    @FXML
-
+    @FXML   
+  
     private TableColumn<?, ?> nom_bout;
     @FXML
     private TableColumn<?, ?> mail_bout;
-
+    
     @FXML
     private TableColumn<?, ?> adresse_bout;
     @FXML
@@ -127,7 +121,8 @@ public class AdminController implements Initializable {
     private TableColumn<?, ?> naissance_uti2;
     @FXML
     private Button btnsupp;
-
+    
+        
     /**
      * Initializes the controller class.
      */
@@ -136,13 +131,11 @@ public class AdminController implements Initializable {
         // TODO
 
         btnsupp.setVisible(false);
-        refreshUser();
-        refreshBoutique();
-        refreshSignal();
-    }
 
-    public void refreshUser() {
-        arraylist = (ArrayList) su.displayall1();
+        JFXTreeTableColumn<utilisateur,String> nomCol = new JFXTreeTableColumn<>("Nom");
+        
+        serviceUtilisateur su = new serviceUtilisateur();
+          arraylist = (ArrayList) su.displayall1();
         ObservableList obs = FXCollections.observableArrayList(arraylist);
         tableview.setItems(obs);
         nom_uti.setCellValueFactory(new PropertyValueFactory<>("nom_uti"));
@@ -151,21 +144,19 @@ public class AdminController implements Initializable {
         adresse_uti.setCellValueFactory(new PropertyValueFactory<>("adresse_uti"));
         telephone_uti.setCellValueFactory(new PropertyValueFactory<>("telephone_uti"));
         naissance_uti.setCellValueFactory(new PropertyValueFactory<>("naissance_uti"));
-    }
-
-    public void refreshBoutique() {
+       
+        ServiceBoutique sb = new ServiceBoutique();
         arraylist1 = (ArrayList) sb.displayall_boutique();
-        ObservableList obs1 = FXCollections.observableArrayList(arraylist1);
-        tableview1.setItems(obs1);
-        nom_bout.setCellValueFactory(new PropertyValueFactory<>("nom_bout"));
-        mail_bout.setCellValueFactory(new PropertyValueFactory<>("mail_bout"));
-        adresse_bout.setCellValueFactory(new PropertyValueFactory<>("adresse_bout"));
+           ObservableList obs1 = FXCollections.observableArrayList(arraylist1);
+           tableview1.setItems(obs1);
+           nom_bout.setCellValueFactory(new PropertyValueFactory<>("nom_bout"));
+           mail_bout.setCellValueFactory(new PropertyValueFactory<>("mail_bout"));
+          adresse_bout.setCellValueFactory(new PropertyValueFactory<>("adresse_bout"));
         telephone_bout.setCellValueFactory(new PropertyValueFactory<>("telephone_bout"));
-        activite_bout.setCellValueFactory(new PropertyValueFactory<>("activite_bout"));
-    }
-
-    public void refreshSignal(){
-        arraylist2 = (ArrayList) su.display_user_signial();
+          activite_bout.setCellValueFactory(new PropertyValueFactory<>("activite_bout"));
+          
+        
+          arraylist2 = (ArrayList) su.display_user_signial();
         ObservableList obs2 = FXCollections.observableArrayList(arraylist2);
         tableview2.setItems(obs2);
         nom_uti2.setCellValueFactory(new PropertyValueFactory<>("nom_uti"));
@@ -174,16 +165,14 @@ public class AdminController implements Initializable {
         adresse_uti2.setCellValueFactory(new PropertyValueFactory<>("adresse_uti"));
         telephone_uti2.setCellValueFactory(new PropertyValueFactory<>("telephone_uti"));
         naissance_uti2.setCellValueFactory(new PropertyValueFactory<>("naissance_uti"));
-
-    }
+    } 
     @FXML
     private void diplayUsers(ActionEvent event) {
         tableview.setVisible(true);
         tableview1.setVisible(false);
         tableview2.setVisible(false);
         btnsupp.setVisible(false);
-        refreshUser();
-
+      
     }
 
     @FXML
@@ -192,36 +181,32 @@ public class AdminController implements Initializable {
         tableview.setVisible(false);
         tableview1.setVisible(true);
         btnsupp.setVisible(false);
-        refreshBoutique();
+   
     }
-
     @FXML
     private void diplayUsers_signialer(ActionEvent event) {
         tableview.setVisible(false);
         tableview1.setVisible(false);
         tableview2.setVisible(true);
         btnsupp.setVisible(true);
-        refreshSignal();
     }
-
     @FXML
     private void supprimer_signialer_users(ActionEvent event) {
         JFXDialogLayout content = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(stackPaneContainer, content, JFXDialog.DialogTransition.CENTER);
         content.setBody(new Text("Voullez vous supprimer les utilisateurs signialer?"));
-        JFXButton oui = new JFXButton("oui");
-        JFXButton non = new JFXButton("non");
+        JFXButton oui=new JFXButton("oui");
+        JFXButton non=new JFXButton("non");
         oui.setOnAction(
                 new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
                     serviceUtilisateur su = new serviceUtilisateur();
-                    for (utilisateur users : arraylist2) {
+                      for(utilisateur users:arraylist2){
                         su.delete_user(users);
-                        su.displayall1();
-                    }
-                    tableview2.getColumns().clear();
+        }
+        tableview2.getColumns().clear();
                     dialog.close();
                 } catch (Exception ex) {
                     Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
@@ -241,85 +226,89 @@ public class AdminController implements Initializable {
             }
         }
         );
-        content.setActions(oui, non);
+        content.setActions(oui,non);
         dialog.show();
-
+        
     }
 
     @FXML
     private void Export_to_pdf(ActionEvent event) throws Exception {
-
-        int u = arraylist.size();
-        int b = arraylist1.size();
-
-        String path = "";
+        
+        int u=arraylist.size();
+        int b=arraylist1.size();
+        
+        String path="";
         JFileChooser J = new JFileChooser();
         J.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int x = J.showSaveDialog(J);
-        if (x == JFileChooser.APPROVE_OPTION) {
-            path = J.getSelectedFile().getPath();
-        }
-
+          int x=  J.showSaveDialog(J);
+         if (x==JFileChooser.APPROVE_OPTION)
+            {
+              path = J.getSelectedFile().getPath();
+            }   
+      
+      
         Font bfBold12 = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.BLUE);
-        Font bf12 = new Font(FontFamily.TIMES_ROMAN, 10);
-        Document doc = new Document();
-        PdfWriter.getInstance(doc, new FileOutputStream(path + ".pdf"));
-        doc.open();
-        Paragraph paragraph = new Paragraph("Le ......./......./..................\n\n\nLes nombres d'utilisateurs: " + u + "\nLes nombres des boutiques: " + b);
-        float[] columnWidths = {2f, 2f, 4f, 2f, 2f, 2f};
-        PdfPTable table = new PdfPTable(columnWidths);
-        table.setWidthPercentage(100f);
-        insertCell(table, "Les utilisateurs:", Element.ALIGN_CENTER, 6, bfBold12);
-        insertCell(table, "Nom", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Prénom", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Email", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Adresse", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Téléphone", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Date de Naissnce", Element.ALIGN_LEFT, 1, bfBold12);
-        for (utilisateur usrs : arraylist) {
-            insertCell(table, usrs.getNom_uti(), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, usrs.getPrenom_uti(), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, usrs.getMail_uti(), Element.ALIGN_LEFT, 1, bf12);
+        Font bf12 = new Font(FontFamily.TIMES_ROMAN, 10);       
+       Document doc = new Document();
+       PdfWriter.getInstance(doc,new FileOutputStream(path+".pdf"));
+            doc.open();
+            Paragraph paragraph = new Paragraph("Le ......./......./..................\n\n\nLes nombres d'utilisateurs: "+u+"\nLes nombres des boutiques: "+b);
+            float[] columnWidths = {2f, 2f, 4f, 2f, 2f, 2f};
+            PdfPTable table= new PdfPTable(columnWidths);
+            table.setWidthPercentage(100f);
+            insertCell(table, "Les utilisateurs:", Element.ALIGN_CENTER, 6, bfBold12);
+            insertCell(table, "Nom", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Prénom", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Email", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Adresse", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Téléphone", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Date de Naissnce", Element.ALIGN_LEFT, 1, bfBold12);
+            for( utilisateur usrs :arraylist){
+            insertCell(table,usrs.getNom_uti() , Element.ALIGN_LEFT, 1, bf12);
+            insertCell(table,usrs.getPrenom_uti() , Element.ALIGN_LEFT, 1, bf12);
+            insertCell(table,usrs.getMail_uti() , Element.ALIGN_LEFT, 1, bf12);
             insertCell(table, usrs.getAdresse_uti(), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, Integer.toString(usrs.getTelephone_uti()), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, usrs.getNaissance_uti(), Element.ALIGN_LEFT, 1, bf12);
-
-        }
-        insertCell(table, "Les Boutiques:", Element.ALIGN_CENTER, 6, bfBold12);
-        insertCell(table, "Nom", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Email", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Adresse", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Téléphone", Element.ALIGN_LEFT, 1, bfBold12);
-        insertCell(table, "Activité", Element.ALIGN_LEFT, 2, bfBold12);
-        for (Boutique bouts : arraylist1) {
-            insertCell(table, bouts.getNom_bout(), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, bouts.getMail_bout(), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, bouts.getAdresse_bout(), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, Integer.toHexString(bouts.getTelephone_bout()), Element.ALIGN_LEFT, 1, bf12);
-            insertCell(table, bouts.getActivite_bout(), Element.ALIGN_LEFT, 2, bf12);
-
-        }
-        paragraph.add(table);
-        doc.add(paragraph);
-        doc.close();
-
+            insertCell(table,Integer.toString(usrs.getTelephone_uti()) , Element.ALIGN_LEFT, 1, bf12);
+            insertCell(table,usrs.getNaissance_uti() , Element.ALIGN_LEFT, 1, bf12);       
+           
+            }
+            insertCell(table, "Les Boutiques:", Element.ALIGN_CENTER, 6, bfBold12);
+            insertCell(table, "Nom", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Email", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Adresse", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Téléphone", Element.ALIGN_LEFT, 1, bfBold12);
+            insertCell(table, "Activité", Element.ALIGN_LEFT, 2, bfBold12);
+            for( Boutique bouts :arraylist1){
+            insertCell(table,bouts.getNom_bout() , Element.ALIGN_LEFT, 1, bf12);
+            insertCell(table,bouts.getMail_bout() , Element.ALIGN_LEFT, 1, bf12);
+            insertCell(table,bouts.getAdresse_bout() , Element.ALIGN_LEFT, 1, bf12);
+            insertCell(table,Integer.toHexString(bouts.getTelephone_bout()), Element.ALIGN_LEFT, 1, bf12);
+            insertCell(table,bouts.getActivite_bout() , Element.ALIGN_LEFT, 2, bf12);
+           
+            }
+            paragraph.add(table);
+            doc.add(paragraph);
+            doc.close();
+           
+   
     }
-
-    private void insertCell(PdfPTable table, String text, int align, int colspan, Font font) {
-        PdfPCell cell = new PdfPCell(new Phrase(text.trim(), font));
-        cell.setHorizontalAlignment(align);
-        cell.setColspan(colspan);
-        if (text.trim().equalsIgnoreCase("")) {
+    private void insertCell(PdfPTable table, String text, int align, int colspan, Font font){
+            PdfPCell cell = new PdfPCell(new Phrase(text.trim(), font));
+            cell.setHorizontalAlignment(align);
+            cell.setColspan(colspan);
+            if(text.trim().equalsIgnoreCase("")){
             cell.setMinimumHeight(10f);
-        }
-        table.addCell(cell);
-    }
+                }
+            table.addCell(cell);
+    }        
+
     @FXML
-   private void logout(ActionEvent event) throws IOException {
-        FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(getClass().getResource("/GUI/LoginGui.fxml"));
-        Pane pane = Loader.load();
-        stackPaneContainer.getChildren().setAll(pane);
-        
+    private void logout(ActionEvent event) {
     }
+
+    
+
+    
 }
+
+

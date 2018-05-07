@@ -5,11 +5,17 @@
  */
 package Controllers;
 
+import static Controllers.UserInterfaceController.logedUser;
 import com.esprit.entite.Panier;
 import com.esprit.entite.articles;
+import com.esprit.entite.utilisateur;
 import com.esprit.service.PanierService;
 import com.esprit.service.articlesService;
+import com.esprit.service.serviceUtilisateur;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -19,6 +25,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +36,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -64,6 +72,8 @@ public class PanierInterfaceController implements Initializable {
     private JFXButton panierBtn;
     @FXML
     private AnchorPane AnchorHeader;
+    @FXML
+    private StackPane PanierAnchorPane;
     
     /**
      * Initializes the controller class.
@@ -115,10 +125,59 @@ public class PanierInterfaceController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) {
+        try {
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/GUI/LoginGui.fxml"));
+            Pane pane = Loader.load();
+            PanierAnchorPane.getChildren().setAll(pane);
+        } catch (IOException ex) {
+            Logger.getLogger(PanierInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     @FXML
     private void update_profile(ActionEvent event) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(PanierAnchorPane, content, JFXDialog.DialogTransition.CENTER);
+        JFXTextField nom = new JFXTextField(logedUser.getNom_uti());
+        JFXTextField prenom = new JFXTextField(logedUser.getPrenom_uti());
+        JFXTextField mail = new JFXTextField(logedUser.getMail_uti());
+        JFXTextField password = new JFXTextField(logedUser.getPassword_uti());
+        JFXTextField adresse = new JFXTextField(logedUser.getAdresse_uti());
+        JFXTextField telephone = new JFXTextField(Integer.toString(logedUser.getTelephone_uti()));
+        JFXButton Modifier = new JFXButton("Modifier");
+        JFXButton Annuler = new JFXButton("anuuler");
+        Modifier.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    serviceUtilisateur su = new serviceUtilisateur();
+                    utilisateur u = new utilisateur(nom.getText(), prenom.getText(), mail.getText(), password.getText(), adresse.getText(), Integer.parseInt(telephone.getText()), UserInterfaceController.logedUser.getNaissance_uti());
+                    su.update_user(u, UserInterfaceController.logedUser.getId_uti());
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        Annuler.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    dialog.close();
+                } catch (Exception ex) {
+                    Logger.getLogger(LoginGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
+        content.setPrefSize(120, 200);
+        content.setBody();
+        content.setActions(nom, prenom, mail, password, adresse, telephone, Modifier, Annuler);
+        dialog.show();
+        
+        
     }
 
     @FXML
