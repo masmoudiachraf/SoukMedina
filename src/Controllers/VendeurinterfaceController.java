@@ -65,7 +65,8 @@ import javafx.stage.Stage;
  * @author iskander
  */
 public class VendeurinterfaceController implements Initializable {
-
+    articlesService as = new articlesService();
+    
     @FXML
     private Label labnom;
     private Label labprenom;
@@ -138,7 +139,7 @@ public class VendeurinterfaceController implements Initializable {
     private AnchorPane interfaceBoutiqueNavBar;
     @FXML
     private Hyperlink linkevent1;
-
+    JFXDialog addArticleDialog;
     /**
      * Initializes the controller class.
      *
@@ -170,7 +171,7 @@ public class VendeurinterfaceController implements Initializable {
 
     public void userinformation(String labid) throws IOException {
 
-        articlesService as = new articlesService();
+       
         ArrayList<articles> arraylist = (ArrayList) as.displayall(Integer.parseInt(labid));
         listArticles = arraylist;
         listArticleFlowPane.setPadding(new Insets(5, 5, 8, 8));
@@ -428,12 +429,12 @@ public class VendeurinterfaceController implements Initializable {
         Loader.setLocation(getClass().getResource("/GUI/ajouterarticle.fxml"));
         Pane pane = Loader.load();
         AjouterarticleController ajoutzone = Loader.getController();
-        ajoutzone.getid_boutique(labid.getText());
+        ajoutzone.getid_boutique(labid.getText(),this);
         JFXDialogLayout content = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
+         addArticleDialog = new JFXDialog(interface_container, content, JFXDialog.DialogTransition.CENTER);
         content.setBody(pane);
         content.setPrefSize(120, 200);
-        dialog.show();
+        addArticleDialog.show();
     }
 
     @FXML

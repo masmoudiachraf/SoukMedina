@@ -59,50 +59,48 @@ public class AjouterarticleController implements Initializable {
     
     public VendeurinterfaceController parent;
     @FXML
-    private Button btnfile;
-    @FXML
     private Label okimage;
         List<String> itemList = new ArrayList<String>();
+    @FXML
+    private JFXTextField imageURL;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         itemList.add("cat1");
-        itemList.add("cat2");
-        itemList.add("cat3");
-        itemList.add("cat4");
+        itemList.add("T-Shirts");
+        itemList.add("Chemises");
+        itemList.add("Pantalons");
+        itemList.add("Robes");
+        itemList.add("Foulardss");
+        itemList.add("Lunettes");
+        itemList.add("Chaussures");
+        itemList.add("Ceintures");
+        itemList.add("Boucles_oreilles");
+        itemList.add("Collierss");
+        itemList.add("Bagues");
+        itemList.add("bracelets");
+        itemList.add("Sac_main");
+        itemList.add("Sac_dos");
+        itemList.add("Pochettes");
         ObservableList obs = FXCollections.observableList(itemList);
         tfcategorie.setItems(obs);
     }    
-    public void getid_boutique(String labid){
+    public void getid_boutique(String labid,VendeurinterfaceController controller){
         this.labid.setText(labid);
-       
+        parent=controller;
     }
-    String filename="";
-     @FXML
-    private String addimage() {
-        
-        FileChooser fc=new FileChooser();
-        fc.setTitle("select your image");
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("image","*.JPG","*.PNG"));
-        File selectedfile =fc.showOpenDialog(new Stage());
-        if(selectedfile != null){
-            filename=selectedfile.getPath();
-            okimage.setVisible(true);
-            okimage.setText("ok");
-            return filename;
-        }
-        return filename;
-    }
+
     @FXML
     private void ajouter_article(ActionEvent event) {
         articlesService as=new articlesService();
         Boutique b =new Boutique(Integer.parseInt(labid.getText()));
         b.setId(Integer.parseInt(labid.getText()));
-    articles a=new articles(tfnom.getText(),filename ,tftaille.getText(), tfcouleur.getText(), Float.parseFloat(tfprix.getText()), tfcategorie.getValue().toString(), b);
-       as.insert_article(a);
+        articles a=new articles(tfnom.getText(),imageURL.getText() ,tftaille.getText(), tfcouleur.getText(), Float.parseFloat(tfprix.getText()), tfcategorie.getValue().toString(), b);
+        as.insert_article(a);
+        parent.refreshArticle();
+        parent.addArticleDialog.close();
         
     }
 

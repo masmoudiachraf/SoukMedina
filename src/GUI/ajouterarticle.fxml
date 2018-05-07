@@ -17,7 +17,7 @@
       <JFXComboBox fx:id="tfcategorie" layoutX="10.0" layoutY="239.0" prefHeight="25.0" prefWidth="135.0" promptText="Categories" />
       <JFXButton fx:id="btnajouterarticle" layoutX="28.0" layoutY="319.0" onAction="#ajouter_article" prefHeight="25.0" prefWidth="93.0" text="Ajouter" />
       <Label fx:id="labid" disable="true" layoutX="29.0" layoutY="347.0" text="Label" visible="false" />
-      <Button fx:id="btnfile" layoutX="7.0" layoutY="277.0" mnemonicParsing="false" onAction="#addimage" prefHeight="25.0" prefWidth="135.0" text="ajouter image " />
       <Label fx:id="okimage" layoutX="16.0" layoutY="308.0" text="Label" textFill="#25d722" visible="false" />
+      <JFXTextField fx:id="imageURL" layoutX="7.0" layoutY="280.0" promptText="Image URL" />
    </children>
 </AnchorPane>
